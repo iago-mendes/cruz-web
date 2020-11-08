@@ -1,0 +1,84 @@
+#tabsContainer
+{
+    height: 7.5rem;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--primary);
+}
+
+#tabsContainer img
+{
+    width: 10rem;
+
+    margin-left: 2.5rem;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#tabsContainer img:hover
+{
+    transform: scale(1.1);
+}
+
+#tabsContainer ul
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+    margin-right: 2rem;
+
+    font-family: Ubuntu;
+}
+
+#tabsContainer ul .link
+{
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 1.75rem;
+    transition: 0.25s;
+}
+
+#tabsContainer ul .link:hover
+{
+    text-shadow: 0px 0px 10px var(--secondary);
+}
+
+#tabsContainer ul .linkBlock
+{
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 1.75rem;
+    transition: 0.25s;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 100px;
+}
+
+#tabsContainer ul .linkBlock:hover
+{
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+#tabsContainer ul .linkUser
+{
+    background-color: #C4C4C4;
+    border-radius: 100px;
+    padding: 1rem;
+    transition: 0.25s;
+}
+
+#tabsContainer ul .linkUser:hover
+{
+    transform: scale(1.1);
+}
