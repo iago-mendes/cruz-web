@@ -38,7 +38,7 @@ export default function MenuTabs()
                         Fazer pedido
                     </a>
                 </Link>
-                <Link href="/">
+                <Link href="/login">
                     <a className={styles.linkUser}>
                         <FiUser size={30} color="#5e5d5d" />
                     </a>
