@@ -13,7 +13,7 @@ export default function MenuTabs()
                 <img src={logo} alt="Cruz Representações" />
             </Link>
             <ul>
-                <Link href="/companies">
+                <Link href="/">
                     <a className={styles.link}>
                         Empresas
                     </a>
@@ -23,12 +23,12 @@ export default function MenuTabs()
                         Catálogo
                     </a>
                 </Link>
-                <Link href="/contact">
+                <Link href="/contato">
                     <a className={styles.link}>
                         Contato
                     </a>
                 </Link>
-                <Link href="/about">
+                <Link href="/">
                     <a className={styles.link}>
                         Sobre
                     </a>
@@ -38,7 +38,7 @@ export default function MenuTabs()
                         Fazer pedido
                     </a>
                 </Link>
-                <Link href="/login">
+                <Link href="/">
                     <a className={styles.linkUser}>
                         <FiUser size={30} color="#5e5d5d" />
                     </a>
