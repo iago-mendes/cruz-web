@@ -1,7 +1,9 @@
 import {AppProps} from 'next/app'
 
 import Menu from '../components/Menu'
+
 import '../styles/global.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 {
