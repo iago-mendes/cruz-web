@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Router from 'next/router'
 
 import { FiUser } from 'react-icons/fi'
 
@@ -7,6 +8,8 @@ import logo from '../assets/logo.svg'
 
 export default function MenuTabs()
 {
+    if (Router.pathname === '/login') return null
+
     return (
         <div id={styles.tabsContainer}>
             <Link href="/">
