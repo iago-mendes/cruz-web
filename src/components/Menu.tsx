@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 
 import { FiUser } from 'react-icons/fi'
 
@@ -8,6 +8,8 @@ import logo from '../assets/logo.svg'
 
 export default function MenuTabs()
 {
+    const Router = useRouter()
+
     if (Router.pathname === '/login') return null
 
     return (
