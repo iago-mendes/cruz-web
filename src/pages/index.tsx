@@ -1,15 +1,22 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import illustration from '../assets/illustration1.svg'
 import Carousel from '../components/Carousel'
 
-export default function Home() {
+interface HomeProps
+{
+	carouselImages: Array<string>
+}
+
+const Home: React.FC<HomeProps> = ({carouselImages}) =>
+{
   return (
     <div id="home">
       <Head>
         <title>Cruz representações</title>
       </Head>
-      <Carousel />
+      <Carousel images={carouselImages} />
       <main>
           <img src={illustration} alt="Homem mexendo no computador"/>
           <div className="name">
@@ -19,4 +26,20 @@ export default function Home() {
       </main>
     </div>
   )
+}
+
+export default Home
+
+export const getStaticProps: GetStaticProps = async ctx =>
+{
+	const carouselImages =
+	[
+		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-3.jpg',
+		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-2.jpg',
+		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A02.jpg'
+	]
+
+	return {
+		props: {carouselImages}
+	}
 }
