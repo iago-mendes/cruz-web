@@ -9,6 +9,8 @@
 #home .carousel
 {
 	z-index: 1;
+
+	width: 100vw;
 }
 
 #home main
@@ -51,4 +53,32 @@
 	font-size: 2rem;
 
 	color: var(--secondary);
+}
+
+@media (max-width: 850px)
+{
+	:root
+	{
+		font-size: 8px;
+	}
+
+	#home
+	{
+		overflow-y: auto;
+	
+	}
+
+	#home main
+	{
+		flex-direction: column;
+		justify-content: space-around;
+
+		padding: 2rem;
+		height: 80%;
+	}
+
+	#home main img
+	{
+		width: 50%;
+	}
 }
