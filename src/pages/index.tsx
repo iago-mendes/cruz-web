@@ -16,10 +16,11 @@ const Home: React.FC<HomeProps> = ({carouselImages}) =>
       <Head>
         <title>Cruz representações</title>
       </Head>
-      <Carousel images={carouselImages} />
+			
+			<Carousel images={carouselImages} />
       <main>
           <img src={illustration} alt="Homem mexendo no computador"/>
-          <div className="name">
+          <div>
               <h1>Cruz Representações</h1>
               <h2>Excelência em representação comercial no Norte de Minas Gerais.</h2>
           </div>
