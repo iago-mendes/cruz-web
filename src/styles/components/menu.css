@@ -1,4 +1,4 @@
-#tabsContainer
+#menu
 {
     height: 7.5rem;
     width: 100%;
@@ -10,7 +10,7 @@
     background-color: var(--primary);
 }
 
-#tabsContainer img
+#menu img
 {
     width: 10rem;
 
@@ -20,12 +20,22 @@
     transition: 0.25s;
 }
 
-#tabsContainer img:hover
+#menu img:hover
 {
     transform: scale(1.1);
 }
 
-#tabsContainer ul
+#menu button
+{
+	padding: 1rem;
+	background: none;
+	border: none;
+
+	color: var(--secondary);
+	margin-right: 2.5rem;
+}
+
+#menu ul
 {
     display: flex;
     align-items: center;
@@ -37,7 +47,7 @@
     font-family: Ubuntu;
 }
 
-#tabsContainer ul .link
+#menu ul .link
 {
     color: var(--secondary);
     text-decoration: none;
@@ -45,12 +55,12 @@
     transition: 0.25s;
 }
 
-#tabsContainer ul .link:hover
+#menu ul .link:hover
 {
     text-shadow: 0px 0px 10px var(--secondary);
 }
 
-#tabsContainer ul .linkBlock
+#menu ul .linkBlock
 {
     color: var(--secondary);
     text-decoration: none;
@@ -64,13 +74,13 @@
     border-radius: 100px;
 }
 
-#tabsContainer ul .linkBlock:hover
+#menu ul .linkBlock:hover
 {
     background-color: var(--secondary);
     color: var(--primary);
 }
 
-#tabsContainer ul .linkUser
+#menu ul .linkUser
 {
     background-color: #C4C4C4;
     border-radius: 100px;
@@ -78,7 +88,17 @@
     transition: 0.25s;
 }
 
-#tabsContainer ul .linkUser:hover
+#menu ul .linkUser:hover
 {
     transform: scale(1.1);
 }
+
+/* #burger
+{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+
+	background-color: green;
+	z-index: 100;
+} */
