@@ -1,4 +1,5 @@
 import {AppProps} from 'next/app'
+import {Provider} from 'next-auth/client'
 
 import Menu from '../components/Menu'
 
@@ -12,10 +13,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 {
   return (
-    <>
+    <Provider session={pageProps.session}>
       <Menu />
       <Component {...pageProps} />
-    </>
+    </Provider>
   )
 }
 

@@ -51,7 +51,7 @@ export default function MenuTabs()
                 <img src={logo} alt="Cruz Representações" />
             </Link>
             <ul>
-                <Link href="/">
+                <Link href="/empresas">
                     <a className="link">
                         Empresas
                     </a>
