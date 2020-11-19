@@ -1,18 +1,21 @@
-import {signIn, useSession} from 'next-auth/client'
+import {useSession} from 'next-auth/client'
+import Loading from '../components/Loading'
+import NotLogged from '../components/NotLogged'
+
+import Container from '../styles/pages/empresas'
 
 const Companies = () =>
 {
 	const [session, loading] = useSession()
 
-	if (loading) return <h1>Carregando...</h1>
-	if (!session) return (
-		<div>
-			<h1>Você não está logado!</h1>
-			<button onClick={() => signIn()}>Entrar</button>
-		</div>
-	)
+	if (loading) return <Loading />
+	if (!session) return <NotLogged />
 
-	return <h1>Empresas</h1>
+	return (
+		<Container>
+			<h1>Empresas</h1>
+		</Container>
+	)
 }
 
 export default Companies
