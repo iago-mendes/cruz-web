@@ -44,6 +44,18 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 				<button className="close" onClick={() => setIsOpen(false)}>
 					X
 				</button>
+
+				<header>
+					<img src={company.imagem} alt={company.nome_fantasia}/>
+					<h1>{company.nome_fantasia}</h1>
+				</header>
+
+				<p>{company.descricao}</p>
+
+				<footer>
+					<a href={company.site} >Site da empresa</a>
+					<button onClick={() => {}} >Catálogo de produtos</button>
+				</footer>
 			</Container>
 		</Modal>
 	)
