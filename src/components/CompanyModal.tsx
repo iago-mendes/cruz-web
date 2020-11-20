@@ -1,4 +1,5 @@
 import Modal from 'react-modal'
+import {FiX} from 'react-icons/fi'
 
 import Container from '../styles/components/CompanyModal'
 
@@ -42,7 +43,7 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 		<Modal isOpen={isOpen} style={style} >
 			<Container>
 				<button className="close" onClick={() => setIsOpen(false)}>
-					X
+					<FiX size={25} />
 				</button>
 
 				<header>
@@ -53,7 +54,7 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 				<p>{company.descricao}</p>
 
 				<footer>
-					<a href={company.site} >Site da empresa</a>
+					<a href={company.site} target='_blank' >Site da empresa</a>
 					<button onClick={() => {}} >Catálogo de produtos</button>
 				</footer>
 			</Container>
