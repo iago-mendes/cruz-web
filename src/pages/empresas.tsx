@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 import NotLogged from '../components/NotLogged'
 import api from '../services/api'
 import CompanyModal, {Company} from '../components/CompanyModal'
+import Head from 'next/head'
 
 interface CompaniesProps
 {
@@ -40,6 +41,9 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 
 	return (
 		<Container className='container'>
+			<Head>
+				<title>Empresas | Cruz representações</title>
+			</Head>
 			<CompanyModal company={company} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
 			{companies.map(company => (
 				<div className='flipCard' key={company.id} onClick={() => handleCompanyClick(company.id)} >

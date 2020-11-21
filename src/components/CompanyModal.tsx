@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import {FiX} from 'react-icons/fi'
 
 import Container from '../styles/components/CompanyModal'
+import Loading from './Loading'
 
 Modal.setAppElement('#__next')
 
@@ -41,23 +42,29 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 
 	return (
 		<Modal isOpen={isOpen} style={style} >
-			<Container>
-				<button className="close" onClick={() => setIsOpen(false)}>
-					<FiX size={25} />
-				</button>
+			{
+				!company
+				? <Loading />
+				: (
+					<Container>
+						<button className="close" onClick={() => setIsOpen(false)}>
+							<FiX size={25} />
+						</button>
 
-				<header>
-					<img src={company.imagem} alt={company.nome_fantasia}/>
-					<h1>{company.nome_fantasia}</h1>
-				</header>
+						<header>
+							<img src={company.imagem} alt={company.nome_fantasia}/>
+							<h1>{company.nome_fantasia}</h1>
+						</header>
 
-				<p>{company.descricao}</p>
+						<p>{company.descricao}</p>
 
-				<footer>
-					<a href={company.site} target='_blank' >Site da empresa</a>
-					<button onClick={() => {}} >Catálogo de produtos</button>
-				</footer>
-			</Container>
+						<footer>
+							<a href={company.site} target='_blank' >Site da empresa</a>
+							<button onClick={() => {}} >Catálogo de produtos</button>
+						</footer>
+					</Container>
+				)
+			}
 		</Modal>
 	)
 }
