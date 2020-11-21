@@ -15,6 +15,7 @@ export default function MenuTabs()
 
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(false)
 	// const [companies, setCompanies] = useState<string[]>([])
 	const {data: companies, error} = useSWR('/api/getCompanies')
 	
@@ -38,7 +39,7 @@ export default function MenuTabs()
 	if (error) return <h1>Error!</h1>
 
 	return (
-		<Container>
+		<Container showDropdown={showDropdown}>
 			<Link href="/">
 				<img src={logo} alt="Cruz Representações" />
 			</Link>
@@ -62,16 +63,18 @@ export default function MenuTabs()
 										Empresas
 								</a>
 						</Link>
-						<Link href="/catalogo">
-								<a className="link dropdown">
-										Catálogo
-										<ul>
-											{companies && companies.map((company: Company) => (
-												<li key={company.id}>{company.nome_fantasia}</li>
-											))}
-										</ul>
-								</a>
-						</Link>
+						<button onClick={() => setShowDropdown(!showDropdown)} className="dropdown">
+								Catálogo
+								{showDropdown && (
+									<ul>
+										{companies && companies.map((company: Company) => (
+											<Link href={`/catalogo/${company.id}`} key={company.id}>
+												<a className="link">{company.nome_fantasia}</a>
+											</Link>
+										))}
+									</ul>
+								)}
+						</button>
 						<Link href="/contato">
 								<a className="link">
 										Contato

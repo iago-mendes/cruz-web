@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-const Container = styled.nav`
+interface ContainerProps
+{
+	showDropdown: boolean
+}
+
+const Container = styled.nav<ContainerProps>`
 	height: 7.5rem;
 	width: 100%;
 
@@ -102,12 +107,67 @@ const Container = styled.nav`
 		{
 			height: 100%;
 
+			color: ${p => p.theme.colors.secondary};
+			text-decoration: none;
+			font-size: 1.75rem;
+			transition: 0.25s;
+
+			width: 10rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			font-family: Ubuntu;
+			padding: 0;
+			margin: 0;
+			cursor: pointer;
+
 			position: relative;
+
+			:hover
+			{
+				text-shadow: 0px 0px 10px ${p => p.theme.colors.secondary};
+
+				ul
+				{
+					text-shadow: none;
+				}
+			}
 
 			ul
 			{
 				position: absolute;
 				margin: 0;
+
+				background-color: ${p => p.theme.colors.primary};
+				width: 15rem;
+				height: fit-content;
+
+				transition: 0.5s;
+				top: ${p => p.showDropdown ? '7.5rem' : '0'};
+				z-index: 3;
+
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+
+				padding: 1rem;
+
+				a
+				{
+					justify-content: flex-start;
+
+					padding-top: 1rem;
+					padding-bottom: 1rem;
+
+					border-top: ${p => p.theme.colors.secondary} solid 1px;
+					width: 100%;
+
+					:first-of-type
+					{
+						border-top: none;
+					}
+				}
 			}
 		}
 	}
