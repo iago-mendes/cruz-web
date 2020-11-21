@@ -46,7 +46,7 @@ export default function MenuTabs()
 										Empresas
 								</a>
 						</Link>
-						<Link href="/">
+						<Link href="/catalogo">
 								<a className="link">
 										Catálogo
 								</a>
