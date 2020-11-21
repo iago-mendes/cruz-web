@@ -1,6 +1,6 @@
 import {GetStaticProps} from 'next'
 import {useSession} from 'next-auth/client'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import Container from '../styles/pages/empresas'
 import Loading from '../components/Loading'
@@ -26,8 +26,6 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 	const [session, loading] = useSession()
 	const [company, setCompany] = useState(companiesInfo[0])
 	const [isModalOpen, setIsModalOpen] = useState(false)
-
-	useEffect(() => console.log('companiesInfo', companiesInfo), [])
 
 	if (loading) return <Loading />
 	if (!session) return <NotLogged />

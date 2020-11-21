@@ -41,6 +41,7 @@ const Container = styled.nav`
 		align-items: center;
 		justify-content: space-between;
 		width: 50%;
+		height: 100%;
 
 		margin-right: 2rem;
 
@@ -52,6 +53,11 @@ const Container = styled.nav`
 			text-decoration: none;
 			font-size: 1.75rem;
 			transition: 0.25s;
+
+			width: 10rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
 			:hover
 			{
@@ -89,6 +95,19 @@ const Container = styled.nav`
 			:hover
 			{
 				transform: scale(1.1);
+			}
+		}
+
+		.dropdown
+		{
+			height: 100%;
+
+			position: relative;
+
+			ul
+			{
+				position: absolute;
+				margin: 0;
 			}
 		}
 	}
