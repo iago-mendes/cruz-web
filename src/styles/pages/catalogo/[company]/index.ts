@@ -13,7 +13,7 @@ const Container = styled.div`
 	padding-left: 10rem;
 	padding-right: 10rem;
 
-	div
+	.line
 	{
 		width: 25rem;
 		height: 25rem;
@@ -38,10 +38,22 @@ const Container = styled.div`
 			transform: scale(1.05);
 		}
 
-		img
+		div
 		{
-			max-height: 80%;
+			width: 100%;
+			height: 80%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img
+			{
+				max-width: 100%;
+				max-height: 100%;
+			}
 		}
+
 
 		h1
 		{

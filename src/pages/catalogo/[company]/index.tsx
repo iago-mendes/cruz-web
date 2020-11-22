@@ -34,8 +34,10 @@ const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 			</Head>
 
 			{lines.map(line => (
-				<div key={line.id} onClick={() => Router.push(`/catalogo/${company.id}/${line.id}`)}>
-					<img src={line.imagem} alt={line.nome}/>
+				<div className='line' key={line.id} onClick={() => Router.push(`/catalogo/${company.id}/${line.id}`)}>
+					<div>
+						<img src={line.imagem} alt={line.nome}/>
+					</div>
 					<h1>{line.nome}</h1>
 				</div>
 			))}

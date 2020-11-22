@@ -47,6 +47,7 @@ const Container = styled.div`
 				border: ${p => p.theme.colors.primary} solid 1px;
 				border-radius: 1rem;
 				background-color: #fff;
+				padding: 1rem;
 
 				img
 				{
@@ -72,6 +73,8 @@ const Container = styled.div`
 					font-family: Ubuntu;
 					font-weight: 700;
 					font-size: 3.5rem;
+
+					text-align: center;
 				}
 
 				h2

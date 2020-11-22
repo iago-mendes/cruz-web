@@ -139,7 +139,8 @@ const Container = styled.nav<ContainerProps>`
 				position: absolute;
 				margin: 0;
 
-				background-color: ${p => p.theme.colors.primary};
+				background-color: ${p => `${p.theme.colors.primary}e6`};
+
 				width: 15rem;
 				height: fit-content;
 
@@ -162,6 +163,8 @@ const Container = styled.nav<ContainerProps>`
 
 					border-top: ${p => p.theme.colors.secondary} solid 1px;
 					width: 100%;
+
+					text-align: left;
 
 					:first-of-type
 					{
