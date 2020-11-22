@@ -17,7 +17,7 @@ interface CompanyLinesProps
 const CompanyLines: React.FC <CompanyLinesProps> = ({lines, companyName}) =>
 {
 	return (
-		<Container>
+		<Container className='container'>
 			<Head>
 				<title>{companyName} — Linhas | Cruz Representações</title>
 			</Head>
