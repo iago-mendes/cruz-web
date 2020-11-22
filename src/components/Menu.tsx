@@ -63,7 +63,11 @@ export default function MenuTabs()
 										Empresas
 								</a>
 						</Link>
-						<button onClick={() => setShowDropdown(!showDropdown)} className="dropdown">
+						<button
+							onMouseEnter={() => setShowDropdown(true)}
+							onMouseLeave={() => setShowDropdown(false)}
+							className="dropdown"
+						>
 								Catálogo
 								{showDropdown && (
 									<ul>
