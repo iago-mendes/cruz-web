@@ -19,7 +19,7 @@ interface LineProductsProps
 const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 {
 	return (
-		<Container>
+		<Container className='container'>
 			<Head>
 				<title>{companyName} — Produtos | Cruz Representações</title>
 			</Head>
