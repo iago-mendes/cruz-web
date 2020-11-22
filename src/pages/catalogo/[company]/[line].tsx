@@ -1,31 +1,38 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
+import {useState} from 'react'
 
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/[line]'
+import ProductModal, {Product} from '../../../components/ProductModal'
 
 interface LineProductsProps
 {
-	products: Array<
-	{
-		id: string
-    imagem: string
-    nome: string
-    unidade: string
-	}>
+	products: Array<Product>
 	companyName: string
 }
 
 const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 {
+	const [product, setProduct] = useState(products[0])
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	function handleProductClick(clickedProduct: Product)
+	{
+		setProduct(clickedProduct)
+		setIsModalOpen(true)
+	}
+
 	return (
 		<Container className='container'>
 			<Head>
 				<title>{companyName} — Produtos | Cruz Representações</title>
 			</Head>
 
+			<ProductModal product={product} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+
 			{products.map(product => (
-				<div key={product.id}>
+				<div key={product.id} onClick={() => handleProductClick(product)}>
 					<img src={product.imagem} alt={product.nome}/>
 					<h1>{product.nome}</h1>
 				</div>
