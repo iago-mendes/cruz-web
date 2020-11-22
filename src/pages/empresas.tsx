@@ -23,10 +23,10 @@ interface CompaniesProps
 
 const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 {
-	const [session, loading] = useSession()
 	const [company, setCompany] = useState(companiesInfo[0])
 	const [isModalOpen, setIsModalOpen] = useState(false)
-
+	
+	const [session, loading] = useSession()
 	if (loading) return <Loading />
 	if (!session) return <NotLogged />
 

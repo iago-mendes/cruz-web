@@ -1,8 +1,12 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import {GetStaticPaths, GetStaticProps} from 'next'
+import {useSession} from 'next-auth/client'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
+
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/index'
+import Loading from '../../../components/Loading'
+import NotLogged from '../../../components/NotLogged'
 
 interface CompanyLinesProps
 {
@@ -18,6 +22,10 @@ interface CompanyLinesProps
 const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 {
 	const Router = useRouter()
+
+	const [session, loading] = useSession()
+	if (loading) return <Loading />
+	if (!session) return <NotLogged />
 
 	return (
 		<Container className='container'>
