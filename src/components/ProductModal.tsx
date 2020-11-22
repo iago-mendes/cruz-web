@@ -31,7 +31,15 @@ const ProductModal: React.FC<ProductModalProps> = ({product, isOpen, setIsOpen})
 			alignItems: 'center',
 			justifyContent: 'center',
 			background: 'none',
-			border: 'none'
+			border: 'none',
+			overflow: 'hidden',
+			height: '100vh',
+			width: '100vw',
+			left: 0,
+			top: 0,
+			right: 0,
+			bottom: 0,
+			padding: 0
 		},
 		overlay:
 		{

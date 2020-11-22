@@ -29,7 +29,7 @@ const Container = styled.div`
 		border: ${p => p.theme.colors.primary} solid 1px;
 		border-radius: 1rem;
 
-		cursor: zoom-in;
+		cursor: pointer;
 		transition: 0.25s;
 
 		:hover
