@@ -17,7 +17,13 @@ interface LineProductsProps
 
 const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 {
-	const [product, setProduct] = useState(products[0])
+	const [product, setProduct] = useState<Product>(
+	{
+		id: '',
+		imagem: '',
+		nome: '',
+		unidade: ''
+	})
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const [session, loading] = useSession()
