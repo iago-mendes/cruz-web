@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/index'
 
@@ -11,19 +12,21 @@ interface CompanyLinesProps
 		nome: string
 		imagem: string
 	}>
-	companyName: string
+	company: {name: string, id: string}
 }
 
-const CompanyLines: React.FC <CompanyLinesProps> = ({lines, companyName}) =>
+const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 {
+	const Router = useRouter()
+
 	return (
 		<Container className='container'>
 			<Head>
-				<title>{companyName} — Linhas | Cruz Representações</title>
+				<title>{company.name} — Linhas | Cruz Representações</title>
 			</Head>
 
 			{lines.map(line => (
-				<div key={line.id}>
+				<div key={line.id} onClick={() => Router.push(`/catalogo/${company.id}/${line.id}`)}>
 					<img src={line.imagem} alt={line.nome}/>
 					<h1>{line.nome}</h1>
 				</div>
@@ -49,16 +52,16 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 
 export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {company} = ctx.params
+	const {company: id} = ctx.params
 
 	let lines = []
-	await api.get(`companies/${company}/products`).then(res => lines = res.data)
+	await api.get(`companies/${id}/products`).then(res => lines = res.data)
 
-	let companyName = ''
-	await api.get(`companies/${company}`).then(res => companyName = res.data.nome_fantasia)
+	let company = {name: '', id}
+	await api.get(`companies/${id}`).then(res => company.name = res.data.nome_fantasia)
 
 	return {
-		props: {lines, companyName},
+		props: {lines, company},
 		revalidate: 10
 	}
 }
