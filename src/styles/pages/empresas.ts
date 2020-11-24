@@ -3,7 +3,6 @@ import styled from 'styled-components'
 const Container = styled.div`
 	display: grid;
 	grid-auto-rows: 25rem;
-	grid-template-columns: repeat(auto-fill, 25rem);
 	grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
 	grid-gap: 2rem;
 	align-items: center;
