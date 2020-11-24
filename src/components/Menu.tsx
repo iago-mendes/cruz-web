@@ -84,7 +84,7 @@ export default function MenuTabs()
 										Contato
 								</a>
 						</Link>
-						<Link href="/">
+						<Link href="/sobre">
 								<a className="link">
 										Sobre
 								</a>
