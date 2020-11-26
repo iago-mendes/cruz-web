@@ -1,5 +1,6 @@
 import Modal from 'react-modal'
 import {FiX} from 'react-icons/fi'
+import {useRouter} from 'next/router'
 
 import Container from '../styles/components/CompanyModal'
 import Loading from './Loading'
@@ -24,6 +25,8 @@ interface CompanyModalProps
 
 const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen}) =>
 {
+	const Router = useRouter()
+
 	const style: Modal.Styles =
 	{
 		content:
@@ -60,7 +63,9 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 
 						<footer>
 							<a href={company.site} target='_blank' >Site da empresa</a>
-							<button onClick={() => {}} >Catálogo de produtos</button>
+							<button onClick={() => Router.push(`/catalogo/${company.id}`)} >
+								Catálogo de produtos
+							</button>
 						</footer>
 					</Container>
 				)
