@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import {GetStaticProps} from 'next'
 import {FiGithub, FiLinkedin} from 'react-icons/fi'
 
 import Container from '../styles/pages/sobre'
@@ -74,7 +74,8 @@ export const getStaticProps: GetStaticProps = async ctx =>
 	await api.get('sellers').then(res => sellers = res.data)
 
 	return {
-		props: {sellers}
+		props: {sellers},
+		revalidate: 10
 	}
 }
 

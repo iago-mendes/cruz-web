@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 	]
 
 	return {
-		props: {carouselImages}
+		props: {carouselImages},
+		revalidate: 10
 	}
 }
