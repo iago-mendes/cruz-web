@@ -7,7 +7,6 @@ import logo from '../assets/logo.svg'
 import {useEffect, useState} from 'react'
 import Container from '../styles/components/Menu'
 import {Company} from '../components/CompanyModal'
-import api from '../services/api'
 
 export default function MenuTabs()
 {
@@ -16,21 +15,12 @@ export default function MenuTabs()
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
 	const [showDropdown, setShowDropdown] = useState(false)
-	// const [companies, setCompanies] = useState<string[]>([])
 	const {data: companies, error} = useSWR('/api/getCompanies')
 	
 	useEffect(() =>
 	{
 		setWidth(window.innerWidth)
 		window.addEventListener("resize", () => setWidth(window.innerWidth))
-		// api.get('companies').then(res =>
-		// {
-		// 	console.log('[companies]', res.data)
-		// 	// let tmpCompanies: string[] = []
-		// 	// const promise = res.data.map(company => tmpCompanies.push(company.nome_fantasia))
-		// 	// await Promise.all(promise)
-		// 	// setCompanies(tmpCompanies)
-		// }).catch(err => console.error('[ERROR]', err))
 
 		return () => window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
