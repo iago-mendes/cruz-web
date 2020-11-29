@@ -61,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 
 	const promise = companies.map(async company =>
 	{
-		await api.get(`companies/${company.id}/products`).then(({data: lines}) =>
+		await api.get(`companies/${company.id}/lines`).then(({data: lines}) =>
 		{
 			lines.map(line => paths.push(
 			{
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 	const {company, line} = ctx.params
 
 	let products = []
-	await api.get(`companies/${company}/products/${line}`).then(res => products = res.data)
+	await api.get(`companies/${company}/lines/${line}/products`).then(res => products = res.data)
 
 	let companyName = ''
 	await api.get(`companies/${company}`).then(res => companyName = res.data.nome_fantasia)

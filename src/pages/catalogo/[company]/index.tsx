@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 	const {company: id} = ctx.params
 
 	let lines = []
-	await api.get(`companies/${id}/products`).then(res => lines = res.data)
+	await api.get(`companies/${id}/lines`).then(res => lines = res.data)
 
 	let company = {name: '', id}
 	await api.get(`companies/${id}`).then(res => company.name = res.data.nome_fantasia)
