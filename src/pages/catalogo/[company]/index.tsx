@@ -33,14 +33,16 @@ const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 				<title>{company.name} — Linhas | Cruz Representações</title>
 			</Head>
 
-			{lines.map(line => (
-				<div className='line' key={line.id} onClick={() => Router.push(`/catalogo/${company.id}/${line.id}`)}>
-					<div>
-						<img src={line.imagem} alt={line.nome}/>
+			<main>
+				{lines.map(line => (
+					<div className='line' key={line.id} onClick={() => Router.push(`/catalogo/${company.id}/${line.id}`)}>
+						<div>
+							<img src={line.imagem} alt={line.nome}/>
+						</div>
+						<h1>{line.nome}</h1>
 					</div>
-					<h1>{line.nome}</h1>
-				</div>
-			))}
+				))}
+			</main>
 		</Container>
 	)
 }
