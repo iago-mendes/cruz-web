@@ -15,6 +15,8 @@ const Container = styled.nav<ContainerProps>`
 
 	background-color: ${p => p.theme.colors.primary};
 
+	overflow: hidden;
+
 	img
 	{
 		width: 10rem;

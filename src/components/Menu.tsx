@@ -7,6 +7,7 @@ import logo from '../assets/logo.svg'
 import {useEffect, useState} from 'react'
 import Container from '../styles/components/Menu'
 import {Company} from '../components/CompanyModal'
+import BurgerMenu from './BurgerMenu'
 
 export default function MenuTabs()
 {
@@ -29,7 +30,8 @@ export default function MenuTabs()
 	if (error) return <h1>Error!</h1>
 
 	return (
-		<Container showDropdown={showDropdown}>
+		<Container showDropdown={showDropdown} id='menu' >
+			<BurgerMenu isOpen={isBurgerOpen} width={width} companies={companies} />
 			<Link href="/">
 				<img src={logo} alt="Cruz Representações" />
 			</Link>
