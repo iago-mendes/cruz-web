@@ -80,6 +80,30 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 850px)
+	{
+		width: 85%;
+		height: 75%;
+		border-width: 3px;
+		
+		.close
+		{
+			right: 7.5%;
+			top: calc(12.5% - 5rem);
+		}
+
+		main
+		{
+			div
+			{
+				h1
+				{
+					font-size: 2.5rem;
+				}
+			}
+		}
+	}
 `
 
 export default Container

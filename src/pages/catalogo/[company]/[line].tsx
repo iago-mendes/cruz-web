@@ -44,12 +44,14 @@ const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 
 			<ProductModal product={product} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
 
-			{products.map(product => (
-				<div key={product.id} onClick={() => handleProductClick(product)}>
-					<img src={product.imagem} alt={product.nome}/>
-					<h1>{product.nome}</h1>
-				</div>
-			))}
+			<main>
+				{products.map(product => (
+					<div key={product.id} onClick={() => handleProductClick(product)}>
+						<img src={product.imagem} alt={product.nome}/>
+						<h1>{product.nome}</h1>
+					</div>
+				))}
+			</main>
 		</Container>
 	)
 }
