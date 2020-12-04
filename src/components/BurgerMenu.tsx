@@ -16,13 +16,13 @@ interface BurgerMenuProps
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, width, companies}) =>
 {
-	const [showDropdown, setShowDropdown] = useState(false)
+	const [showBurgerDropdown, setShowBurgerDropdown] = useState(false)
 
 	if (width > 1000)
 		return null
 
 	return (
-		<Container isOpen={isOpen} showDropdown={showDropdown} >
+		<Container isOpen={isOpen} showBurgerDropdown={showBurgerDropdown} >
 			<ul>
 				<div className="link group">
 					<Link href="/">
@@ -42,14 +42,14 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, width, companies}) =>
 					</a>
 				</Link>
 				<button
-					onClick={() => setShowDropdown(!showDropdown)}
-					className="link dropdown"
+					onClick={() => setShowBurgerDropdown(!showBurgerDropdown)}
+					className="link burguerDropdown"
 				>
 						<div className="header">
 							<GoTriangleRight size={20} />
 							Catálogo
 						</div>
-						{showDropdown && (
+						{showBurgerDropdown && (
 							<ul>
 								{companies && companies.map((company: Company) => (
 									<Link href={`/catalogo/${company.id}`} key={company.id}>

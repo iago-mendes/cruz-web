@@ -15,7 +15,7 @@ export default function MenuTabs()
 
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
-	const [showDropdown, setShowDropdown] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(true)
 	const {data: companies, error} = useSWR('/api/getCompanies')
 	
 	useEffect(() =>
@@ -25,6 +25,9 @@ export default function MenuTabs()
 
 		return () => window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
+
+	useEffect(() => console.log('[showDropdown]', showDropdown), [showDropdown])
+	useEffect(() => console.log('[companies]', companies), [companies])
 
 	if (Router.pathname === '/login') return null
 	if (error) return <h1>Error!</h1>

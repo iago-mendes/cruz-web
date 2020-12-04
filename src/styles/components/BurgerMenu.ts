@@ -3,15 +3,15 @@ import styled from 'styled-components'
 interface ContainerProps
 {
 	isOpen: boolean
-	showDropdown: boolean
+	showBurgerDropdown: boolean
 }
 
 const Container = styled.nav<ContainerProps>`
 	position: absolute;
 	z-index: 100;
-	top: 6.75rem;
+	top: 7.5rem;
 	
-	height: calc(100vh - 6.75rem);
+	height: calc(100vh - 7.5rem);
 	width: 100%;
 	
 	background-color: ${p => `${p.theme.colors.primaryDark}f2`};
@@ -19,9 +19,12 @@ const Container = styled.nav<ContainerProps>`
 	right: ${p => p.isOpen ? '0' : '-100vw'};
 	transition: 0.5s;
 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	overflow-y: auto;
+
+	*
+	{
+		text-shadow: none;
+	}
 
 	ul
 	{
@@ -30,8 +33,9 @@ const Container = styled.nav<ContainerProps>`
 
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
 		padding: 5rem;
+		padding-top: 15rem;
 
 		.link
 		{
@@ -92,10 +96,10 @@ const Container = styled.nav<ContainerProps>`
 			}
 		}
 
-		.dropdown
+		.burguerDropdown
 		{
 			height: fit-content;
-
+			margin: 0;
 			flex-direction: column;
 
 			.header
@@ -105,11 +109,14 @@ const Container = styled.nav<ContainerProps>`
 				justify-content: center;
 				gap: 2rem;
 
+				font-family: Ubuntu;
+				font-size: 2.5rem;
+
 				svg
 				{
 					transition: 0.5s;
 
-					${p => p.showDropdown && 'transform: rotate(90deg);'}
+					${p => p.showBurgerDropdown && 'transform: rotate(90deg);'}
 				}
 			}
 
@@ -119,10 +126,26 @@ const Container = styled.nav<ContainerProps>`
 				background: none;
 
 				transition: 0.5s;
-				height: ${p => p.showDropdown ? 'fit-content' : '0'};
-				opacity: ${p => p.showDropdown ? '1' : '0'};
+				height: ${p => p.showBurgerDropdown ? 'fit-content' : '0'};
+				opacity: ${p => p.showBurgerDropdown ? '1' : '0'};
 
 				width: 80%;
+				padding: 0;
+
+				.link
+				{
+					width: 100%;
+					
+					padding: 0;
+					padding-top: 2rem;
+					padding-bottom: 2rem;
+					font-size: 2rem;
+					
+					:first-of-type
+					{
+						border: none;
+					}
+				}
 			}
 		}
 	}

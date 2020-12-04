@@ -15,11 +15,9 @@ const Container = styled.nav<ContainerProps>`
 
 	background-color: ${p => p.theme.colors.primary};
 
-	overflow: hidden;
-
 	img
 	{
-		width: 10rem;
+		height: 100%;
 
 		margin-left: 2.5rem;
 
@@ -148,7 +146,7 @@ const Container = styled.nav<ContainerProps>`
 
 				transition: 0.5s;
 				top: ${p => p.showDropdown ? '7.5rem' : '0'};
-				z-index: 3;
+				z-index: 1000;
 
 				display: flex;
 				flex-direction: column;
