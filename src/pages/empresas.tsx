@@ -43,19 +43,21 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 				<title>Empresas | Cruz representações</title>
 			</Head>
 			<CompanyModal company={company} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-			{companies.map(company => (
-				<div className='flipCard' key={company.id} onClick={() => handleCompanyClick(company.id)} >
-						<div className='companyCard'>
-						<div className='front'>
-							<img src={company.imagem} alt={company.nome_fantasia} />
-						</div>
-						<div className='back'>
-							<h1>{company.nome_fantasia}</h1>
-							<h2>{company.descricao_curta}</h2>
+			<main>
+				{companies.map(company => (
+					<div className='flipCard' key={company.id} onClick={() => handleCompanyClick(company.id)} >
+							<div className='companyCard'>
+							<div className='front'>
+								<img src={company.imagem} alt={company.nome_fantasia} />
+							</div>
+							<div className='back'>
+								<h1>{company.nome_fantasia}</h1>
+								<h2>{company.descricao_curta}</h2>
+							</div>
 						</div>
 					</div>
-				</div>
-			))}
+				))}
+			</main>
 		</Container>
 	)
 }

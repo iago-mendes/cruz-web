@@ -35,7 +35,12 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 			alignItems: 'center',
 			justifyContent: 'center',
 			background: 'none',
-			border: 'none'
+			border: 'none',
+			padding: 0,
+			width: '100%',
+			height: '100%',
+			left: 0,
+			top: 0
 		},
 		overlay:
 		{
@@ -50,23 +55,25 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 				? <Loading />
 				: (
 					<Container>
-						<button className="close" onClick={() => setIsOpen(false)}>
-							<FiX size={25} />
-						</button>
-
-						<header>
-							<img src={company.imagem} alt={company.nome_fantasia}/>
-							<h1>{company.nome_fantasia}</h1>
-						</header>
-
-						<p>{company.descricao}</p>
-
-						<footer>
-							<a href={company.site} target='_blank' >Site da empresa</a>
-							<button onClick={() => Router.push(`/catalogo/${company.id}`)} >
-								Catálogo de produtos
+						<div className="scrollable">
+							<button className="close" onClick={() => setIsOpen(false)}>
+								<FiX size={25} />
 							</button>
-						</footer>
+
+							<header>
+								<img src={company.imagem} alt={company.nome_fantasia}/>
+								<h1>{company.nome_fantasia}</h1>
+							</header>
+
+							<p>{company.descricao}</p>
+
+							<footer>
+								<a href={company.site} target='_blank' >Site da empresa</a>
+								<button onClick={() => Router.push(`/catalogo/${company.id}`)} >
+									Catálogo de produtos
+								</button>
+							</footer>
+						</div>
 					</Container>
 				)
 			}
