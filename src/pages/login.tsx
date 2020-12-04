@@ -73,7 +73,7 @@ export default function Login()
 					<Image src={logo} alt="Cruz representações" width={300} height={300} layout='intrinsic' />
 				</div>
 				<div className="thirdRow">
-					<h2>Ainda não está em nosso sistema? Entre em contato cosnosco!<br/>Clique <Link href="contact">aqui</Link> para vizualisar as opções de contato.</h2>
+					<h2>Ainda não está em nosso sistema? Entre em contato cosnosco!<br/>Clique <Link href="/contato">aqui</Link> para visualizar as opções de contato.</h2>
 				</div>
 			</div>
 		</Container>

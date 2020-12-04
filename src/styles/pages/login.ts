@@ -178,8 +178,7 @@ const Container = styled.div`
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			padding-right: 5rem;
-			padding-top: 5rem;
+			padding: 2rem;
 			
 			h2
 			{
@@ -191,13 +190,12 @@ const Container = styled.div`
 				a
 				{
 					color: var(--primary);
-					text-decoration: none;
-					transition: 0.5s;
+					text-decoration-color: ${p => p.theme.colors.secondary};
+					transition: 0.25s;
 					
 					:hover
 					{
-						text-shadow: 2px 2px 2px black;
-						font-size: 3.1rem;
+						text-decoration-color: ${p => p.theme.colors.primary};
 					}
 				}
 		
