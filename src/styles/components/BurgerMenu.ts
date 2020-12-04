@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 interface ContainerProps
 {
-	isOpen: boolean
 	showBurgerDropdown: boolean
 }
 
@@ -16,7 +15,6 @@ const Container = styled.nav<ContainerProps>`
 	
 	background-color: ${p => `${p.theme.colors.primaryDark}f2`};
 
-	right: ${p => p.isOpen ? '0' : '-100vw'};
 	transition: 0.5s;
 
 	overflow-y: auto;
@@ -35,13 +33,16 @@ const Container = styled.nav<ContainerProps>`
 		width: 100%;
 		min-height: 100%;
 		padding: 5rem;
-		padding-top: 15rem;
+		padding-top: 10rem;
+		padding-bottom: 10rem;
 
 		.link
 		{
 			font-size: 2.5rem;
 			width: 100%;
-			padding: 3rem;
+			padding: 0;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
 
 			border-top: ${p => p.theme.colors.secondary} 1px solid;
 		}
@@ -111,6 +112,8 @@ const Container = styled.nav<ContainerProps>`
 
 				font-family: Ubuntu;
 				font-size: 2.5rem;
+
+				width: 100%;
 
 				svg
 				{

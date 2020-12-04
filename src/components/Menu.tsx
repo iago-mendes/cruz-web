@@ -15,7 +15,7 @@ export default function MenuTabs()
 
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
-	const [showDropdown, setShowDropdown] = useState(true)
+	const [showDropdown, setShowDropdown] = useState(false)
 	const {data: companies, error} = useSWR('/api/getCompanies')
 	
 	useEffect(() =>
@@ -34,7 +34,7 @@ export default function MenuTabs()
 
 	return (
 		<Container showDropdown={showDropdown} id='menu' >
-			<BurgerMenu isOpen={isBurgerOpen} width={width} companies={companies} />
+			{isBurgerOpen && <BurgerMenu setIsOpen={setIsBurgerOpen} companies={companies} />}
 			<Link href="/">
 				<img src={logo} alt="Cruz Representações" />
 			</Link>
