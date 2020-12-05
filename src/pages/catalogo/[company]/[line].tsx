@@ -5,6 +5,7 @@ import {useState} from 'react'
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/[line]'
 import ProductModal, {Product} from '../../../components/ProductModal'
+import Loading from '../../../components/Loading'
 
 interface LineProductsProps
 {
@@ -22,6 +23,9 @@ const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 		unidade: ''
 	})
 	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	if (!products || !companyName)
+		return <Loading />
 
 	function handleProductClick(clickedProduct: Product)
 	{

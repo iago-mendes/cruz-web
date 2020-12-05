@@ -9,24 +9,30 @@ const LoginHandler: React.FC = ({children}) =>
 {
 	const [session, loading] = useSession()
 	const Router = useRouter()
-	const [isPrivate, setIsPrivate] = useState(false)
+	// const [isPrivate, setIsPrivate] = useState(false)
+	const [route, setRoute] = useState('')
 
-	const privateList = ['empresas', 'catalogo']
+	const privateRoutes = ['empresas', 'catalogo']
 
 	useEffect(() =>
 	{
-		const route = Router.pathname.split('/')[1]
-		if (route !== '' && privateList.includes(route))
-			setIsPrivate(true)
-		else
-			setIsPrivate(false)
+		const tmp = Router.pathname.split('/')[1]
+		setRoute(tmp)
+		// if (route !== '' && privateList.includes(route))
+		// 	setIsPrivate(true)
+		// else
+		// 	setIsPrivate(false)
 	}, [Router])
 
-	if (loading)
-		return <Loading />
 
-	if (isPrivate && !session)
-		return <Login />
+	if (route !== '')
+	{
+		if (loading)
+			return <Loading />
+
+		if (privateRoutes.includes(route) && !session)
+			return <Login />
+	}
 
 	return (
 		<>

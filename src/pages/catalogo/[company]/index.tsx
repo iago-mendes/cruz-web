@@ -1,6 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
+import Loading from '../../../components/Loading'
 
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/index'
@@ -19,6 +20,9 @@ interface CompanyLinesProps
 const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 {
 	const Router = useRouter()
+
+	if (!lines || !company)
+		return <Loading />
 
 	return (
 		<Container className='container'>
