@@ -1,10 +1,7 @@
 import {GetStaticProps} from 'next'
-import {useSession} from 'next-auth/client'
 import {useState} from 'react'
 
 import Container from '../styles/pages/empresas'
-import Loading from '../components/Loading'
-import NotLogged from '../components/NotLogged'
 import api from '../services/api'
 import CompanyModal, {Company} from '../components/CompanyModal'
 import Head from 'next/head'
@@ -25,10 +22,6 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 {
 	const [company, setCompany] = useState(companiesInfo[0])
 	const [isModalOpen, setIsModalOpen] = useState(false)
-	
-	const [session, loading] = useSession()
-	if (loading) return <Loading />
-	if (!session) return <NotLogged />
 
 	function handleCompanyClick(id: string)
 	{

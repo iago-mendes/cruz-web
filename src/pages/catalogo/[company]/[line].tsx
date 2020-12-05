@@ -1,13 +1,10 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useState} from 'react'
-import {useSession} from 'next-auth/client'
 
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/[line]'
 import ProductModal, {Product} from '../../../components/ProductModal'
-import Loading from '../../../components/Loading'
-import NotLogged from '../../../components/NotLogged'
 
 interface LineProductsProps
 {
@@ -25,10 +22,6 @@ const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 		unidade: ''
 	})
 	const [isModalOpen, setIsModalOpen] = useState(false)
-
-	const [session, loading] = useSession()
-	if (loading) return <Loading />
-	if (!session) return <NotLogged />
 
 	function handleProductClick(clickedProduct: Product)
 	{
