@@ -4,11 +4,11 @@ import {ThemeProvider} from 'styled-components'
 
 import Menu from '../components/Menu'
 import theme from '../styles/theme'
+import SessionHandler from '../components/SessionHandler'
+import GlobalStyle from '../styles/global'
 
-import '../styles/global.css'
 import '../styles/pages/index.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import SessionHandler from '../components/SessionHandler'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 {
@@ -18,6 +18,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 				<SessionHandler>
 					<Menu />
 					<Component {...pageProps} />
+					<GlobalStyle />
 				</SessionHandler>
 			</ThemeProvider>
     </SessionProvider>
