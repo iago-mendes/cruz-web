@@ -7,14 +7,16 @@ interface User
 	role: string
 }
 
+const defaultUser: User =
+{
+	id: 'not-logged',
+	role: 'none'
+}
+
 function useUser()
 {
 	const [session, loading] = useSession()
-	const [user, setUser] = useState<User>(
-	{
-		id: 'not-logged',
-		role: 'none'
-	})
+	const [user, setUser] = useState<User>(defaultUser)
 
 	useEffect(() =>
 	{
@@ -23,6 +25,8 @@ function useUser()
 			const {user: tmpUser}:{user: any} = session
 			setUser(tmpUser)
 		}
+		if (!session)
+			setUser(defaultUser)
 	}, [loading, session])
 
 	return {user, loading}
