@@ -18,8 +18,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 				<SessionHandler>
 					<Menu />
 					<Component {...pageProps} />
-					<GlobalStyle />
 				</SessionHandler>
+				<GlobalStyle />
 			</ThemeProvider>
     </SessionProvider>
   )

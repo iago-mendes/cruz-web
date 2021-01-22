@@ -20,7 +20,7 @@ function useUser()
 
 	useEffect(() =>
 	{
-		if (!loading)
+		if (!loading && session)
 		{
 			const {user: tmpUser}:{user: any} = session
 			setUser(tmpUser)

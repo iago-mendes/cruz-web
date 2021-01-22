@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import bg from '../assets/loginBackground.svg'
 
 const Container = styled.div`
-	background-color: var(--primary);
+	background-color: ${p => p.theme.colors.primary};
 	background-image: url(${bg});
 	background-position: right;
 	background-repeat: no-repeat;
@@ -12,7 +12,7 @@ const Container = styled.div`
 	main
 	{
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 
 		overflow: hidden;
 
@@ -55,21 +55,21 @@ const Container = styled.div`
 					label
 					{
 						font-family: Ubuntu;
-						color: var(--secondary);
+						color: ${p => p.theme.colors.secondary};
 						font-size: 1.5rem;
 					}
 					
 					input
 					{
 						width: 100%;
-						background-color: var(--primary-dark);
+						background-color: ${p => p.theme.colors.primaryDark};
 						border: none;
 
 						height: 5rem;
 						border-radius: 1rem;
 
 						padding: 1rem;
-						color: var(--primary);
+						color: ${p => p.theme.colors.primary};
 
 						transition: 0.5s;
 						
@@ -88,9 +88,9 @@ const Container = styled.div`
 					border-radius: 1.5rem;
 
 					border: none;
-					background-color: var(--primary-light);
+					background-color: ${p => p.theme.colors.primaryLight};
 					
-					color: var(--primary-dark);
+					color: ${p => p.theme.colors.primaryDark};
 					font-family: Ubuntu;
 					font-size: 2rem;
 
@@ -137,7 +137,7 @@ const Container = styled.div`
 				h1
 				{
 					font-family: Ubuntu;
-					color: var(--secondary);
+					color: ${p => p.theme.colors.secondary};
 					font-size: 3rem;
 
 					width: 40rem;
@@ -145,13 +145,13 @@ const Container = styled.div`
 
 				button
 				{
-					background-color: var(--primary-light);
+					background-color: ${p => p.theme.colors.primaryLight};
 					height: 5rem;
 					width: 5rem;
 
 					border: none;
 					border-radius: 2.5rem;
-					color: var(--primary-dark);
+					color: ${p => p.theme.colors.primaryDark};
 					font-size: 2.5rem;
 
 					display: flex;
@@ -191,14 +191,14 @@ const Container = styled.div`
 				
 				h2
 				{
-					color: var(--primary-dark);
+					color: ${p => p.theme.colors.primaryDark};
 					font-family: Roboto;
 					font-size: 3rem;
 					width: 50rem;
 					
 					a
 					{
-						color: var(--primary);
+						color: ${p => p.theme.colors.primary};
 						text-decoration-color: ${p => p.theme.colors.secondary};
 						transition: 0.25s;
 						
