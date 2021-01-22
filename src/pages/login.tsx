@@ -36,7 +36,7 @@ export default function Login()
 	async function handleSubmit(e: FormEvent)
 	{
 		e.preventDefault()
-		signIn('credentials', {email, password, callbackUrl: '/'})
+		signIn('credentials', {email, password})
 	}
 
 	return (

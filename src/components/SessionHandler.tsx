@@ -25,7 +25,7 @@ const SessionHandler: React.FC = ({children}) =>
 		if (loading)
 			return <Loading />
 
-		if (privateRoutes.includes(route) && user)
+		if (privateRoutes.includes(route) && user.id === 'not-logged')
 			return <Login />
 	}
 

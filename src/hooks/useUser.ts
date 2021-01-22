@@ -1,13 +1,15 @@
 import {useSession} from "next-auth/client"
 import {useEffect, useState} from "react"
 
-interface User
+export interface User
 {
 	id: string
 	role: string
+
+	errorMessage?: string
 }
 
-const defaultUser: User =
+export const defaultUser: User =
 {
 	id: 'not-logged',
 	role: 'none'
@@ -28,6 +30,12 @@ function useUser()
 		if (!session)
 			setUser(defaultUser)
 	}, [loading, session])
+
+	useEffect(() =>
+	{
+		if (user.errorMessage)
+			alert(user.errorMessage)
+	}, [user.errorMessage])
 
 	return {user, loading}
 }

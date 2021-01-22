@@ -1,7 +1,9 @@
 import {NextApiHandler} from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+
 import api from '../../../services/api'
+import {User, defaultUser} from '../../../hooks/useUser'
 
 const config =
 {
@@ -24,12 +26,13 @@ const config =
 			{
 				const data = {email: credentials.email, password: credentials.password}
 
-				const res = await api.post('login/client', data)
+				let user: User = defaultUser
 
-				const {user} = res.data
+				await api.post('login/client', data)
+					.then(({data}:{data: User}) => user = data)
+					.catch(error => user.errorMessage = error.response.data.message)
 
-				if (user) return Promise.resolve(user)
-				else return Promise.resolve(null)
+				return Promise.resolve(user)
 			}
 		})
 	],
