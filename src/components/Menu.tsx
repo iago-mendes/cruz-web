@@ -10,10 +10,13 @@ import Container from '../styles/components/Menu'
 import {Company} from '../components/CompanyModal'
 import BurgerMenu from './BurgerMenu'
 import UserMenu from './modals/userMenu'
+import useUser from '../hooks/useUser'
+import { signIn } from 'next-auth/client'
 
 export default function MenuTabs()
 {
 	const Router = useRouter()
+	const {user} = useUser()
 
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
@@ -34,7 +37,11 @@ export default function MenuTabs()
 	if (error) return <h1>Error!</h1>
 
 	return (
-		<Container showDropdown={showDropdown} id='menu' >
+		<Container
+			showDropdown={showDropdown}
+			isUserMenuOpen={isUserMenuOpen}
+			id='menu'
+		>
 			<UserMenu
 				isOpen={isUserMenuOpen}
 				setIsOpen={setIsUserMenuOpen}
@@ -95,11 +102,22 @@ export default function MenuTabs()
 										Fazer pedido
 								</a>
 						</Link>
-						<button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
-							<a className="linkUser">
-								<FiUser size={30} color="#5e5d5d" />
-							</a>
-						</button>
+						<div className='user'>
+							{
+								user
+								? (
+									<button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
+										{/* <img src={user.image} alt={user.name} className='img' /> */}
+										<BsFillTriangleFill size={10} className='indicator' />
+									</button>
+								)
+								: (
+									<span onClick={() => signIn('credentials')} >
+										Sign in
+									</span>
+								)
+							}
+						</div>
 					</ul>
 				)
 			}

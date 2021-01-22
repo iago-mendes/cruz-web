@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 
 const Container = styled.div`
 	width: 20rem;
+
 	.detail
 	{
 		display: flex;
@@ -10,12 +11,15 @@ const Container = styled.div`
 		padding-right: 4.25rem;
 		color: ${p => p.theme.colors.primary};
 	}
+
 	main
 	{
 		margin-top: -3px;
 		background-color: ${p => p.theme.colors.primary};
-		border-radius: 0.5rem;
-		box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+		border-radius: 1rem;
+
+		box-shadow: 0px 0px 10px rgba(0,0,0,1);
+
 		.session
 		{
 			display: flex;
@@ -24,6 +28,7 @@ const Container = styled.div`
 			gap: 1rem;
 			padding: 1rem;
 			border-bottom: ${p => p.theme.colors.background} 1px solid;
+
 			p
 			{
 				font-family: Roboto;
@@ -31,6 +36,7 @@ const Container = styled.div`
 				color: ${p => p.theme.colors.background};
 				word-break: break-all;
 			}
+
 			button
 			{
 				display: flex;
@@ -57,6 +63,7 @@ const Container = styled.div`
 				}
 			}
 		}
+
 		.links
 		{
 			display: flex;
@@ -64,6 +71,7 @@ const Container = styled.div`
 			gap: 1.5rem;
 			padding: 1.5rem;
 			padding-left: 2.5rem;
+
 			a
 			{
 				font-family: Ubuntu;
@@ -73,6 +81,7 @@ const Container = styled.div`
 				color: ${p => p.theme.colors.background};
 				width: fit-content;
 				display: inline-block;
+
 				::after
 				{
 					content: '';
@@ -82,6 +91,7 @@ const Container = styled.div`
 					background: ${p => p.theme.colors.background};
 					transition: 0.25s;
 				}
+
 				:hover::after
 				{
 					width: 100%;
@@ -103,14 +113,11 @@ export const modalStyle: Modal.Styles =
 	{
 		background: 'none',
 		border: 'none',
-		padding: 0,
+		padding: '1rem',
 		width: 'fit-content',
 		height: 'fit-content',
 		left: 'calc(100vw - 20rem - 2rem)',
-		top: '4.5rem',
-
-		boxShadow: '-2.5px 2.5px 2.5px rgba(0,0,0, 0.9)',
-		borderRadius: '0.5rem'
+		top: '7rem'
 	}
 }
 
