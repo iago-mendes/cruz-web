@@ -1,5 +1,6 @@
 import {useSession} from "next-auth/client"
 import {useEffect, useState} from "react"
+import api from "../services/api"
 
 export interface User
 {
@@ -7,6 +8,13 @@ export interface User
 	role: string
 
 	errorMessage?: string
+
+	data?:
+	{
+		name: string
+		image: string
+		email: string
+	}
 }
 
 export const defaultUser: User =
@@ -24,8 +32,10 @@ function useUser()
 	{
 		if (!loading && session)
 		{
-			const {user: tmpUser}:{user: any} = session
-			setUser(tmpUser)
+			const {user: tmpSession}:{user: any} = session
+
+			if (user.id !== tmpSession.user.id)
+				setUser(tmpSession.user)
 		}
 		if (!session)
 			setUser(defaultUser)
@@ -36,6 +46,26 @@ function useUser()
 		if (user.errorMessage)
 			alert(user.errorMessage)
 	}, [user.errorMessage])
+
+	useEffect(() =>
+	{
+		if (user.id && user.id !== 'not-logged')
+			api.get(`clients/${user.id}`).then(({data}) =>
+			{
+				let tmpUser = {...user}
+
+				tmpUser.data =
+				{
+					name: data.nome_fantasia,
+					image: data.imagem,
+					email: data.email
+				}
+
+				console.log('[tmpUser]', tmpUser)
+
+				setUser(tmpUser)
+			})
+	}, [user.id])
 
 	return {user, loading}
 }
