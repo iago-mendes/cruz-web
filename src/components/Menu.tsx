@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
-import {FiUser, FiMenu, FiX} from 'react-icons/fi'
+import {FiMenu, FiX} from 'react-icons/fi'
 import {BsFillTriangleFill} from 'react-icons/bs'
+import {BiUserCircle} from 'react-icons/bi'
 import useSWR from 'swr'
 
 import logo from '../assets/logo.svg'
@@ -49,7 +50,7 @@ export default function MenuTabs()
 
 			{isBurgerOpen && <BurgerMenu setIsOpen={setIsBurgerOpen} companies={companies} />}
 			<Link href="/">
-				<img src={logo} alt="Cruz Representações" />
+				<img src={logo} alt="Cruz Representações" className='logo' />
 			</Link>
 			{
 				width < 1000
@@ -104,16 +105,20 @@ export default function MenuTabs()
 						</Link>
 						<div className='user'>
 							{
-								user
+								user.id !== 'not-logged'
 								? (
 									<button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
-										{/* <img src={user.image} alt={user.name} className='img' /> */}
+										{
+											user.data
+											? <img src={user.data.image} alt={user.data.name} className='img' />
+											: <BiUserCircle size={35} className='img' />
+										}
 										<BsFillTriangleFill size={10} className='indicator' />
 									</button>
 								)
 								: (
 									<span onClick={() => signIn('credentials')} >
-										Sign in
+										Entrar
 									</span>
 								)
 							}

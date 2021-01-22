@@ -16,7 +16,7 @@ const Container = styled.nav<ContainerProps>`
 
 	background-color: ${p => p.theme.colors.primary};
 
-	img
+	.logo
 	{
 		height: 100%;
 
@@ -177,6 +177,27 @@ const Container = styled.nav<ContainerProps>`
 
 		.user
 		{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			height: 50%;
+
+			::before
+			{
+				content: '';
+				width: 2px;
+				height: 100%;
+				margin-left: 1rem;
+				margin-right: 1rem;
+
+				display: block;
+				background: ${p => p.theme.colors.secondary};
+				border-radius: 100rem;
+
+				transition: 0.25s;
+			}
+
 			span
 			{
 				font-family: Ubuntu;
@@ -190,22 +211,29 @@ const Container = styled.nav<ContainerProps>`
 				padding-right: 1rem;
 				cursor: pointer;
 				transition: 0.25s;
+
 				:hover
 				{
 					background-color: ${p => p.theme.colors.secondary};
 					color: ${p => p.theme.colors.primary};
 				}
 			}
+
 			button
 			{
 				display: flex;
 				align-items: center;
 				gap: 1rem;
-				height: 3.5rem;
+
 				border: none;
-				border-radius: 100rem;
 				background: none;
+				padding: 0;
+				margin: 0;
+
+				height: 5rem;
+				border-radius: 100rem;
 				color: ${p => p.theme.colors.secondary};
+				
 				cursor: pointer;
 				transition: 0.25s;
 				
@@ -213,6 +241,7 @@ const Container = styled.nav<ContainerProps>`
 				{
 					transform: scale(1.07);
 				}
+
 				.img
 				{
 					max-width: 100%;

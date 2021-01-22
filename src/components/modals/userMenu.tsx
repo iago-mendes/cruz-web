@@ -41,7 +41,11 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 				</div>
 				<main>
 					<div className='session'>
-						<p>Conectado como <strong>{user.id}</strong></p>
+						{
+							user.data && (
+								<p>Conectado como <strong>{user.data.name}</strong></p>
+							)
+						}
 						<button onClick={handleSignOut} >
 							<FiLogOut size={20} />
 							<span>Sair</span>
