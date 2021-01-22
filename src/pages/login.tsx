@@ -16,22 +16,9 @@ export default function Login()
 	const {user} = useUser()
 	const router = useRouter()
 
-	const [height, setHeight] = useState(1000)
-	const [width, setWidth] = useState(1500)
-
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showedError, setShowedError] = useState(false)
-
-
-	useEffect(() =>
-	{
-		if (window)
-		{
-			setHeight(window.innerHeight)
-			setWidth(window.innerWidth)
-		}
-	}, [])
 
 	useEffect(() =>
 	{
@@ -64,48 +51,48 @@ export default function Login()
 			</Head>
 
 			<main>
-				<div className="left">
+				<div className='left'>
 					<form onSubmit={handleSubmit}>
-						<div className="fieldInput">
-							<label htmlFor="email">E-mail</label>
+						<div className='fieldInput'>
+							<label htmlFor='email'>E-mail</label>
 							<input
 							value={email}
 							onChange={handleChange}
-							type="text"
-							name="email"
-							id="email"
-							placeholder="Digite seu e-mail"
+							type='text'
+							name='email'
+							id='email'
+							placeholder='Digite seu e-mail'
 							/>
 						</div>
-						<div className="fieldInput">
-							<label htmlFor="password">Senha</label>
+						<div className='fieldInput'>
+							<label htmlFor='password'>Senha</label>
 							<input
 							value={password}
 							onChange={handleChange}
-							type="password"
-							name="password"
-							id="password"
-							placeholder="Digite sua senha"
+							type='password'
+							name='password'
+							id='password'
+							placeholder='Digite sua senha'
 							/>
 						</div>
-						<button type="submit">Entrar</button>
+						<button type='submit'>Entrar</button>
 					</form>
-					<div className="illustration">
-						<Image src={illustration} alt="Homem apontando para formulário" width={275} height={350} priority />
+					<div className='illustration'>
+						<Image src={illustration} alt='Homem apontando para formulário' width={275} height={350} priority />
 					</div>
 				</div>
-				<div className="right">
-					<div className="firstRow">
+				<div className='right'>
+					<div className='firstRow'>
 						<h1>Entre em sua conta para acessar as funções deste site.</h1>
-							<button title="Voltar" onClick={router.back}>
+							<button title='Voltar' onClick={router.back}>
 							<FiArrowLeft />
 						</button>
 					</div>
-					<div className="secondRow">
-						<Image src={logo} alt="Cruz representações" width={300} height={300} layout='intrinsic' priority />
+					<div className='secondRow'>
+						<Image src={logo} alt='Cruz representações' width={300} height={300} layout='intrinsic' priority />
 					</div>
-					<div className="thirdRow">
-						<h2>Ainda não está em nosso sistema? Entre em contato conosco!<br/>Clique <Link href="/contato">aqui</Link> para visualizar as opções de contato.</h2>
+					<div className='thirdRow'>
+						<h2>Ainda não está em nosso sistema? Entre em contato conosco!<br/>Clique <Link href='/contato'>aqui</Link> para visualizar as opções de contato.</h2>
 					</div>
 				</div>
 			</main>
