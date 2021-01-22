@@ -29,8 +29,12 @@ const config =
 				let user: User = defaultUser
 
 				await api.post('login/client', data)
-					.then(({data}:{data: User}) => user = data)
-					.catch(error => user.errorMessage = error.response.data.message)
+					.then(({data}) => user = data.user)
+					.catch(error =>
+					{
+						user.errorMessage = error.response.data.message
+						user.errorId = Math.random()
+					})
 
 				return Promise.resolve(user)
 			}

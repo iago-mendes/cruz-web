@@ -12,11 +12,10 @@ import {Company} from '../components/CompanyModal'
 import BurgerMenu from './BurgerMenu'
 import UserMenu from './modals/userMenu'
 import useUser from '../hooks/useUser'
-import { signIn } from 'next-auth/client'
 
 export default function MenuTabs()
 {
-	const Router = useRouter()
+	const router = useRouter()
 	const {user} = useUser()
 
 	const [width, setWidth] = useState(1500)
@@ -34,7 +33,7 @@ export default function MenuTabs()
 		return () => window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
 
-	if (Router.pathname === '/login') return null
+	if (router.pathname === '/login') return null
 	if (error) return <h1>Error!</h1>
 
 	return (
@@ -117,7 +116,7 @@ export default function MenuTabs()
 									</button>
 								)
 								: (
-									<span onClick={() => signIn('credentials')} >
+									<span onClick={() => router.push('/login')} >
 										Entrar
 									</span>
 								)

@@ -1,5 +1,5 @@
 import {FiArrowLeft} from 'react-icons/fi'
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
@@ -9,9 +9,13 @@ import Image from 'next/image'
 import illustration from '../assets/illustration2.svg'
 import logo from '../assets/logo.svg'
 import Container from '../styles/pages/login'
+import useUser from '../hooks/useUser'
 
 export default function Login()
 {
+	const {user} = useUser()
+	const router = useRouter()
+
 	const [height, setHeight] = useState(1000)
 	const [width, setWidth] = useState(1500)
 
@@ -26,6 +30,12 @@ export default function Login()
 			setWidth(window.innerWidth)
 		}
 	}, [])
+
+	useEffect(() =>
+	{
+		if (user.id !== 'not-logged' && router.pathname === '/login')
+			router.back()
+	}, [user.id])
 	
 	function handleChange(e: ChangeEvent<HTMLInputElement>)
 	{
@@ -79,7 +89,7 @@ export default function Login()
 				<div className="right">
 					<div className="firstRow">
 						<h1>Entre em sua conta para acessar as funções deste site.</h1>
-							<button title="Voltar" onClick={Router.back}>
+							<button title="Voltar" onClick={router.back}>
 							<FiArrowLeft />
 						</button>
 					</div>

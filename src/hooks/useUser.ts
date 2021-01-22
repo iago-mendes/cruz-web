@@ -7,14 +7,15 @@ export interface User
 	id: string
 	role: string
 
-	errorMessage?: string
-
 	data?:
 	{
 		name: string
 		image: string
 		email: string
 	}
+	
+	errorMessage?: string
+	errorId?: number
 }
 
 export const defaultUser: User =
@@ -32,20 +33,28 @@ function useUser()
 	{
 		if (!loading && session)
 		{
-			const {user: tmpSession}:{user: any} = session
+			const {user: tmp}:{user: any} = session
+			const tmpUser: User = tmp
 
-			if (user.id !== tmpSession.user.id)
-				setUser(tmpSession.user)
+			if (tmpUser && user.id !== tmpUser.id)
+				setUser(tmpUser)
+			// else if (tmpUser.errorMessage && user.errorId !== tmpUser.errorId)
+			// {
+			// 	console.log('[error]', tmpUser.errorMessage)
+
+			// 	console.log('[user.errorId]', user.errorId)
+			// 	console.log('[tmpUser.errorId]', tmpUser.errorId)
+
+			// 	let tmp = {...user}
+			// 	tmp.errorMessage = tmpUser.errorMessage
+			// 	tmp.errorId = tmpUser.errorId
+
+			// 	setUser(tmp)
+			// }
 		}
 		if (!session)
 			setUser(defaultUser)
 	}, [loading, session])
-
-	useEffect(() =>
-	{
-		if (user.errorMessage)
-			alert(user.errorMessage)
-	}, [user.errorMessage])
 
 	useEffect(() =>
 	{
@@ -60,8 +69,6 @@ function useUser()
 					image: data.imagem,
 					email: data.email
 				}
-
-				console.log('[tmpUser]', tmpUser)
 
 				setUser(tmpUser)
 			})
