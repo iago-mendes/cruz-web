@@ -21,6 +21,8 @@ export default function Login()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [showedError, setShowedError] = useState(false)
+
 
 	useEffect(() =>
 	{
@@ -33,9 +35,15 @@ export default function Login()
 
 	useEffect(() =>
 	{
+		if (user.errorMessage && !showedError)
+		{
+			setShowedError(true)
+			alert(user.errorMessage)
+		}
+
 		if (user.id !== 'not-logged' && router.pathname === '/login')
 			router.back()
-	}, [user.id])
+	}, [user])
 	
 	function handleChange(e: ChangeEvent<HTMLInputElement>)
 	{

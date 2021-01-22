@@ -15,7 +15,6 @@ export interface User
 	}
 	
 	errorMessage?: string
-	errorId?: number
 }
 
 export const defaultUser: User =
@@ -38,19 +37,12 @@ function useUser()
 
 			if (tmpUser && user.id !== tmpUser.id)
 				setUser(tmpUser)
-			// else if (tmpUser.errorMessage && user.errorId !== tmpUser.errorId)
-			// {
-			// 	console.log('[error]', tmpUser.errorMessage)
-
-			// 	console.log('[user.errorId]', user.errorId)
-			// 	console.log('[tmpUser.errorId]', tmpUser.errorId)
-
-			// 	let tmp = {...user}
-			// 	tmp.errorMessage = tmpUser.errorMessage
-			// 	tmp.errorId = tmpUser.errorId
-
-			// 	setUser(tmp)
-			// }
+			else if (tmpUser.errorMessage)
+			{
+				let tmp = {...user}
+				tmp.errorMessage = tmpUser.errorMessage
+				setUser(tmp)
+			}
 		}
 		if (!session)
 			setUser(defaultUser)
