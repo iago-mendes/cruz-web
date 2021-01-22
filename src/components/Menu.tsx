@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {FiUser, FiMenu, FiX} from 'react-icons/fi'
+import {BsFillTriangleFill} from 'react-icons/bs'
 import useSWR from 'swr'
 
 import logo from '../assets/logo.svg'
@@ -8,6 +9,7 @@ import {useEffect, useState} from 'react'
 import Container from '../styles/components/Menu'
 import {Company} from '../components/CompanyModal'
 import BurgerMenu from './BurgerMenu'
+import UserMenu from './modals/userMenu'
 
 export default function MenuTabs()
 {
@@ -17,6 +19,8 @@ export default function MenuTabs()
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
 	const [showDropdown, setShowDropdown] = useState(false)
 	const {data: companies, error} = useSWR('/api/getCompanies')
+
+	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	
 	useEffect(() =>
 	{
@@ -31,6 +35,11 @@ export default function MenuTabs()
 
 	return (
 		<Container showDropdown={showDropdown} id='menu' >
+			<UserMenu
+				isOpen={isUserMenuOpen}
+				setIsOpen={setIsUserMenuOpen}
+			/>
+
 			{isBurgerOpen && <BurgerMenu setIsOpen={setIsBurgerOpen} companies={companies} />}
 			<Link href="/">
 				<img src={logo} alt="Cruz Representações" />
@@ -86,11 +95,11 @@ export default function MenuTabs()
 										Fazer pedido
 								</a>
 						</Link>
-						<Link href="/login">
-								<a className="linkUser">
-										<FiUser size={30} color="#5e5d5d" />
-								</a>
-						</Link>
+						<button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
+							<a className="linkUser">
+								<FiUser size={30} color="#5e5d5d" />
+							</a>
+						</button>
 					</ul>
 				)
 			}
