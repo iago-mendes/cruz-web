@@ -19,6 +19,33 @@ const Pedido: React.FC = () =>
 			setStep(step + 1)
 	}
 
+	const Step: React.FC = () =>
+	{
+		switch (step)
+		{
+			case 0:
+				return (
+					<main>welcome</main>
+				)
+			case 1:
+				return (
+					<main>company</main>
+				)
+			case 2:
+				return (
+					<main>products</main>
+				)
+			case 3:
+				return (
+					<main>details</main>
+				)
+			case 4:
+				return (
+					<main>confirm</main>
+				)
+		}
+	}
+
 	return (
 		<Container>
 			<Head>
@@ -34,45 +61,9 @@ const Pedido: React.FC = () =>
 				</button>
 			</header>
 
-			<Step step={step} />
+			<Step />
 		</Container>
 	)
-}
-
-interface StepProps
-{
-	step: number
-}
-
-const Step: React.FC<StepProps> = ({step}) =>
-{
-	switch (step)
-	{
-		// default:
-		// 	return (
-		// 		<main>first</main>
-		// 	)
-		case 0:
-			return (
-				<main>welcome</main>
-			)
-		case 1:
-			return (
-				<main>company</main>
-			)
-		case 2:
-			return (
-				<main>products</main>
-			)
-		case 3:
-			return (
-				<main>details</main>
-			)
-		case 4:
-			return (
-				<main>confirm</main>
-			)
-	}
 }
 
 export default Pedido
