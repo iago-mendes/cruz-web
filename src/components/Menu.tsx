@@ -21,7 +21,7 @@ export default function MenuTabs()
 	const [width, setWidth] = useState(1500)
 	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
 	const [showDropdown, setShowDropdown] = useState(false)
-	const {data: companies, error} = useSWR('/api/getCompanies')
+	const {data: companies} = useSWR('/api/getCompanies')
 
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	
@@ -33,8 +33,8 @@ export default function MenuTabs()
 		return () => window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
 
-	if (router.pathname === '/login') return null
-	if (error) return <h1>Error!</h1>
+	if (['/login', '/pedido'].includes(router.pathname))
+		return null
 
 	return (
 		<Container
