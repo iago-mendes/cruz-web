@@ -28,7 +28,7 @@ export default function MenuTabs()
 	useEffect(() =>
 	{
 		setWidth(window.innerWidth)
-		window.addEventListener("resize", () => setWidth(window.innerWidth))
+		window.addEventListener('resize', () => setWidth(window.innerWidth))
 
 		return () => window.removeEventListener('resize', () => setWidth(window.innerWidth))
 	}, [])
@@ -48,8 +48,8 @@ export default function MenuTabs()
 			/>
 
 			{isBurgerOpen && <BurgerMenu setIsOpen={setIsBurgerOpen} companies={companies} />}
-			<Link href="/">
-				<img src={logo} alt="Cruz Representações" className='logo' />
+			<Link href='/'>
+				<img src={logo} alt='Cruz Representações' className='logo' />
 			</Link>
 			{
 				width < 1000
@@ -66,39 +66,39 @@ export default function MenuTabs()
 					)
 				: (
 					<ul>
-						<Link href="/empresas">
-								<a className="link">
+						<Link href='/empresas'>
+								<a className='link'>
 										Empresas
 								</a>
 						</Link>
 						<button
 							onMouseEnter={() => setShowDropdown(true)}
 							onMouseLeave={() => setShowDropdown(false)}
-							className="dropdown"
+							className='dropdown'
 						>
 								Catálogo
 								{showDropdown && (
 									<ul>
 										{companies && companies.map((company: Company) => (
 											<Link href={`/catalogo/${company.id}`} key={company.id}>
-												<a className="link">{company.nome_fantasia}</a>
+												<a className='link'>{company.nome_fantasia}</a>
 											</Link>
 										))}
 									</ul>
 								)}
 						</button>
-						<Link href="/contato">
-								<a className="link">
+						<Link href='/contato'>
+								<a className='link'>
 										Contato
 								</a>
 						</Link>
-						<Link href="/sobre">
-								<a className="link">
+						<Link href='/sobre'>
+								<a className='link'>
 										Sobre
 								</a>
 						</Link>
-						<Link href="/">
-								<a className="linkBlock">
+						<Link href='/pedido'>
+								<a className='linkBlock'>
 										Fazer pedido
 								</a>
 						</Link>
