@@ -10,6 +10,7 @@ import Image from 'next/image'
 import useUser from '../hooks/useUser'
 import api from '../services/api'
 import {CompanyListed} from '../models/company'
+import warningAlert from '../utils/alerts/warning'
 
 const Pedido: React.FC = () =>
 {
@@ -49,7 +50,7 @@ const Pedido: React.FC = () =>
 	function goNext()
 	{
 		if (step === 1 && representada === '')
-			alert('Você precisa selecionar uma representada para continuar.')
+			warningAlert('Você precisa selecionar uma representada para continuar.')
 		else if (step < 4)
 			setStep(step + 1)
 	}
