@@ -11,6 +11,9 @@ import useUser from '../hooks/useUser'
 import api from '../services/api'
 import {CompanyListed} from '../models/company'
 import warningAlert from '../utils/alerts/warning'
+import {ProductListedPriced} from '../models/product'
+import {RequestProduct} from '../models/request'
+import formatPrice from '../utils/formatPrice'
 
 const Pedido: React.FC = () =>
 {
@@ -19,8 +22,10 @@ const Pedido: React.FC = () =>
 
 	const [step, setStep] = useState(1)
 	const [representada, setRepresentada] = useState('')
+	const [produtos, setProdutos] = useState<RequestProduct[]>([])
 
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
+	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 
 	useEffect(() =>
 	{
@@ -40,6 +45,19 @@ const Pedido: React.FC = () =>
 			}
 		})
 	}, [user])
+
+	useEffect(() =>
+	{
+		if (representada !== '')
+			api.get(`companies/${representada}/products-priced`, {params: {client: user.id}})
+				.then(({data}) =>
+				{
+					if (data[0])
+						setProductOptions(data)
+				})
+	}, [representada])
+
+	useEffect(() => console.log('[productOptions]', productOptions), [productOptions])
 
 	function goBack()
 	{
@@ -75,6 +93,7 @@ const Pedido: React.FC = () =>
 							{companyOptions.map(company => (
 								<Card
 									isSelected={representada === company.id}
+									type='company'
 									onClick={() => handleSelectCompany(company.id)}
 									key={company.id}
 								>
@@ -90,7 +109,41 @@ const Pedido: React.FC = () =>
 				)
 			case 2:
 				return (
-					<main>products</main>
+					<main>
+						<h1>Escolha os produtos</h1>
+						<div className="grid">
+							{productOptions.map(product =>
+							{
+								const selectedProduct = produtos.find(({id}) => id === product.id)
+
+								return (
+								<Card
+									isSelected={selectedProduct !== undefined}
+									type='product'
+									onClick={() => {}}
+									key={product.id}
+								>
+									<div className='img'>
+										<img src={product.imagem} alt={product.nome} />
+									</div>
+									<h3>{product.nome}</h3>
+									<div className='group'>
+										<span>{formatPrice(product.preco)}</span>
+										<div className='field'>
+											<label htmlFor='quantidade'>Quantidade</label>
+											<input
+												id='quantidade'
+												name='quantidade'
+												type='number'
+												value={selectedProduct && selectedProduct.quantidade}
+												onChange={e => {}}
+											/>
+										</div>
+									</div>
+								</Card>
+							)})}
+						</div>
+					</main>
 				)
 			case 3:
 				return (

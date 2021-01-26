@@ -162,6 +162,7 @@ const Container = styled.div<ContainerProps>`
 interface CardProps
 {
 	isSelected: boolean
+	type: string
 }
 
 export const Card = styled.div<CardProps>`
@@ -183,13 +184,13 @@ export const Card = styled.div<CardProps>`
 	font-family: Roboto;
 	color: ${p => p.theme.colors.primaryDark};
 
-	cursor: pointer;
+	${p => p.type === 'company' && 'cursor: pointer;'}
 	transition: 0.25s;
 
 	:hover
 	{
-		border-radius: 0;
-		transform: scale(1.05);
+		${p => p.type === 'company' && 'border-radius: 0;'}
+		${p => p.type === 'company' && 'transform: scale(1.05);'}
 	}
 
 	.img
