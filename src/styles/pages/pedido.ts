@@ -119,7 +119,102 @@ const Container = styled.div<ContainerProps>`
 					}
 				}
 			}
+
+			ul
+			{
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
 		}
+	}
+
+	main
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+
+		padding: 2rem;
+
+		h1
+		{
+			font-family: Ubuntu;
+			font-size: 3rem;
+			color: ${p => p.theme.colors.primaryDark};
+		}
+
+		.grid
+		{
+			width: 100%;
+
+			display: grid;
+			grid-auto-rows: 25rem;
+			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+			grid-gap: 2rem;
+			align-items: center;
+			justify-items: center;
+		}
+	}
+`
+
+interface CardProps
+{
+	isSelected: boolean
+}
+
+export const Card = styled.div<CardProps>`
+	background-color: #fff;
+	width: 25rem;
+	height: 25rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 1rem;
+	padding-bottom: 2rem;
+
+	border: ${p => p.isSelected ? p.theme.colors.primary : p.theme.colors.secondary + 80} 5px solid;
+	border-radius: 2rem;
+
+	font-family: Roboto;
+	color: ${p => p.theme.colors.primaryDark};
+
+	cursor: pointer;
+	transition: 0.25s;
+
+	:hover
+	{
+		border-color: ${p => p.theme.colors.primary}80;
+	}
+
+	.img
+	{
+		width: 100%;
+		height: 50%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img
+		{
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	h2
+	{
+		font-size: 2rem;
+	}
+
+	h3
+	{
+		font-size: 1.5rem;
 	}
 `
 

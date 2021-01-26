@@ -1,22 +1,48 @@
 import Head from 'next/head'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {FiArrowLeft} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 
-import Container from '../styles/pages/pedido'
+import Container, {Card} from '../styles/pages/pedido'
 import logo from '../assets/logo.svg'
 import Image from 'next/image'
+import useUser from '../hooks/useUser'
+import api from '../services/api'
+import {CompanyListed} from '../models/company'
 
 const Pedido: React.FC = () =>
 {
+	const {user} = useUser()
 	const router = useRouter()
 
-	const [step, setStep] = useState(0)
+	const [step, setStep] = useState(1)
+	const [representada, setRepresentada] = useState('')
+
+	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
+
+	useEffect(() =>
+	{
+		api.get('companies').then(({data}:{data: CompanyListed[]}) =>
+		{
+			if (user.data && user.data.representadas)
+			{
+				let tmpCompanyOptions: CompanyListed[] = []
+
+				data.map(company => 
+				{
+					if (user.data.representadas.find(({id}) => id === company.id))
+						tmpCompanyOptions.push(company)
+				})
+
+				setCompanyOptions(tmpCompanyOptions)
+			}
+		})
+	}, [user])
 
 	function goBack()
 	{
-		if (step > 0)
+		if (step > 1)
 			setStep(step - 1)
 	}
 
@@ -30,13 +56,25 @@ const Pedido: React.FC = () =>
 	{
 		switch (step)
 		{
-			case 0:
-				return (
-					<main>welcome</main>
-				)
 			case 1:
 				return (
-					<main>company</main>
+					<main>
+						<h1>Escolha uma representada</h1>
+						<div className='grid'>
+							{companyOptions.map(company => (
+								<Card
+									isSelected={representada === company.id}
+									key={company.id}
+								>
+									<div className='img'>
+										<img src={company.imagem} alt={company.nome_fantasia} />
+									</div>
+									<h2>{company.nome_fantasia}</h2>
+									<h3>{company.descricao_curta}</h3>
+								</Card>
+							))}
+						</div>
+					</main>
 				)
 			case 2:
 				return (
@@ -76,9 +114,6 @@ const Pedido: React.FC = () =>
 					</button>
 
 					<ul>
-						<svg width={10} height={10} >
-							<circle cx={5} cy={5} r={5} fill={step >= 0 ? '#CC9749' : '#E2DADB'} />
-						</svg>
 						<svg width={10} height={10} >
 							<circle cx={5} cy={5} r={5} fill={step >= 1 ? '#CC9749' : '#E2DADB'} />
 						</svg>

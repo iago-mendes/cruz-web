@@ -12,6 +12,13 @@ export interface User
 		name: string
 		image: string
 		email: string
+		
+		representadas: Array<
+		{
+			id: string
+			nome_fantasia: string
+			tabela: string
+		}>
 	}
 	
 	errorMessage?: string
@@ -59,7 +66,8 @@ function useUser()
 				{
 					name: data.nome_fantasia,
 					image: data.imagem,
-					email: data.email
+					email: data.email,
+					representadas: data.representadas
 				}
 
 				setUser(tmpUser)
