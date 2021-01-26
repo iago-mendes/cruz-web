@@ -48,8 +48,18 @@ const Pedido: React.FC = () =>
 
 	function goNext()
 	{
-		if (step < 4)
+		if (step === 1 && representada === '')
+			alert('Você precisa selecionar uma representada para continuar.')
+		else if (step < 4)
 			setStep(step + 1)
+	}
+
+	function handleSelectCompany(id: string)
+	{
+		if (id === representada)
+			setRepresentada('')
+		else
+			setRepresentada(id)
 	}
 
 	const Step: React.FC = () =>
@@ -64,6 +74,7 @@ const Pedido: React.FC = () =>
 							{companyOptions.map(company => (
 								<Card
 									isSelected={representada === company.id}
+									onClick={() => handleSelectCompany(company.id)}
 									key={company.id}
 								>
 									<div className='img'>

@@ -188,7 +188,8 @@ export const Card = styled.div<CardProps>`
 
 	:hover
 	{
-		border-color: ${p => p.theme.colors.primary}80;
+		border-radius: 0;
+		transform: scale(1.05);
 	}
 
 	.img
