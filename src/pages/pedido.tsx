@@ -14,6 +14,9 @@ import warningAlert from '../utils/alerts/warning'
 import {ProductListedPriced} from '../models/product'
 import {RequestProduct} from '../models/request'
 import formatPrice from '../utils/formatPrice'
+import getDate from '../utils/getDate'
+import confirmAlert from '../utils/alerts/confirm'
+import errorAlert from '../utils/alerts/error'
 
 const Pedido: React.FC = () =>
 {
@@ -72,6 +75,8 @@ const Pedido: React.FC = () =>
 			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
 		else if (step < 3)
 			setStep(step + 1)
+		else if (step === 3)
+			handleSubmit()
 	}
 
 	function handleSelectCompany(company: CompanyListed)
@@ -109,6 +114,32 @@ const Pedido: React.FC = () =>
 		}
 
 		setProdutos(tmpProducts)
+	}
+
+	async function handleSubmit()
+	{
+		const data =
+		{
+			cliente: user.id,
+			vendedor: user.id,
+			representada,
+			produtos,
+			data: getDate(),
+			condicao: '[[[mudar]]]',
+			tipo: {venda: true, troca: false},
+			status: {concluido: false, enviado: false, faturado: false}
+		}
+
+		api.post('requests', data)
+			.then(() =>
+			{
+				confirmAlert('Seu pedido foi realizado com sucesso!')
+				router.back()
+			})
+			.catch(err =>
+			{
+				errorAlert(err.response.data.message)
+			})
 	}
 
 	const Step: React.FC = () =>
