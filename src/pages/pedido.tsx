@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {FiArrowLeft} from 'react-icons/fi'
+import {FiArrowLeft, FiMinus, FiPlus} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 
@@ -111,7 +111,7 @@ const Pedido: React.FC = () =>
 				return (
 					<main>
 						<h1>Escolha os produtos</h1>
-						<div className="grid">
+						<div className='grid'>
 							{productOptions.map(product =>
 							{
 								const selectedProduct = produtos.find(({id}) => id === product.id)
@@ -130,7 +130,9 @@ const Pedido: React.FC = () =>
 									<div className='group'>
 										<span>{formatPrice(product.preco)}</span>
 										<div className='field'>
-											<label htmlFor='quantidade'>Quantidade</label>
+											<button>
+												<FiMinus size={25} />
+											</button>
 											<input
 												id='quantidade'
 												name='quantidade'
@@ -138,6 +140,9 @@ const Pedido: React.FC = () =>
 												value={selectedProduct && selectedProduct.quantidade}
 												onChange={e => {}}
 											/>
+											<button>
+												<FiPlus size={25} />
+											</button>
 										</div>
 									</div>
 								</Card>
