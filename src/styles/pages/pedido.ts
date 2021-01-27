@@ -156,6 +156,26 @@ const Container = styled.div<ContainerProps>`
 			align-items: center;
 			justify-items: center;
 		}
+
+		.confirmGroup
+		{
+			width: 100%;
+
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			label
+			{
+				font-family: Roboto;
+				font-weight: 700;
+				font-size: 2.5rem;
+				color: ${p => p.theme.colors.primaryDark};
+
+				border-left: ${p => p.theme.colors.primaryDark} 5px solid;
+				padding-left: 1rem;
+			}
+		}
 	}
 `
 

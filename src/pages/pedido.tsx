@@ -9,7 +9,7 @@ import logo from '../assets/logo.svg'
 import Image from 'next/image'
 import useUser from '../hooks/useUser'
 import api from '../services/api'
-import {CompanyListed} from '../models/company'
+import {CompanyListed, defaultCompanyListed} from '../models/company'
 import warningAlert from '../utils/alerts/warning'
 import {ProductListedPriced} from '../models/product'
 import {RequestProduct} from '../models/request'
@@ -26,6 +26,7 @@ const Pedido: React.FC = () =>
 
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
+	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
 
 	useEffect(() =>
 	{
@@ -73,12 +74,15 @@ const Pedido: React.FC = () =>
 			setStep(step + 1)
 	}
 
-	function handleSelectCompany(id: string)
+	function handleSelectCompany(company: CompanyListed)
 	{
-		if (id === representada)
+		if (company.id === representada)
 			setRepresentada('')
 		else
-			setRepresentada(id)
+		{
+			setRepresentada(company.id)
+			setSelectedCompany(company)
+		}
 	}
 
 	function handleChangeProductQuantity(product: ProductListedPriced, quantity: number)
@@ -120,7 +124,7 @@ const Pedido: React.FC = () =>
 								<Card
 									isSelected={representada === company.id}
 									type='company'
-									onClick={() => handleSelectCompany(company.id)}
+									onClick={() => handleSelectCompany(company)}
 									key={company.id}
 								>
 									<div className='img'>
@@ -183,7 +187,47 @@ const Pedido: React.FC = () =>
 				)
 			case 3:
 				return (
-					<main>confirm</main>
+					<main>
+						<h1>Confirme seu pedido</h1>
+						<div className='confirmGroup'>
+							<label>Representada</label>
+							<Card
+								isSelected={false}
+								type='product'
+							>
+								<div className='img'>
+									<img src={selectedCompany.imagem} alt={selectedCompany.nome_fantasia} />
+								</div>
+								<h2>{selectedCompany.nome_fantasia}</h2>
+								<h3>{selectedCompany.descricao_curta}</h3>
+							</Card>
+						</div>
+						<div className='confirmGroup'>
+							<label>Produtos</label>
+							<div className='grid'>
+								{produtos.map(product =>
+								{
+									const pricedProduct = productOptions.find(({id}) => id === product.id)
+
+									return (
+										<Card
+											isSelected={false}
+											type='product'
+											onClick={() => {}}
+											key={product.id}
+										>
+											<div className='img'>
+												<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
+											</div>
+											<h3>{pricedProduct.nome}</h3>
+											<span>{formatPrice(product.preco)}</span>
+											<span>Quantidade: {product.quantidade}</span>
+										</Card>
+									)
+								})}
+							</div>
+						</div>
+					</main>
 				)
 		}
 	}
