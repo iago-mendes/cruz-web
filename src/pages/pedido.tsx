@@ -66,7 +66,9 @@ const Pedido: React.FC = () =>
 	function goNext()
 	{
 		if (step === 1 && representada === '')
-			warningAlert('Você precisa selecionar uma representada para continuar.')
+			warningAlert('Você precisa escolher uma representada para continuar.')
+		else if (step === 2 && produtos.length === 0)
+			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
 		else if (step < 4)
 			setStep(step + 1)
 	}
