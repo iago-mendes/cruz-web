@@ -69,7 +69,7 @@ const Pedido: React.FC = () =>
 			warningAlert('Você precisa escolher uma representada para continuar.')
 		else if (step === 2 && produtos.length === 0)
 			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
-		else if (step < 4)
+		else if (step < 3)
 			setStep(step + 1)
 	}
 
@@ -183,10 +183,6 @@ const Pedido: React.FC = () =>
 				)
 			case 3:
 				return (
-					<main>details</main>
-				)
-			case 4:
-				return (
 					<main>confirm</main>
 				)
 		}
@@ -224,13 +220,10 @@ const Pedido: React.FC = () =>
 						<svg width={10} height={10} >
 							<circle cx={5} cy={5} r={5} fill={step >= 3 ? '#CC9749' : '#E2DADB'} />
 						</svg>
-						<svg width={10} height={10} >
-							<circle cx={5} cy={5} r={5} fill={step >= 4 ? '#CC9749' : '#E2DADB'} />
-						</svg>
 					</ul>
 
 					<button onClick={goNext} className='next' >
-						<span>{step !== 4 ? 'Continuar' : 'Finalizar'}</span>
+						<span>{step !== 3 ? 'Continuar' : 'Finalizar'}</span>
 						<FaAngleRight size={25} />
 					</button>
 				</div>
