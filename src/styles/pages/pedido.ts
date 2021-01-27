@@ -219,81 +219,74 @@ export const Card = styled.div<CardProps>`
 		font-size: 1.5rem;
 	}
 
-	.group
+	span
+	{
+		font-family: Roboto;
+		font-weight: 700;
+		font-size: 1.25rem;
+		color: ${p => p.theme.colors.primaryDark};
+	}
+
+	.field
 	{
 		display: flex;
-		flex-direction: column;
 		align-items: center;
+		gap: 1rem;
 
-		span
+		input
 		{
+			height: 2.5rem;
+			width: 5rem;
+
+			background: none;
+			border: none;
+			border-bottom: ${p => p.theme.colors.primaryDark}80 2px solid;
+
 			font-family: Roboto;
 			font-weight: 700;
-			font-size: 1.25rem;
+			font-size: 1.5rem;
 			color: ${p => p.theme.colors.primaryDark};
-		}
 
-		.field
-		{
-			display: flex;
-			align-items: center;
-			gap: 1rem;
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 
-			input
+			transition: 0.25s;
+		
+			:focus, :hover
 			{
-				height: 2.5rem;
-				width: 10rem;
-
-				background: none;
-				border: none;
-				border-bottom: ${p => p.theme.colors.primaryDark}80 2px solid;
-
-				font-family: Roboto;
-				font-weight: 700;
-				font-size: 1.5rem;
-				color: ${p => p.theme.colors.primaryDark};
-
-				padding-left: 0.5rem;
-				padding-right: 0.5rem;
-
-				transition: 0.25s;
-			
-				:focus, :hover
-				{
-					border-bottom-color: ${p => p.theme.colors.primaryDark};
-				}
-
-				-moz-appearance: textfield;
-
-				::-webkit-outer-spin-button, ::-webkit-inner-spin-button
-				{
-					-webkit-appearance: none;
-					margin: 0;
-				}
+				border-bottom-color: ${p => p.theme.colors.primaryDark};
 			}
 
-			button
+			-moz-appearance: textfield;
+
+			::-webkit-outer-spin-button, ::-webkit-inner-spin-button
 			{
-				background: none;
-				border: none;
+				-webkit-appearance: none;
+				margin: 0;
+			}
+		}
 
-				height: 3rem;
-				width: 3rem;
-				border-radius: 100rem;
+		button
+		{
+			background: none;
+			border: none;
 
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			height: 3rem;
+			width: 3rem;
+			border-radius: 100rem;
 
-				color: ${p => p.theme.colors.primaryDark};
-				cursor: pointer;
-				transition: 0.25s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
-				:hover
-				{
-					color: #fff;
-					background-color: ${p => p.theme.colors.primaryDark};
-				}
+			color: ${p => p.theme.colors.primaryDark};
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				color: #fff;
+				background-color: ${p => p.theme.colors.primaryDark};
 			}
 		}
 	}

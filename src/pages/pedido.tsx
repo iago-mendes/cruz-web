@@ -57,8 +57,6 @@ const Pedido: React.FC = () =>
 				})
 	}, [representada])
 
-	useEffect(() => console.log('[productOptions]', productOptions), [productOptions])
-
 	function goBack()
 	{
 		if (step > 1)
@@ -79,6 +77,32 @@ const Pedido: React.FC = () =>
 			setRepresentada('')
 		else
 			setRepresentada(id)
+	}
+
+	function handleChangeProductQuantity(product: ProductListedPriced, quantity: number)
+	{
+		let tmpProducts = [...produtos]
+		let productIndex = produtos.findIndex(({id}) => id === product.id)
+
+		if (productIndex >= 0)
+		{
+			if (quantity > 0)
+				tmpProducts[productIndex].quantidade = quantity
+			else
+				tmpProducts.splice(productIndex, 1)
+		}
+		else if (quantity > 0)
+		{
+			tmpProducts.push(
+			{
+				id: product.id,
+				preco: product.preco,
+				quantidade: quantity,
+				linhaId: product.linhaId
+			})
+		}
+
+		setProdutos(tmpProducts)
 	}
 
 	const Step: React.FC = () =>
@@ -116,6 +140,9 @@ const Pedido: React.FC = () =>
 							{
 								const selectedProduct = produtos.find(({id}) => id === product.id)
 
+								const removeQuantity = selectedProduct ? selectedProduct.quantidade - 1 : 0
+								const addQuantity = selectedProduct ? selectedProduct.quantidade + 1 : 1
+
 								return (
 								<Card
 									isSelected={selectedProduct !== undefined}
@@ -127,23 +154,25 @@ const Pedido: React.FC = () =>
 										<img src={product.imagem} alt={product.nome} />
 									</div>
 									<h3>{product.nome}</h3>
-									<div className='group'>
-										<span>{formatPrice(product.preco)}</span>
-										<div className='field'>
-											<button>
-												<FiMinus size={25} />
-											</button>
-											<input
-												id='quantidade'
-												name='quantidade'
-												type='number'
-												value={selectedProduct && selectedProduct.quantidade}
-												onChange={e => {}}
-											/>
-											<button>
-												<FiPlus size={25} />
-											</button>
-										</div>
+									<span>{formatPrice(product.preco)}</span>
+									<div className='field'>
+										<button
+											onClick={() => handleChangeProductQuantity(product, removeQuantity)}
+										>
+											<FiMinus size={25} />
+										</button>
+										<input
+											id='quantidade'
+											name='quantidade'
+											type='number'
+											value={selectedProduct && selectedProduct.quantidade}
+											onChange={e => handleChangeProductQuantity(product, Number(e.target.value))}
+										/>
+										<button
+											onClick={() => handleChangeProductQuantity(product, addQuantity)}
+										>
+											<FiPlus size={25} />
+										</button>
 									</div>
 								</Card>
 							)})}
