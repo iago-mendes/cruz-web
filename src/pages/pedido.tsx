@@ -42,6 +42,7 @@ const Pedido: React.FC = () =>
 		{label: 'Cheque', value: 'cheque'},
 		{label: 'Prazo', value: 'prazo'},
 	]
+	const prazoSelectOptions = conditionOptions.prazoOpcoes.map(option => ({label: option.nome, value: option.nome}))
 
 	useEffect(() =>
 	{
@@ -66,6 +67,9 @@ const Pedido: React.FC = () =>
 	{
 		if (representada !== '')
 		{
+			setProdutos([])
+			setCondicao('')
+
 			api.get(`companies/${representada}/products-priced`, {params: {client: user.id}})
 				.then(({data}) =>
 				{
@@ -282,6 +286,7 @@ const Pedido: React.FC = () =>
 					<h1>Escolha uma condição de pagamento</h1>
 					<div className='group'>
 						<Select
+							value={conditionsSelectOptions.find(option => option.label === condicao)}
 							options={conditionsSelectOptions}
 							onChange={e => setCondicao(e.label)}
 							styles={selectStyles}
@@ -292,7 +297,8 @@ const Pedido: React.FC = () =>
 					{!['', 'À vista', 'Cheque'].includes(condicao) && (
 						<div className='group'>
 							<Select
-								options={conditionOptions.prazoOpcoes.map(option => ({label: option.nome, value: option.nome}))}
+								value={prazoSelectOptions.find(option => option.label === condicao)}
+								options={prazoSelectOptions}
 								onChange={e => setCondicao(e.label)}
 								styles={selectStyles}
 								placeholder='Selecione uma opção de prazo'
