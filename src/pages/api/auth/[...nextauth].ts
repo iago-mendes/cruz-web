@@ -33,7 +33,6 @@ const config =
 					.catch(error =>
 					{
 						user.errorMessage = error.response.data.message
-						user.errorId = Math.random()
 					})
 
 				return Promise.resolve(user)
