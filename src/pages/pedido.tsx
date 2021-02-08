@@ -142,127 +142,6 @@ const Pedido: React.FC = () =>
 			})
 	}
 
-	const Step: React.FC = () =>
-	{
-		switch (step)
-		{
-			case 1:
-				return (
-					<main>
-						<h1>Escolha uma representada</h1>
-						<div className='grid'>
-							{companyOptions.map(company => (
-								<Card
-									isSelected={representada === company.id}
-									type='company'
-									onClick={() => handleSelectCompany(company)}
-									key={company.id}
-								>
-									<div className='img'>
-										<img src={company.imagem} alt={company.nome_fantasia} />
-									</div>
-									<h2>{company.nome_fantasia}</h2>
-									<h3>{company.descricao_curta}</h3>
-								</Card>
-							))}
-						</div>
-					</main>
-				)
-			case 2:
-				return (
-					<main>
-						<h1>Escolha os produtos</h1>
-						<div className='grid'>
-							{productOptions.map(product =>
-							{
-								const selectedProduct = produtos.find(({id}) => id === product.id)
-
-								const removeQuantity = selectedProduct ? selectedProduct.quantidade - 1 : 0
-								const addQuantity = selectedProduct ? selectedProduct.quantidade + 1 : 1
-
-								return (
-								<Card
-									isSelected={selectedProduct !== undefined}
-									type='product'
-									onClick={() => {}}
-									key={product.id}
-								>
-									<div className='img'>
-										<img src={product.imagem} alt={product.nome} />
-									</div>
-									<h3>{product.nome}</h3>
-									<span>{formatPrice(product.preco)}</span>
-									<div className='field'>
-										<button
-											onClick={() => handleChangeProductQuantity(product, removeQuantity)}
-										>
-											<FiMinus size={25} />
-										</button>
-										<input
-											id='quantidade'
-											name='quantidade'
-											type='number'
-											value={selectedProduct && selectedProduct.quantidade}
-											onChange={e => handleChangeProductQuantity(product, Number(e.target.value))}
-										/>
-										<button
-											onClick={() => handleChangeProductQuantity(product, addQuantity)}
-										>
-											<FiPlus size={25} />
-										</button>
-									</div>
-								</Card>
-							)})}
-						</div>
-					</main>
-				)
-			case 3:
-				return (
-					<main>
-						<h1>Confirme seu pedido</h1>
-						<div className='confirmGroup'>
-							<label>Representada</label>
-							<Card
-								isSelected={false}
-								type='product'
-							>
-								<div className='img'>
-									<img src={selectedCompany.imagem} alt={selectedCompany.nome_fantasia} />
-								</div>
-								<h2>{selectedCompany.nome_fantasia}</h2>
-								<h3>{selectedCompany.descricao_curta}</h3>
-							</Card>
-						</div>
-						<div className='confirmGroup'>
-							<label>Produtos</label>
-							<div className='grid'>
-								{produtos.map(product =>
-								{
-									const pricedProduct = productOptions.find(({id}) => id === product.id)
-
-									return (
-										<Card
-											isSelected={false}
-											type='product'
-											onClick={() => {}}
-											key={product.id}
-										>
-											<div className='img'>
-												<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
-											</div>
-											<h3>{pricedProduct.nome}</h3>
-											<span>{formatPrice(product.preco)}</span>
-											<span>Quantidade: {product.quantidade}</span>
-										</Card>
-									)
-								})}
-							</div>
-						</div>
-					</main>
-				)
-		}
-	}
-
 	return (
 		<Container step={step} >
 			<Head>
@@ -304,7 +183,120 @@ const Pedido: React.FC = () =>
 				</div>
 			</header>
 
-			<Step />
+			{step === 1 && (
+				<main>
+					<h1>Escolha uma representada</h1>
+					<div className='grid'>
+						{companyOptions.map(company => (
+							<Card
+								isSelected={representada === company.id}
+								type='company'
+								onClick={() => handleSelectCompany(company)}
+								key={company.id}
+							>
+								<div className='img'>
+									<img src={company.imagem} alt={company.nome_fantasia} />
+								</div>
+								<h2>{company.nome_fantasia}</h2>
+								<h3>{company.descricao_curta}</h3>
+							</Card>
+						))}
+					</div>
+				</main>
+			)}
+
+			{step === 2 && (
+				<main>
+					<h1>Escolha os produtos</h1>
+					<div className='grid'>
+						{productOptions.map(product =>
+						{
+							const selectedProduct = produtos.find(({id}) => id === product.id)
+
+							const removeQuantity = selectedProduct ? selectedProduct.quantidade - 1 : 0
+							const addQuantity = selectedProduct ? selectedProduct.quantidade + 1 : 1
+
+							return (
+							<Card
+								isSelected={selectedProduct !== undefined}
+								type='product'
+								onClick={() => {}}
+								key={product.id}
+							>
+								<div className='img'>
+									<img src={product.imagem} alt={product.nome} />
+								</div>
+								<h3>{product.nome}</h3>
+								<span>{formatPrice(product.preco)}</span>
+								<div className='field'>
+									<button
+										onClick={() => handleChangeProductQuantity(product, removeQuantity)}
+									>
+										<FiMinus size={25} />
+									</button>
+									<input
+										id='quantidade'
+										name='quantidade'
+										type='number'
+										value={selectedProduct && selectedProduct.quantidade}
+										onChange={e => handleChangeProductQuantity(product, Number(e.target.value))}
+									/>
+									<button
+										onClick={() => handleChangeProductQuantity(product, addQuantity)}
+									>
+										<FiPlus size={25} />
+									</button>
+								</div>
+							</Card>
+						)})}
+					</div>
+				</main>
+			)}
+
+			{step === 3 && (
+				<main>
+					<h1>Confirme seu pedido</h1>
+					<div className='confirmGroup'>
+						<label>Representada</label>
+						<Card
+							isSelected={false}
+							type='product'
+						>
+							<div className='img'>
+								<img src={selectedCompany.imagem} alt={selectedCompany.nome_fantasia} />
+							</div>
+							<h2>{selectedCompany.nome_fantasia}</h2>
+							<h3>{selectedCompany.descricao_curta}</h3>
+						</Card>
+					</div>
+					<div className='confirmGroup'>
+						<label>Produtos</label>
+						<div className='grid'>
+							{produtos.map(product =>
+							{
+								const pricedProduct = productOptions.find(({id}) => id === product.id)
+
+								return (
+									<Card
+										isSelected={false}
+										type='product'
+										onClick={() => {}}
+										key={product.id}
+									>
+										<div className='img'>
+											<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
+										</div>
+										<h3>{pricedProduct.nome}</h3>
+										<span>{formatPrice(product.preco)}</span>
+										<span>Quantidade: {product.quantidade}</span>
+									</Card>
+								)
+							})}
+						</div>
+					</div>
+				</main>
+			)}
+
 		</Container>
 	)
 }
