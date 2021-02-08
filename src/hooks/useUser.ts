@@ -72,6 +72,11 @@ function useUser()
 
 				setUser(tmpUser)
 			})
+			.catch(err =>
+			{
+				console.log('[error]', err.response.data.message)
+				console.log('[user.id]', user.id)
+			})
 	}, [user.id])
 
 	return {user, loading}
