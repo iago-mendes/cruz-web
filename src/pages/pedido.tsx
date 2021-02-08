@@ -3,10 +3,11 @@ import {useEffect, useState} from 'react'
 import {FiArrowLeft, FiMinus, FiPlus} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
+import Image from 'next/image'
+import Select from 'react-select'
 
 import Container, {Card} from '../styles/pages/pedido'
 import logo from '../assets/logo.svg'
-import Image from 'next/image'
 import useUser from '../hooks/useUser'
 import api from '../services/api'
 import {CompanyListed, defaultCompanyListed} from '../models/company'
@@ -18,6 +19,7 @@ import getDate from '../utils/getDate'
 import confirmAlert from '../utils/alerts/confirm'
 import errorAlert from '../utils/alerts/error'
 import {ClientConditions, defaultCientConditions} from '../models/client'
+import {selectStyles} from '../styles/global'
 
 const Pedido: React.FC = () =>
 {
@@ -27,11 +29,19 @@ const Pedido: React.FC = () =>
 	const [step, setStep] = useState(1)
 	const [representada, setRepresentada] = useState('')
 	const [produtos, setProdutos] = useState<RequestProduct[]>([])
+	const [condicao, setCondicao] = useState('')
 
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
 	const [conditionOptions, setConditionOptions] = useState<ClientConditions>(defaultCientConditions)
+
+	const conditionsSelectOptions =
+	[
+		{label: 'À vista', value: 'vista'},
+		{label: 'Cheque', value: 'cheque'},
+		{label: 'Prazo', value: 'prazo'},
+	]
 
 	useEffect(() =>
 	{
@@ -270,6 +280,23 @@ const Pedido: React.FC = () =>
 			{step === 3 && (
 				<main>
 					<h1>Escolha uma condição de pagamento</h1>
+					<div className='group'>
+						<Select
+							options={conditionsSelectOptions}
+							onChange={e => setCondicao(e.label)}
+							styles={selectStyles}
+						/>
+					</div>
+
+					{!['', 'À vista', 'Cheque'].includes(condicao) && (
+						<div className='group'>
+							<Select
+								options={conditionOptions.prazoOpcoes.map(option => ({label: option.nome, value: option.nome}))}
+								onChange={e => setCondicao(e.label)}
+								styles={selectStyles}
+							/>
+						</div>
+					)}
 				</main>
 			)}
 
