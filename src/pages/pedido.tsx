@@ -285,6 +285,7 @@ const Pedido: React.FC = () =>
 							options={conditionsSelectOptions}
 							onChange={e => setCondicao(e.label)}
 							styles={selectStyles}
+							placeholder='Selecione uma condição de pagamento'
 						/>
 					</div>
 
@@ -294,6 +295,7 @@ const Pedido: React.FC = () =>
 								options={conditionOptions.prazoOpcoes.map(option => ({label: option.nome, value: option.nome}))}
 								onChange={e => setCondicao(e.label)}
 								styles={selectStyles}
+								placeholder='Selecione uma opção de prazo'
 							/>
 						</div>
 					)}
@@ -303,7 +305,7 @@ const Pedido: React.FC = () =>
 			{step === 4 && (
 				<main>
 					<h1>Confirme seu pedido</h1>
-					<div className='confirmGroup'>
+					<div className='group'>
 						<label>Representada</label>
 						<Card
 							isSelected={false}
@@ -316,7 +318,7 @@ const Pedido: React.FC = () =>
 							<h3>{selectedCompany.descricao_curta}</h3>
 						</Card>
 					</div>
-					<div className='confirmGroup'>
+					<div className='group'>
 						<label>Produtos</label>
 						<div className='grid'>
 							{produtos.map(product =>

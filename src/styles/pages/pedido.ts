@@ -157,7 +157,7 @@ const Container = styled.div<ContainerProps>`
 			justify-items: center;
 		}
 
-		.confirmGroup
+		.group
 		{
 			width: 100%;
 

@@ -58,15 +58,14 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			padding: '1rem',
 
 			transition: '0.1s',
-			color: state.isSelected ? '#23232A' : state.isFocused ? '#FF8A00' : '#7B7B7B',
-			backgroundColor: state.isSelected ? '#FF8A00' : '#23232A'
+			color: state.isSelected ? '#fff' : state.isFocused ? '#84130B' : '#7B7B7B',
+			backgroundColor: state.isSelected ? '#84130B' : '#fff'
 		}),
 
 	menu: (provided) => (
 		{
 			...provided,
 			fontFamily: 'Roboto',
-			backgroundColor: '#23232A'
 		}),
 
 	control: (provided, state) => (
@@ -79,9 +78,9 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			fontSize: '2rem',
 
 			width: '100%',
-			backgroundColor: '#23232A',
+			backgroundColor: '#fff',
 
-			borderColor: state.menuIsOpen ? '#FF8A00' : state.isFocused ? '#FF8A0080' : '#7B7B7B',
+			borderColor: state.menuIsOpen ? '#84130B' : state.isFocused ? '#84130B80' : '#7B7B7B',
 			borderWidth: 2,
 			borderStyle: 'solid',
 			borderRadius: 5,
@@ -94,20 +93,20 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 		{
 			...provided,
 
-			color: '#FF8A00'
+			color: '#84130B'
 		}),
 
 	indicatorSeparator: (provided, state) => (
 		{
 			...provided,
 
-			backgroundColor: state.isFocused ? '#FF8A00' : '#7B7B7B'
+			backgroundColor: state.isFocused ? '#84130B' : '#7B7B7B'
 		}),
 
 	dropdownIndicator: (provided, state) => (
 		{
 			...provided,
 
-			color: state.isFocused ? '#FF8A00' : '#7B7B7B'
+			color: state.isFocused ? '#84130B' : '#7B7B7B'
 		})
 }
