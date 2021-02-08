@@ -13,3 +13,9 @@ export const defaultCompanyListed: CompanyListed =
 	nome_fantasia: '',
 	descricao_curta: ''
 }
+
+export interface CompanyCondition
+{
+	nome: string
+	precoMin: number
+}

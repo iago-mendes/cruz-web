@@ -17,6 +17,7 @@ import formatPrice from '../utils/formatPrice'
 import getDate from '../utils/getDate'
 import confirmAlert from '../utils/alerts/confirm'
 import errorAlert from '../utils/alerts/error'
+import {ClientConditions, defaultCientConditions} from '../models/client'
 
 const Pedido: React.FC = () =>
 {
@@ -30,6 +31,7 @@ const Pedido: React.FC = () =>
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
+	const [conditionOptions, setConditionOptions] = useState<ClientConditions>(defaultCientConditions)
 
 	useEffect(() =>
 	{
@@ -53,12 +55,20 @@ const Pedido: React.FC = () =>
 	useEffect(() =>
 	{
 		if (representada !== '')
+		{
 			api.get(`companies/${representada}/products-priced`, {params: {client: user.id}})
 				.then(({data}) =>
 				{
 					if (data[0])
 						setProductOptions(data)
 				})
+
+			api.get(`clients/${user.id}/conditions/${representada}`)
+				.then(({data}:{data: ClientConditions}) =>
+				{
+					setConditionOptions(data)
+				})
+		}
 	}, [representada])
 
 	function goBack()
@@ -73,9 +83,9 @@ const Pedido: React.FC = () =>
 			warningAlert('Você precisa escolher uma representada para continuar.')
 		else if (step === 2 && produtos.length === 0)
 			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
-		else if (step < 3)
+		else if (step < 4)
 			setStep(step + 1)
-		else if (step === 3)
+		else if (step === 4)
 			handleSubmit()
 	}
 
@@ -147,6 +157,7 @@ const Pedido: React.FC = () =>
 			<Head>
 				<title>Pedido</title>
 			</Head>
+
 			<header>
 				<div className='group'>
 					<button className='cancel' onClick={() => router.back()} >
@@ -174,10 +185,13 @@ const Pedido: React.FC = () =>
 						<svg width={10} height={10} >
 							<circle cx={5} cy={5} r={5} fill={step >= 3 ? '#CC9749' : '#E2DADB'} />
 						</svg>
+						<svg width={10} height={10} >
+							<circle cx={5} cy={5} r={5} fill={step >= 4 ? '#CC9749' : '#E2DADB'} />
+						</svg>
 					</ul>
 
 					<button onClick={goNext} className='next' >
-						<span>{step !== 3 ? 'Continuar' : 'Finalizar'}</span>
+						<span>{step !== 4 ? 'Continuar' : 'Finalizar'}</span>
 						<FaAngleRight size={25} />
 					</button>
 				</div>
@@ -254,6 +268,12 @@ const Pedido: React.FC = () =>
 			)}
 
 			{step === 3 && (
+				<main>
+					<h1>Escolha uma condição de pagamento</h1>
+				</main>
+			)}
+
+			{step === 4 && (
 				<main>
 					<h1>Confirme seu pedido</h1>
 					<div className='confirmGroup'>
