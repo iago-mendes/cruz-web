@@ -25,4 +25,23 @@ export default createGlobalStyle`
 	{
 		background-color: ${p => p.theme.colors.background};
 	}
+
+	.swal2-popup
+	{
+		#swal2-title
+		{
+			font-family: Ubuntu;
+			font-size: 25px;
+		}
+		#swal2-content
+		{
+			font-family: Roboto;
+			font-size: 20px !important;
+		}
+		.swal2-actions
+		{
+			font-size: 15px !important;
+			font-family: Ubuntu !important;
+		}
+	}
 `
