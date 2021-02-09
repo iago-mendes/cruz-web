@@ -275,7 +275,7 @@ const Pedido: React.FC = () =>
 										id='quantidade'
 										name='quantidade'
 										type='number'
-										value={selectedProduct && selectedProduct.quantidade}
+										value={selectedProduct ? selectedProduct.quantidade : 0}
 										onChange={e => handleChangeProductQuantity(product, Number(e.target.value))}
 									/>
 									<button
