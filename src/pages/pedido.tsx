@@ -153,6 +153,19 @@ const Pedido: React.FC = () =>
 	{
 		let total = 0
 
+		produtos.map(requestProduct =>
+		{
+			const listedProduct = productOptions.find(({id}) => id === requestProduct.id)
+			if (!listedProduct)
+				return
+			
+			const subtotal = requestProduct.quantidade * requestProduct.preco
+			const st = subtotal * listedProduct.st / 100
+			const ipi = subtotal * listedProduct.ipi / 100
+
+			total += subtotal + st + ipi
+		})
+
 		return formatPrice(total)
 	}
 
