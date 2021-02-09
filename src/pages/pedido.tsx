@@ -149,6 +149,13 @@ const Pedido: React.FC = () =>
 		setProdutos(tmpProducts)
 	}
 
+	function calcTotalPrice()
+	{
+		let total = 0
+
+		return formatPrice(total)
+	}
+
 	async function handleSubmit()
 	{
 		const data =
@@ -359,6 +366,13 @@ const Pedido: React.FC = () =>
 						</div>
 					</div>
 				</main>
+			)}
+
+			{step !== 1 && (
+				<div id='totalPrice'>
+					<h3>Total:</h3>
+					<span>{calcTotalPrice()}</span>
+				</div>
 			)}
 
 		</Container>

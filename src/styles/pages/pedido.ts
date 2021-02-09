@@ -177,6 +177,41 @@ const Container = styled.div<ContainerProps>`
 			}
 		}
 	}
+
+	#totalPrice
+	{
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+
+		height: 5rem;
+		width: 20rem;
+
+		background-color: ${p => p.theme.colors.primary};
+		border-radius: 1rem;
+		box-shadow: 0px 0px 10px #000;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		padding-left: 1rem;
+		padding-right: 1rem;
+
+		h3
+		{
+			font-family: Ubuntu;
+			font-size: 2rem;
+			color: ${p => p.theme.colors.background};
+		}
+
+		span
+		{
+			font-family: Roboto;
+			font-size: 2rem;
+			color: ${p => p.theme.colors.background};
+		}
+	}
 `
 
 interface CardProps
