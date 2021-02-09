@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {FiArrowLeft, FiMinus, FiPlus} from 'react-icons/fi'
+import {FiArrowLeft, FiInfo, FiMinus, FiPlus} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
@@ -280,6 +280,9 @@ const Pedido: React.FC = () =>
 								onClick={() => {}}
 								key={product.id}
 							>
+								<button className='info'>
+									<FiInfo size={25} />
+								</button>
 								<div className='img'>
 									<img src={product.imagem} alt={product.nome} />
 								</div>

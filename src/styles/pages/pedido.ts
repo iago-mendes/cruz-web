@@ -194,7 +194,7 @@ const Container = styled.div<ContainerProps>`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		
+
 		padding-left: 1rem;
 		padding-right: 1rem;
 
@@ -238,6 +238,8 @@ export const Card = styled.div<CardProps>`
 
 	font-family: Roboto;
 	color: ${p => p.theme.colors.primaryDark};
+
+	position: relative;
 
 	${p => p.type === 'company' && 'cursor: pointer;'}
 	transition: 0.25s;
@@ -343,6 +345,27 @@ export const Card = styled.div<CardProps>`
 				color: #fff;
 				background-color: ${p => p.theme.colors.primaryDark};
 			}
+		}
+	}
+
+	.info
+	{
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+
+		border: none;
+		background: none;
+		border-radius: 100rem;
+
+		color: ${p => p.theme.colors.secondary};
+		cursor: pointer;
+		transition: 0.25s;
+
+		:hover
+		{
+			color: ${p => p.theme.colors.primary};
+			transform: scale(1.25);
 		}
 	}
 `
