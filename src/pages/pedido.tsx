@@ -97,6 +97,15 @@ const Pedido: React.FC = () =>
 			warningAlert('Você precisa escolher uma representada para continuar.')
 		else if (step === 2 && produtos.length === 0)
 			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
+		else if (step === 3)
+		{
+			if (condicao === '')
+				warningAlert('Selecione uma condição de pagamento')
+			else if (condicao === 'Prazo')
+				warningAlert('Selecione uma opção de prazo')
+			else
+				setStep(step + 1)
+		}
 		else if (step < 4)
 			setStep(step + 1)
 		else if (step === 4)

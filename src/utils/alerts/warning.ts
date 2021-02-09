@@ -5,8 +5,6 @@ const MySwal = withReactContent(Swal)
 
 function warningAlert(message: string)
 {
-	console.log('[message]', message)
-
 	MySwal.fire({
 		icon: 'warning',
 		title: message
