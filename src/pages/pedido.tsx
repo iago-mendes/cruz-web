@@ -46,7 +46,10 @@ const Pedido: React.FC = () =>
 		{label: 'Cheque', value: 'cheque'},
 		{label: 'Prazo', value: 'prazo'},
 	]
-	const prazoSelectOptions = conditionOptions.prazoOpcoes.map(option => ({label: option.nome, value: option.nome}))
+	const prazoSelectOptions = conditionOptions.prazoOpcoes
+		.filter(option => option.precoMin <= calcTotalPrice())
+		.sort((a,b) => a.precoMin < b.precoMin ? -1 : 1)
+		.map(option => ({label: option.nome, value: option.nome}))
 
 	useEffect(() =>
 	{
@@ -170,7 +173,7 @@ const Pedido: React.FC = () =>
 			total += subtotal + st + ipi
 		})
 
-		return formatPrice(total)
+		return total
 	}
 
 	function openProductModal(selected: ProductListedPriced)
@@ -410,7 +413,7 @@ const Pedido: React.FC = () =>
 			{step !== 1 && (
 				<div id='totalPrice'>
 					<h3>Total:</h3>
-					<span>{calcTotalPrice()}</span>
+					<span>{formatPrice(calcTotalPrice())}</span>
 				</div>
 			)}
 
