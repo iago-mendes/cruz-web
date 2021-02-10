@@ -12,7 +12,7 @@ import useUser from '../hooks/useUser'
 import api from '../services/api'
 import {CompanyListed, defaultCompanyListed} from '../models/company'
 import warningAlert from '../utils/alerts/warning'
-import {ProductListedPriced} from '../models/product'
+import {defaultProductListedPriced, ProductListedPriced} from '../models/product'
 import {RequestProduct} from '../models/request'
 import formatPrice from '../utils/formatPrice'
 import getDate from '../utils/getDate'
@@ -20,6 +20,7 @@ import confirmAlert from '../utils/alerts/confirm'
 import errorAlert from '../utils/alerts/error'
 import {ClientConditions, defaultCientConditions} from '../models/client'
 import {selectStyles} from '../styles/global'
+import RequestProductModal from '../components/modals/RequestProduct'
 
 const Pedido: React.FC = () =>
 {
@@ -35,6 +36,9 @@ const Pedido: React.FC = () =>
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
 	const [conditionOptions, setConditionOptions] = useState<ClientConditions>(defaultCientConditions)
+
+	const [isProductModalOpen, setIsProductModalOpen] = useState(false)
+	const [selectedProduct, setSelectedProduct] = useState<ProductListedPriced>(defaultProductListedPriced)
 
 	const conditionsSelectOptions =
 	[
@@ -169,6 +173,12 @@ const Pedido: React.FC = () =>
 		return formatPrice(total)
 	}
 
+	function openProductModal(selected: ProductListedPriced)
+	{
+		setSelectedProduct(selected)
+		setIsProductModalOpen(true)
+	}
+
 	async function handleSubmit()
 	{
 		const data =
@@ -200,6 +210,12 @@ const Pedido: React.FC = () =>
 			<Head>
 				<title>Pedido</title>
 			</Head>
+
+			<RequestProductModal
+				isOpen={isProductModalOpen}
+				setIsOpen={setIsProductModalOpen}
+				selected={selectedProduct}
+			/>
 
 			<header>
 				<div className='group'>
@@ -280,7 +296,7 @@ const Pedido: React.FC = () =>
 								onClick={() => {}}
 								key={product.id}
 							>
-								<button className='info'>
+								<button className='info' onClick={() => openProductModal(product)}>
 									<FiInfo size={25} />
 								</button>
 								<div className='img'>
