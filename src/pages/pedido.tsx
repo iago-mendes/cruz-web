@@ -338,7 +338,7 @@ const Pedido: React.FC = () =>
 							options={conditionsSelectOptions}
 							onChange={e => setCondicao(e.label)}
 							styles={selectStyles}
-							placeholder='Selecione uma condição de pagamento'
+							placeholder='Condição de pagamento'
 						/>
 					</div>
 
@@ -349,7 +349,7 @@ const Pedido: React.FC = () =>
 								options={prazoSelectOptions}
 								onChange={e => setCondicao(e.label)}
 								styles={selectStyles}
-								placeholder='Selecione uma opção de prazo'
+								placeholder='Opção de prazo'
 							/>
 						</div>
 					)}

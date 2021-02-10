@@ -137,7 +137,7 @@ const Container = styled.div<ContainerProps>`
 		gap: 2rem;
 
 		padding: 2rem;
-		padding-bottom: 10rem;
+		padding-bottom: 7.5rem;
 
 		h1
 		{
@@ -220,6 +220,20 @@ const Container = styled.div<ContainerProps>`
 			font-family: Roboto;
 			font-size: 2rem;
 			color: ${p => p.theme.colors.background};
+		}
+	}
+
+	@media(max-width: 700px)
+	{
+		header .group
+		{
+			flex-direction: column;
+			gap: 1rem;
+
+			.cancel
+			{
+				margin-right: 50vw;
+			}
 		}
 	}
 `
