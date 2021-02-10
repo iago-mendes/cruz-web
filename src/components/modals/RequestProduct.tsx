@@ -32,7 +32,7 @@ const RequestProduct: React.FC<RequestProductProps> = ({isOpen, setIsOpen, selec
 					</button>
 				</header>
 				<main>
-					<div className="group">
+					<div className='group'>
 						<div className='img'>
 							<img src={selected.imagem} alt={selected.nome} />
 						</div>
