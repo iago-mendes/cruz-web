@@ -187,11 +187,10 @@ const Pedido: React.FC = () =>
 		const data =
 		{
 			cliente: user.id,
-			vendedor: user.id,
 			representada,
 			produtos,
 			data: getDate(),
-			condicao: '[[[mudar]]]',
+			condicao,
 			tipo: {venda: true, troca: false},
 			status: {concluido: false, enviado: false, faturado: false}
 		}
