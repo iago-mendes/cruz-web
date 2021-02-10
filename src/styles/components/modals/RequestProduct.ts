@@ -4,13 +4,8 @@ const Container = styled.div`
 	width: 75vw;
 	height: 85vh;
 
-	background-color: ${p => p.theme.colors.background};
-	border-top-left-radius: 1rem;
-	border-top-right-radius: 1rem;
-
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
 
 	header
 	{
@@ -57,6 +52,9 @@ const Container = styled.div`
 
 	main
 	{
+		padding-top: 1rem;
+		background-color: ${p => p.theme.colors.background};
+
 		width: 100%;
 		min-height: calc(85vh - (3.5rem + 1rem + 1rem));
 		overflow-y: auto;
@@ -147,6 +145,23 @@ const Container = styled.div`
 	@media(max-width: 600px)
 	{
 		width: 95vw;
+
+		.group
+		{
+			flex-direction: column;
+			gap: 1rem;
+
+			.img
+			{
+				width: 75% !important;
+				height: 25rem !important;
+			}
+
+			h1
+			{
+				width: 90% !important;
+			}
+		}
 	}
 `
 
