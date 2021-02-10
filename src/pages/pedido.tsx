@@ -386,6 +386,9 @@ const Pedido: React.FC = () =>
 										onClick={() => {}}
 										key={product.id}
 									>
+										<button className='info' onClick={() => openProductModal(pricedProduct)}>
+											<FiInfo size={25} />
+										</button>
 										<div className='img'>
 											<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
 										</div>
@@ -396,6 +399,10 @@ const Pedido: React.FC = () =>
 								)
 							})}
 						</div>
+					</div>
+					<div className="group">
+						<label>Condição de pagamento</label>
+						<span className='condition' >{condicao}</span>
 					</div>
 				</main>
 			)}

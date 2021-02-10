@@ -137,6 +137,7 @@ const Container = styled.div<ContainerProps>`
 		gap: 2rem;
 
 		padding: 2rem;
+		padding-bottom: 10rem;
 
 		h1
 		{
@@ -174,6 +175,15 @@ const Container = styled.div<ContainerProps>`
 
 				border-left: ${p => p.theme.colors.primaryDark} 5px solid;
 				padding-left: 1rem;
+			}
+
+			span.condition
+			{
+				font-family: Roboto;
+				font-size: 2rem;
+				font-weight: 700;
+
+				margin-left: 2rem;
 			}
 		}
 	}
