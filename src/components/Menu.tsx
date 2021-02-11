@@ -71,12 +71,15 @@ export default function MenuTabs()
 										Empresas
 								</a>
 						</Link>
-						<button
+						<div
 							onMouseEnter={() => setShowDropdown(true)}
 							onMouseLeave={() => setShowDropdown(false)}
 							className='dropdown'
 						>
-								Catálogo
+								<div className='group'>
+									<BsFillTriangleFill size={10} className='indicator' />
+									<span className='link' >Catálogo</span>
+								</div>
 								{showDropdown && (
 									<ul>
 										{companies && companies.map((company: Company) => (
@@ -86,7 +89,7 @@ export default function MenuTabs()
 										))}
 									</ul>
 								)}
-						</button>
+						</div>
 						<Link href='/contato'>
 								<a className='link'>
 										Contato
@@ -116,7 +119,7 @@ export default function MenuTabs()
 									</button>
 								)
 								: (
-									<span onClick={() => router.push('/login')} >
+									<span onClick={() => router.push('/login')} className='linkBlock' >
 										Entrar
 									</span>
 								)
