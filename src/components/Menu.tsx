@@ -47,7 +47,12 @@ export default function MenuTabs()
 				setIsOpen={setIsUserMenuOpen}
 			/>
 
-			{isBurgerOpen && <BurgerMenu setIsOpen={setIsBurgerOpen} companies={companies} />}
+			<BurgerMenu
+				isOpen={isBurgerOpen}
+				setIsOpen={setIsBurgerOpen}
+				companies={companies}
+			/>
+
 			<Link href='/'>
 				<img src={logo} alt='Cruz Representações' className='logo' />
 			</Link>

@@ -6,11 +6,6 @@ interface ContainerProps
 }
 
 const Container = styled.nav<ContainerProps>`
-	position: absolute;
-	z-index: 100;
-	top: 7.5rem;
-	
-	height: calc(100% - 7.5rem);
 	width: 100%;
 	
 	background-color: ${p => `${p.theme.colors.primaryDark}f2`};
