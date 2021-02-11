@@ -58,17 +58,15 @@ export default function MenuTabs()
 			</Link>
 			{
 				width < 1000
-				? isBurgerOpen
-					? (
-						<button onClick={() => setIsBurgerOpen(false)}>
-							<FiX size={30} />
+				? (
+						<button onClick={() => setIsBurgerOpen(!isBurgerOpen)} className='burger' >
+							{
+								isBurgerOpen
+								? <FiX size={30} />
+								: <FiMenu size={30} />
+							}
 						</button>
-					)
-					: (
-						<button onClick={() => setIsBurgerOpen(true)}>
-							<FiMenu size={30} />
-						</button>
-					)
+				)
 				: (
 					<ul>
 						<Link href='/empresas'>

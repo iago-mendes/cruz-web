@@ -208,6 +208,15 @@ const Container = styled.nav<ContainerProps>`
 			}
 		}
 	}
+
+	.burger
+	{
+		background: none;
+		border: none;
+
+		margin-right: 2rem;
+		color: ${p => p.theme.colors.secondary};
+	}
 `
 
 export default Container

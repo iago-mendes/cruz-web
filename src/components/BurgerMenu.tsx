@@ -1,11 +1,15 @@
 import Link from 'next/link'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {FiUser} from 'react-icons/fi'
+import {BsFillTriangleFill} from 'react-icons/bs'
+import {BiUserCircle} from 'react-icons/bi'
 import {GoTriangleRight} from 'react-icons/go'
 import {motion} from 'framer-motion'
+import {useRouter} from 'next/router'
 
 import Container from '../styles/components/BurgerMenu'
 import {Company} from './CompanyModal'
+import useUser from '../hooks/useUser'
 
 interface BurgerMenuProps
 {
@@ -17,7 +21,15 @@ interface BurgerMenuProps
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =>
 {
-	const [showBurgerDropdown, setShowBurgerDropdown] = useState(false)
+	const {user} = useUser()
+	const {push, pathname} = useRouter()
+
+	const [showCatalogDropdown, setShowCatalogDropdown] = useState(false)
+
+	useEffect(() =>
+	{
+		setIsOpen(false)
+	}, [pathname])
 
 	return (
 		<motion.div
@@ -46,60 +58,74 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 
 				height: 'calc(100vh - 7.5rem)',
 				overflowY: 'auto',
+				boxShadow: '-5px 5px 5px rgba(0,0, 0, 0.5)',
 			}}
 		>
-			<Container showBurgerDropdown={showBurgerDropdown} >
-				<ul>
-					<div className="link group">
-						<Link href="/">
-							<a className="block" onClick={() => setIsOpen(false)} >
-								Fazer pedido
-							</a>
-						</Link>
-						<Link href="/login">
-							<a className="user" onClick={() => setIsOpen(false)} >
-								<FiUser size={30} color="#5e5d5d" />
-							</a>
-						</Link>
+			<Container showCatalogDropdown={showCatalogDropdown} >
+				<div className='user'>
+					{
+						user.id !== 'not-logged'
+						? (
+							<button onClick={() => {}}>
+								{
+									user.data
+									? <img src={user.data.image} alt={user.data.name} className='img' />
+									: <BiUserCircle size={35} className='img' />
+								}
+								<BsFillTriangleFill size={10} className='indicator' />
+							</button>
+						)
+						: (
+							<span onClick={() => push('/login')} className='linkBlock' >
+								Entrar
+							</span>
+						)
+					}
+				</div>
+				<Link href='/pedido'>
+					<a className='linkBlock' onClick={() => setIsOpen(false)} >
+						Fazer pedido
+					</a>
+				</Link>
+				<Link href='/empresas'>
+					<a className='link row' onClick={() => setIsOpen(false)} >
+						Empresas
+					</a>
+				</Link>
+				<div
+					onMouseEnter={() => setShowCatalogDropdown(true)}
+					onMouseLeave={() => setShowCatalogDropdown(false)}
+					className='dropdown row'
+				>
+					<div className='group' onClick={() => setShowCatalogDropdown(!showCatalogDropdown)} >
+						<BsFillTriangleFill size={10} className='indicator' />
+						<span className='link' >Catálogo</span>
 					</div>
-					<Link href="/empresas">
-						<a className="link" onClick={() => setIsOpen(false)} >
-							Empresas
+					{showCatalogDropdown && (
+						<ul>
+							{companies && companies.map((company: Company) => (
+								<Link href={`/catalogo/${company.id}`} key={company.id}>
+									<a className='link' onClick={() => setIsOpen(false)} >
+										{company.nome_fantasia}
+									</a>
+								</Link>
+							))}
+						</ul>
+					)}
+				</div>
+				<Link href='/contato'>
+						<a className='link row' onClick={() => setIsOpen(false)} >
+								Contato
 						</a>
-					</Link>
-					<button
-						className="link burguerDropdown"
-					>
-							<div className="header" onClick={() => setShowBurgerDropdown(!showBurgerDropdown)}>
-								<GoTriangleRight size={20} />
-								Catálogo
-							</div>
-							{showBurgerDropdown && (
-								<ul>
-									{companies && companies.map((company: Company) => (
-										<Link href={`/catalogo/${company.id}`} key={company.id}>
-											<a className="link" onClick={() => setIsOpen(false)} >
-												{company.nome_fantasia}
-											</a>
-										</Link>
-									))}
-								</ul>
-							)}
-					</button>
-					<Link href="/contato">
-							<a className="link" onClick={() => setIsOpen(false)} >
-									Contato
-							</a>
-					</Link>
-					<Link href="/sobre">
-							<a className="link" onClick={() => setIsOpen(false)} >
-									Sobre
-							</a>
-					</Link>
-				</ul>
-			</Container>
-		</motion.div>
-	)
+				</Link>
+				<Link href='/sobre'>
+						<a className='link row' onClick={() => setIsOpen(false)} >
+								Sobre
+						</a>
+				</Link>
+		</Container>
+	</motion.div>
+)
 }
 
 export default BurgerMenu
