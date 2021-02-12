@@ -7,7 +7,6 @@ import theme from '../styles/theme'
 import SessionHandler from '../components/SessionHandler'
 import GlobalStyle from '../styles/global'
 
-import '../styles/pages/index.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>

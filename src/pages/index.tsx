@@ -1,8 +1,9 @@
-import { GetStaticProps } from 'next'
+import {GetStaticProps} from 'next'
 import Head from 'next/head'
 
 import illustration from '../assets/illustration1.svg'
 import Carousel from '../components/Carousel'
+import Container from '../styles/pages/index'
 
 interface HomeProps
 {
@@ -12,24 +13,22 @@ interface HomeProps
 const Home: React.FC<HomeProps> = ({carouselImages}) =>
 {
   return (
-    <div id="home">
+    <Container>
       <Head>
         <title>Cruz representações</title>
       </Head>
 			
 			<Carousel images={carouselImages} />
       <main>
-          <img src={illustration} alt="Homem mexendo no computador"/>
-          <div>
-              <h1>Cruz Representações</h1>
-              <h2>Excelência em representação comercial no Norte de Minas Gerais.</h2>
-          </div>
+				<img src={illustration} alt='Homem mexendo no computador' />
+				<div className='info' >
+					<h1>Cruz Representações</h1>
+					<h2>Excelência em representação comercial no Norte de Minas Gerais.</h2>
+				</div>
       </main>
-    </div>
+    </Container>
   )
 }
-
-export default Home
 
 export const getStaticProps: GetStaticProps = async ctx =>
 {
@@ -45,3 +44,5 @@ export const getStaticProps: GetStaticProps = async ctx =>
 		revalidate: 10
 	}
 }
+
+export default Home
