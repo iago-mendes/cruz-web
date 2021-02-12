@@ -3,7 +3,7 @@ import {FiLogOut} from 'react-icons/fi'
 import {signOut} from 'next-auth/client'
 import {motion} from 'framer-motion'
 
-import Container from '../../styles/components/modals/userMenu'
+import Container from '../../styles/components/modals/UserMenu'
 import useUser from '../../hooks/useUser'
 import Link from 'next/link'
 

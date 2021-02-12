@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Modal from 'react-modal'
 
 const Container = styled.div`
 	width: 20rem;
