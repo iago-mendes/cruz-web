@@ -1,15 +1,12 @@
 import Link from 'next/link'
 import {useEffect, useState} from 'react'
-import {FiUser} from 'react-icons/fi'
 import {BsFillTriangleFill} from 'react-icons/bs'
-import {BiUserCircle} from 'react-icons/bi'
-import {GoTriangleRight} from 'react-icons/go'
 import {motion} from 'framer-motion'
 import {useRouter} from 'next/router'
 
-import Container from '../styles/components/BurgerMenu'
-import {Company} from './CompanyModal'
-import useUser from '../hooks/useUser'
+import Container from '../../styles/components/BurgerMenu'
+import {Company} from '../CompanyModal'
+import useUser from '../../hooks/useUser'
 
 interface BurgerMenuProps
 {
