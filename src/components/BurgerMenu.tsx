@@ -51,37 +51,17 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 			}}
 			style=
 			{{
-				position: 'absolute',
+				position: 'fixed',
 				top: '7.5rem',
-				right: 0,
+				left: 0,
 				zIndex: 100,
 
 				height: 'calc(100vh - 7.5rem)',
 				overflowY: 'auto',
-				boxShadow: '-5px 5px 5px rgba(0,0, 0, 0.5)',
+				boxShadow: '5px 5px 5px rgba(0,0, 0, 0.5)',
 			}}
 		>
 			<Container showCatalogDropdown={showCatalogDropdown} >
-				<div className='user'>
-					{
-						user.id !== 'not-logged'
-						? (
-							<button onClick={() => {}}>
-								{
-									user.data
-									? <img src={user.data.image} alt={user.data.name} className='img' />
-									: <BiUserCircle size={35} className='img' />
-								}
-								<BsFillTriangleFill size={10} className='indicator' />
-							</button>
-						)
-						: (
-							<span onClick={() => push('/login')} className='linkBlock' >
-								Entrar
-							</span>
-						)
-					}
-				</div>
 				<Link href='/pedido'>
 					<a className='linkBlock' onClick={() => setIsOpen(false)} >
 						Fazer pedido
@@ -114,18 +94,18 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 					)}
 				</div>
 				<Link href='/contato'>
-						<a className='link row' onClick={() => setIsOpen(false)} >
-								Contato
-						</a>
+					<a className='link row' onClick={() => setIsOpen(false)} >
+							Contato
+					</a>
 				</Link>
 				<Link href='/sobre'>
-						<a className='link row' onClick={() => setIsOpen(false)} >
-								Sobre
-						</a>
+					<a className='link row' onClick={() => setIsOpen(false)} >
+						Sobre
+					</a>
 				</Link>
-		</Container>
-	</motion.div>
-)
+			</Container>
+		</motion.div>
+	)
 }
 
 export default BurgerMenu

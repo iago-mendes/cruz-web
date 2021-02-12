@@ -7,6 +7,7 @@ interface ContainerProps
 
 const Container = styled.ul<ContainerProps>`
 	width: 100%;
+	height: fit-content !important;
 	min-height: calc(100vh - 7.5rem);
 
 	justify-content: flex-start !important;
@@ -15,16 +16,6 @@ const Container = styled.ul<ContainerProps>`
 	background-color: ${p => p.theme.colors.primary};
 
 	padding: 5rem;
-
-	.user
-	{
-		height: fit-content !important;
-
-		::before
-		{
-			content: none !important;
-		}
-	}
 
 	.row
 	{
@@ -46,6 +37,11 @@ const Container = styled.ul<ContainerProps>`
 			display: block;
 			background: ${p => p.theme.colors.secondary};
 			border-radius: 100rem;
+		}
+
+		::after
+		{
+			content: none !important;
 		}
 	}
 
