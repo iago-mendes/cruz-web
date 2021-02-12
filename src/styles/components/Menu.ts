@@ -6,7 +6,7 @@ interface ContainerProps
 	isUserMenuOpen: boolean
 }
 
-const Container = styled.nav<ContainerProps>`
+const Container = styled.div<ContainerProps>`
 	height: 7.5rem;
 	width: 100%;
 
@@ -31,6 +31,15 @@ const Container = styled.nav<ContainerProps>`
 		}
 	}
 
+	nav
+	{
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+
+		margin-right: 2rem;
+	}
+
 	ul
 	{
 		display: flex;
@@ -38,7 +47,6 @@ const Container = styled.nav<ContainerProps>`
 		gap: 3rem;
 
 		height: 100%;
-		margin-right: 2rem;
 
 		*
 		{
@@ -148,63 +156,49 @@ const Container = styled.nav<ContainerProps>`
 				color: ${p => p.theme.colors.primary};
 			}
 		}
+	}
 
-		.user
+	.user
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		height: 50%;
+
+		button
 		{
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			gap: 1rem;
 
-			height: 50%;
+			border: none;
+			background: none;
+			padding: 0;
+			margin: 0;
 
-			::before
+			height: 5rem;
+			border-radius: 100rem;
+			color: ${p => p.theme.colors.secondary};
+			
+			cursor: pointer;
+			transition: 0.25s;
+			
+			:hover
 			{
-				content: '';
-				width: 2px;
-				height: 100%;
-				margin-right: 3rem;
-
-				display: block;
-				background: ${p => p.theme.colors.secondary};
-				border-radius: 100rem;
-
-				transition: 0.25s;
+				transform: scale(1.07);
 			}
 
-			button
+			.img
 			{
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-
-				border: none;
-				background: none;
-				padding: 0;
-				margin: 0;
-
-				height: 5rem;
+				max-width: 100%;
+				max-height: 100%;
 				border-radius: 100rem;
-				color: ${p => p.theme.colors.secondary};
-				
-				cursor: pointer;
+			}
+			.indicator
+			{
 				transition: 0.25s;
-				
-				:hover
-				{
-					transform: scale(1.07);
-				}
-
-				.img
-				{
-					max-width: 100%;
-					max-height: 100%;
-					border-radius: 100rem;
-				}
-				.indicator
-				{
-					transition: 0.25s;
-					transform: ${p => p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
-				}
+				transform: ${p => p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
 			}
 		}
 	}
@@ -214,7 +208,7 @@ const Container = styled.nav<ContainerProps>`
 		background: none;
 		border: none;
 
-		margin-right: 2rem;
+		margin-left: 2rem;
 		color: ${p => p.theme.colors.secondary};
 	}
 `
