@@ -8,7 +8,7 @@ const Container = styled.div`
 	{
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 4.25rem;
+		padding-right: 2rem;
 		color: ${p => p.theme.colors.primary};
 	}
 
@@ -100,25 +100,5 @@ const Container = styled.div`
 		}
 	}
 `
-
-export const modalStyle: Modal.Styles =
-{
-	overlay:
-	{
-		zIndex: 1,
-		width: 'fit-content',
-		height: 'fit-content'
-	},
-	content:
-	{
-		background: 'none',
-		border: 'none',
-		padding: '1rem',
-		width: 'fit-content',
-		height: 'fit-content',
-		left: 'calc(100vw - 20rem - 2rem)',
-		top: '7rem'
-	}
-}
 
 export default Container

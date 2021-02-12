@@ -165,6 +165,7 @@ const Container = styled.div<ContainerProps>`
 		justify-content: center;
 
 		height: 50%;
+		position: relative;
 
 		button
 		{

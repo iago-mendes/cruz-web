@@ -1,13 +1,11 @@
-import Modal from 'react-modal'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
 import {signOut} from 'next-auth/client'
+import {motion} from 'framer-motion'
 
-import Container, {modalStyle} from '../../styles/components/modals/userMenu'
+import Container from '../../styles/components/modals/userMenu'
 import useUser from '../../hooks/useUser'
 import Link from 'next/link'
-
-Modal.setAppElement('#__next')
 
 interface UserMenuProps
 {
@@ -29,13 +27,36 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 		return null
 
 	return (
-		<Modal
-			isOpen={isOpen}
-			style={modalStyle}
+		<motion.div
+			initial={false}
+			transition={{duration: 0.25}}
+			animate={isOpen ? 'open' : 'closed'}
+			variants=
+			{{
+				open:
+				{
+					height: '20rem',
+					opacity: 1,
+				},
+				closed:
+				{
+					height: 0,
+					opacity: 0,
+				}
+			}}
+			style=
+			{{
+				position: 'absolute',
+				right: 0,
+				top: '5rem',
+				zIndex: 100,
+
+				overflow: 'hidden',
+				padding: '1rem',
+				paddingTop: 0,
+			}}
 		>
-			<Container
-				onMouseLeave={() => setIsOpen(false)}
-			>
+			<Container>
 				<div className='detail'>
 					<BsFillTriangleFill size={10} />
 				</div>
@@ -58,7 +79,7 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 					</div>
 				</main>
 			</Container>
-		</Modal>
+		</motion.div>
 	)
 }
 

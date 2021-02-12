@@ -10,7 +10,7 @@ import {useState} from 'react'
 import Container from '../styles/components/Menu'
 import {Company} from '../components/CompanyModal'
 import BurgerMenu from './modals/BurgerMenu'
-import UserMenu from './modals/userMenu'
+import UserMenu from './modals/UserMenu'
 import useUser from '../hooks/useUser'
 import useDimensions from '../hooks/useDimensions'
 
@@ -35,11 +35,6 @@ export default function MenuTabs()
 			isUserMenuOpen={isUserMenuOpen}
 			id='menu'
 		>
-			<UserMenu
-				isOpen={isUserMenuOpen}
-				setIsOpen={setIsUserMenuOpen}
-			/>
-
 			<BurgerMenu
 				isOpen={isBurgerOpen}
 				setIsOpen={setIsBurgerOpen}
@@ -105,7 +100,9 @@ export default function MenuTabs()
 						</ul>
 					)
 				}
-				<div className='user'>
+				<div className='user'
+					onMouseLeave={() => setIsUserMenuOpen(false)}
+				>
 					{
 						user.id !== 'not-logged'
 						? (
@@ -124,6 +121,10 @@ export default function MenuTabs()
 							</span>
 						)
 					}
+					<UserMenu
+						isOpen={isUserMenuOpen}
+						setIsOpen={setIsUserMenuOpen}
+					/>
 				</div>
 			</nav>
 		</Container>
