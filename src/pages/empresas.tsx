@@ -3,7 +3,8 @@ import {useState} from 'react'
 
 import Container from '../styles/pages/empresas'
 import api from '../services/api'
-import CompanyModal, {Company} from '../components/CompanyModal'
+import CompanyModal from '../components/modals/Company'
+import Company from '../models/company'
 import Head from 'next/head'
 
 interface CompaniesProps

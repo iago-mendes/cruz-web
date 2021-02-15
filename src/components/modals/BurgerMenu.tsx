@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 import {useRouter} from 'next/router'
 
 import Container from '../../styles/components/modals/BurgerMenu'
-import {Company} from '../CompanyModal'
+import Company from '../../models/company'
 import useUser from '../../hooks/useUser'
 
 interface BurgerMenuProps
