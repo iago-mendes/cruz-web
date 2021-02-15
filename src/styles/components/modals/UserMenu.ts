@@ -42,18 +42,24 @@ const Container = styled.div`
 				align-items: center;
 				justify-content: center;
 				gap: 0.5rem;
+				
 				background: none;
 				border: ${p => p.theme.colors.background} 1px solid;
-				padding: 0.5rem;
 				border-radius: 0.5rem;
+				padding: 0.5rem;
+
 				color: ${p => p.theme.colors.background};
+				height: fit-content;
+
 				cursor: pointer;
 				transition: 0.25s;
+
 				:hover
 				{
 					color: ${p => p.theme.colors.primary};
 					background-color: ${p => p.theme.colors.background};
 				}
+
 				span
 				{
 					font-family: Ubuntu;
