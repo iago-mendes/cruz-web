@@ -27,7 +27,7 @@ export default function MenuTabs()
 
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	
-	if (['/login', '/pedido'].includes(router.pathname))
+	if (['/login', '/pedidos/novo'].includes(router.pathname))
 		return null
 
 	return (
@@ -60,9 +60,9 @@ export default function MenuTabs()
 				{inDesktop && (
 						<ul>
 							<Link href='/empresas'>
-									<a className='link'>
-											Empresas
-									</a>
+								<a className='link'>
+									Empresas
+								</a>
 							</Link>
 							<div
 								onMouseEnter={() => setShowDropdown(true)}
@@ -107,19 +107,19 @@ export default function MenuTabs()
 									</motion.ul>
 							</div>
 							<Link href='/contato'>
-									<a className='link'>
-											Contato
-									</a>
+								<a className='link'>
+									Contato
+								</a>
 							</Link>
 							<Link href='/sobre'>
-									<a className='link'>
-											Sobre
-									</a>
+								<a className='link'>
+									Sobre
+								</a>
 							</Link>
-							<Link href='/pedido'>
-									<a className='linkBlock'>
-											Fazer pedido
-									</a>
+							<Link href='/pedidos/novo'>
+								<a className='linkBlock'>
+									Fazer pedido
+								</a>
 							</Link>
 						</ul>
 					)

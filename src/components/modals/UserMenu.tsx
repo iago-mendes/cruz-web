@@ -73,8 +73,11 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 						</button>
 					</div>
 					<div className='links'>
-						<Link href='/user'>
+						<Link href='/cliente'>
 							Minha conta
+						</Link>
+						<Link href='/pedidos'>
+							Meus pedidos
 						</Link>
 					</div>
 				</main>

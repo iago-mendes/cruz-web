@@ -59,7 +59,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 			}}
 		>
 			<Container showCatalogDropdown={showCatalogDropdown} >
-				<Link href='/pedido'>
+				<Link href='/pedidos/novo'>
 					<a className='linkBlock' onClick={() => setIsOpen(false)} >
 						Fazer pedido
 					</a>
