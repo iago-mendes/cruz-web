@@ -2,7 +2,7 @@ import Container from '../../styles/components/modals/RequestProduct'
 import {ProductListedPriced} from '../../models/product'
 import formatPrice from '../../utils/formatPrice'
 import formatPercentage from '../../utils/formatPercentage'
-import ContainerModal from './Container'
+import ModalContainer from './Container'
 
 interface RequestProductProps
 {
@@ -15,7 +15,7 @@ interface RequestProductProps
 const RequestProduct: React.FC<RequestProductProps> = ({isOpen, setIsOpen, selected}) =>
 {
 	return (
-		<ContainerModal
+		<ModalContainer
 			isOpen={isOpen}
 			setIsOpen={setIsOpen}
 		>
@@ -45,7 +45,7 @@ const RequestProduct: React.FC<RequestProductProps> = ({isOpen, setIsOpen, selec
 					</li>
 				</ul>
 			</Container>
-		</ContainerModal>
+		</ModalContainer>
 	)
 }
 

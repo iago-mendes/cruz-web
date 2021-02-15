@@ -6,13 +6,13 @@ import {modalStyle} from '../../styles/global'
 
 Modal.setAppElement('#__next')
 
-interface ContainerModalProps
+interface ModalContainerProps
 {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 }
 
-const ContainerModal: React.FC<ContainerModalProps> = ({isOpen, setIsOpen, children}) =>
+const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, setIsOpen, children}) =>
 {
 	return (
 		<Modal
@@ -32,4 +32,4 @@ const ContainerModal: React.FC<ContainerModalProps> = ({isOpen, setIsOpen, child
 	)
 }
 
-export default ContainerModal
+export default ModalContainer
