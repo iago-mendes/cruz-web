@@ -4,7 +4,8 @@ import {useState} from 'react'
 
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/[line]'
-import ProductModal, {Product} from '../../../components/ProductModal'
+import ProductModal from '../../../components/modals/ProductModal'
+import Product from '../../../models/product'
 import Loading from '../../../components/Loading'
 
 interface LineProductsProps

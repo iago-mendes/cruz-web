@@ -1,3 +1,11 @@
+interface Product
+{
+	id: string
+	imagem: string
+	nome: string
+	unidade: string
+}
+
 export interface ProductListedPriced
 {
 	id: string
@@ -21,3 +29,5 @@ export const defaultProductListedPriced: ProductListedPriced =
 	preco: 0,
 	linhaId: ''
 }
+
+export default Product
