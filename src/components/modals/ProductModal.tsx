@@ -1,4 +1,4 @@
-import Container from '../../styles/components/ProductModal'
+import Container from '../../styles/components/modals/Product'
 import Product from '../../models/product'
 import ModalContainer from './Container'
 
@@ -19,7 +19,7 @@ const ProductModal: React.FC<ProductModalProps> = ({product, isOpen, setIsOpen})
 		>
 			<Container>
 				<img src={product.imagem} alt={product.nome}/>
-				<div>
+				<div className='info'>
 					<h1>{product.nome}</h1>
 					<h2>{product.unidade}</h2>
 				</div>
