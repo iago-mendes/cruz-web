@@ -4,6 +4,7 @@ import {FiMenu, FiX} from 'react-icons/fi'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {BiUserCircle} from 'react-icons/bi'
 import useSWR from 'swr'
+import {motion} from 'framer-motion'
 
 import logo from '../assets/logo.svg'
 import {useState} from 'react'
@@ -72,15 +73,38 @@ export default function MenuTabs()
 										<BsFillTriangleFill size={10} className='indicator' />
 										<span className='link' >Catálogo</span>
 									</div>
-									{showDropdown && (
-										<ul>
-											{companies && companies.map((company: Company) => (
-												<Link href={`/catalogo/${company.id}`} key={company.id}>
-													<a className='link'>{company.nome_fantasia}</a>
-												</Link>
-											))}
-										</ul>
-									)}
+									<motion.ul
+										initial={false}
+										transition={{duration: 0.25}}
+										animate={showDropdown ? 'open' : 'closed'}
+										variants=
+										{{
+											open:
+											{
+												height: 'fit-content',
+												opacity: 1,
+											},
+											closed:
+											{
+												height: 0,
+												opacity: 0,
+											}
+										}}
+										style=
+										{{
+											position: 'absolute',
+											top: '7.5rem',
+											zIndex: 100,
+							
+											overflow: 'hidden'
+										}}
+									>
+										{companies && companies.map((company: Company) => (
+											<Link href={`/catalogo/${company.id}`} key={company.id}>
+												<a className='link'>{company.nome_fantasia}</a>
+											</Link>
+										))}
+									</motion.ul>
 							</div>
 							<Link href='/contato'>
 									<a className='link'>

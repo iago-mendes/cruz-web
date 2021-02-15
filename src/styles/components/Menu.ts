@@ -80,7 +80,7 @@ const Container = styled.div<ContainerProps>`
 
 		.dropdown
 		{
-			height: 100%;
+			height: 7.5rem;
 
 			color: ${p => p.theme.colors.secondary};
 			text-decoration: none;
@@ -112,18 +112,13 @@ const Container = styled.div<ContainerProps>`
 
 			ul
 			{
-				position: absolute;
-				margin: 0;
-
-				background-color: ${p => `${p.theme.colors.primary}e6`};
+				background-color: ${p => p.theme.colors.primary};
+				box-shadow: 0px 5px 5px black;
 
 				width: 15rem;
 				height: fit-content;
 				padding: 1rem;
-
-				transition: 0.5s;
-				top: ${p => p.showDropdown ? '7.5rem' : '0'};
-				z-index: 1000;
+				padding-top: 2rem;
 
 				display: flex;
 				flex-direction: column;
