@@ -69,14 +69,13 @@ const Container = styled.div`
 						border-radius: 1rem;
 
 						padding: 1rem;
-						color: ${p => p.theme.colors.primary};
+						color: ${p => p.theme.colors.primaryLight};
 
 						transition: 0.5s;
 						
 						:hover, :focus
 						{
 							border-radius: 0;
-							box-shadow: 5px 5px 5px black;
 						}
 					}
 				}
@@ -87,10 +86,10 @@ const Container = styled.div`
 					height: 4rem;
 					border-radius: 1.5rem;
 
-					border: none;
-					background-color: ${p => p.theme.colors.primaryLight};
+					background: none;
+					border: ${p => p.theme.colors.secondary} 2px solid;
 					
-					color: ${p => p.theme.colors.primaryDark};
+					color: ${p => p.theme.colors.secondary};
 					font-family: Ubuntu;
 					font-size: 2rem;
 
@@ -99,12 +98,13 @@ const Container = styled.div`
 					justify-content: center;
 
 					cursor: pointer;
-					transition: 0.5s;
+					transition: 0.25s;
 					
 					:hover
 					{
-						transform: scale(1.05);
-						box-shadow: 5px 5px 5px black;
+						transform: scale(1.1);
+						background-color: ${p => p.theme.colors.secondary};
+						color: ${p => p.theme.colors.primary};
 					}
 				}
 			}
