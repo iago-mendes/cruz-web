@@ -1,6 +1,6 @@
-import {useRouter} from 'next/router'
+import Link from 'next/link'
 
-import Container from '../../styles/components/CompanyModal'
+import Container from '../../styles/components/modals/Company'
 import Company from '../../models/company'
 import React from 'react'
 import ModalContainer from './Container'
@@ -15,28 +15,26 @@ interface CompanyModalProps
 
 const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen}) =>
 {
-	const Router = useRouter()
-	
 	return (
 		<ModalContainer
 			isOpen={isOpen}
 			setIsOpen={setIsOpen}
 		>
 			<Container>
-				<div className='scrollable'>
-					<div className='logoName' >
-						<img src={company.imagem} alt={company.nome_fantasia}/>
-						<h1>{company.nome_fantasia}</h1>
-					</div>
-				
-					<p>{company.descricao}</p>
-				
-					<div className='links' >
-						<a href={company.site} target='_blank' >Site da empresa</a>
-						<button onClick={() => Router.push(`/catalogo/${company.id}`)} >
+				<div className='logoName' >
+					<img src={company.imagem} alt={company.nome_fantasia}/>
+					<h1>{company.nome_fantasia}</h1>
+				</div>
+			
+				<p>{company.descricao}</p>
+			
+				<div className='links' >
+					<a href={company.site} target='_blank' rel='noreferrer' >
+						Site da empresa
+					</a>
+					<Link href={`/catalogo/${company.id}`} >
 						Catálogo de produtos
-						</button>
-					</div>
+					</Link>
 				</div>
 			</Container>
 		</ModalContainer>

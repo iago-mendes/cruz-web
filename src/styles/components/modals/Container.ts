@@ -50,6 +50,16 @@ const Container = styled.div`
 		}
 	}
 
+	main
+	{
+		padding-top: 1rem;
+		background-color: ${p => p.theme.colors.background};
+
+		width: 100%;
+		min-height: calc(85vh - (3.5rem + 1rem + 1rem));
+		overflow-y: auto;
+	}
+
 	@media(max-width: 600px)
 	{
 		width: 95vw;
