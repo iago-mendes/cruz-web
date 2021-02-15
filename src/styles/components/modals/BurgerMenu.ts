@@ -58,6 +58,7 @@ const Container = styled.ul<ContainerProps>`
 		ul
 		{
 			position: static !important;
+			box-shadow: none !important;
 		}
 	}
 `
