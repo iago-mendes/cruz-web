@@ -9,12 +9,13 @@ const Container = styled.div`
 	background-color: #fff;
 	border-radius: 1rem;
 	outline: 0;
+
 	cursor: pointer;
 	transition: 0.25s;
 	
 	:hover
 	{
-		transform: scale(1.01);
+		transform: scale(1.1);
 	}
 	
 	img
