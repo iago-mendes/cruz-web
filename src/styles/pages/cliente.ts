@@ -92,10 +92,24 @@ const Container = styled.div`
 		padding: 2rem;
 
 		display: grid;
-		grid-auto-rows: 3rem;
+		grid-auto-rows: 7.5rem;
 		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-		grid-gap: 2rem;
+		grid-gap: 1rem;
 		align-items: center;
+	}
+
+	@media(max-width: 850px)
+	{
+		header
+		{
+			flex-direction: column;
+			gap: 2rem;
+
+			.img, .group
+			{
+				width: 100%;
+			}
+		}
 	}
 `
 
