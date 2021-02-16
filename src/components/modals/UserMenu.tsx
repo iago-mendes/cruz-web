@@ -6,6 +6,8 @@ import {motion} from 'framer-motion'
 import Container from '../../styles/components/modals/UserMenu'
 import useUser from '../../hooks/useUser'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 interface UserMenuProps
 {
@@ -16,6 +18,12 @@ interface UserMenuProps
 const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 {
 	const {user} = useUser()
+	const {pathname} = useRouter()
+
+	useEffect(() =>
+	{
+		setIsOpen(false)
+	}, [pathname])
 
 	function handleSignOut()
 	{
