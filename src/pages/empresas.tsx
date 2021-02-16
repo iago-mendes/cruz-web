@@ -32,7 +32,7 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 	}
 
 	return (
-		<Container className='container'>
+		<Container className='page' >
 			<Head>
 				<title>Empresas | Cruz representações</title>
 			</Head>

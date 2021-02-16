@@ -5,7 +5,7 @@ import Container from '../styles/pages/contato'
 export default function Contact()
 {
 	return (
-		<Container className='container'>
+		<Container className='page' >
 			<Head>
 				<title>Contato | Cruz Representações</title>
 			</Head>

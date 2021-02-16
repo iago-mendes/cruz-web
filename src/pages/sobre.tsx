@@ -20,7 +20,7 @@ interface AboutProps
 const About: React.FC<AboutProps> = ({sellers}) =>
 {
 	return (
-		<Container className='container'>
+		<Container className='page' >
 			<Head>
 				<title>Sobre | Cruz Representações</title>
 			</Head>

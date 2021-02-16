@@ -6,6 +6,8 @@ interface ContainerProps
 }
 
 const Container = styled.div<ContainerProps>`
+	min-height: 100vh;
+
 	header
 	{
 		background-color: ${p => p.theme.colors.primary};

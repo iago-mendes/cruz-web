@@ -29,6 +29,11 @@ export default createGlobalStyle`
 		background-color: ${p => p.theme.colors.background};
 	}
 
+	.page
+	{
+		min-height: calc(100vh - 7.5rem);
+	}
+
 	.swal2-popup
 	{
 		#swal2-title

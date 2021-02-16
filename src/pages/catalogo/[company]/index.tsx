@@ -25,7 +25,7 @@ const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 		return <Loading />
 
 	return (
-		<Container className='container'>
+		<Container className='page' >
 			<Head>
 				<title>{company.name} — Linhas | Cruz Representações</title>
 			</Head>

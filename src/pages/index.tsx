@@ -13,7 +13,7 @@ interface HomeProps
 const Home: React.FC<HomeProps> = ({carouselImages}) =>
 {
   return (
-    <Container>
+    <Container className='page' >
       <Head>
         <title>Cruz representações</title>
       </Head>
