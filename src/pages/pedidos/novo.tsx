@@ -6,7 +6,7 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Select from 'react-select'
 
-import Container, {Card} from '../../styles/pages/pedido'
+import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
 import api from '../../services/api'
