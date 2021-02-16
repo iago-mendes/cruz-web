@@ -11,7 +11,7 @@ const SessionHandler: React.FC = ({children}) =>
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')
 
-	const privateRoutes = ['empresas', 'catalogo']
+	const privateRoutes = ['empresas', 'catalogo', 'pedidos', 'cliente']
 
 	useEffect(() =>
 	{
@@ -23,7 +23,7 @@ const SessionHandler: React.FC = ({children}) =>
 	if (route !== '')
 	{
 		if (loading)
-			return <Loading />
+			return <Loading style={{marginTop: '45vh'}} />
 
 		if (privateRoutes.includes(route) && user.id === 'not-logged')
 			return <Login />

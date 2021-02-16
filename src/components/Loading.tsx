@@ -1,9 +1,17 @@
+import { CSSProperties } from 'react'
 import Container from '../styles/components/Loading'
 
-const Loading: React.FC = () =>
+interface LoadingProps
+{
+	style?: CSSProperties
+}
+
+const Loading: React.FC<LoadingProps> = ({style = {}}) =>
 {
 	return (
-		<Container>
+		<Container
+			style={style}
+		>
 			<svg>
 				<circle
 					cx='25'
