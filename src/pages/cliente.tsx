@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ClientInterface from '../models/client';
+import Dropzone from '../components/Dropzone';
 
 const Client: React.FC = () =>
 {
@@ -52,11 +53,10 @@ const Client: React.FC = () =>
 
 			<header>
 				<div className='img'>
-					{
-						user.data
-						? <img src={user.data.image} alt={user.data.name} />
-						: <Skeleton height='100%' />
-					}
+					<Dropzone
+						onFileUploaded={() => {}}
+						shownFileUrl={user.data && user.data.image}
+					/>
 				</div>
 
 				<div className='group'>
