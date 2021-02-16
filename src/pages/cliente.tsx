@@ -8,12 +8,14 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ClientInterface from '../models/client';
 import Dropzone from '../components/Dropzone';
+import PasswordModal from '../components/modals/Password';
 
 const Client: React.FC = () =>
 {
 	const {user} = useUser()
 
 	const [userDetails, setUserDetails] = useState<ClientInterface>(null)
+	const [showPasswordModal, setShowPasswordModal] = useState(false)
 
 	useEffect(() =>
 	{
@@ -51,6 +53,11 @@ const Client: React.FC = () =>
 				<title>Client</title>
 			</Head>
 
+			<PasswordModal
+				isOpen={showPasswordModal}
+				setIsOpen={setShowPasswordModal}
+			/>
+
 			<header>
 				<div className='img'>
 					<Dropzone
@@ -78,7 +85,7 @@ const Client: React.FC = () =>
 				</div>
 				<div className='info'>
 					<h3>Senha</h3>
-					<button className='password'>
+					<button className='password' onClick={() => setShowPasswordModal(true)} >
 						Modificar senha
 					</button>
 				</div>
