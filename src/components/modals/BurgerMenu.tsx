@@ -6,7 +6,6 @@ import {useRouter} from 'next/router'
 
 import Container from '../../styles/components/modals/BurgerMenu'
 import Company from '../../models/company'
-import useUser from '../../hooks/useUser'
 
 interface BurgerMenuProps
 {
@@ -18,8 +17,7 @@ interface BurgerMenuProps
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =>
 {
-	const {user} = useUser()
-	const {push, pathname} = useRouter()
+	const {pathname} = useRouter()
 
 	const [showCatalogDropdown, setShowCatalogDropdown] = useState(false)
 
