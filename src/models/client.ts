@@ -1,5 +1,38 @@
 import {CompanyCondition} from './company';
 
+interface Client
+{
+	id: string
+	imagem: string
+	razao_social: string
+	nome_fantasia: string
+	cnpj: string
+	insc_estadual: string
+	telefone: number
+	email: string
+	endereco:
+	{
+		rua: string
+		numero: number
+		bairro: string
+		cep: number
+		cidade: string
+		uf: string
+	}
+	status:
+	{
+		ativo: boolean
+		aberto: boolean
+		nome_sujo: boolean
+	}
+	representadas: Array<
+	{
+		id: string
+		nome_fantasia: string
+		tabela: string
+	}>
+}
+
 export interface ClientConditions
 {
 	vista: boolean
@@ -15,3 +48,5 @@ export const defaultCientConditions: ClientConditions =
 	prazo: false,
 	prazoOpcoes: []
 }
+
+export default Client
