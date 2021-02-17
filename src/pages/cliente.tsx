@@ -3,12 +3,14 @@ import Skeleton from 'react-loading-skeleton';
 
 import Container from '../styles/pages/cliente'
 import useUser from '../hooks/useUser'
-import Loading from '../components/Loading'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ClientInterface from '../models/client';
 import Dropzone from '../components/Dropzone';
 import PasswordModal from '../components/modals/Password';
+import errorAlert from '../utils/alerts/error';
+import LoadingModal from '../components/modals/Loading';
+import sucessAlert from '../utils/alerts/sucess';
 
 const Client: React.FC = () =>
 {
@@ -16,6 +18,7 @@ const Client: React.FC = () =>
 
 	const [userDetails, setUserDetails] = useState<ClientInterface>(null)
 	const [showPasswordModal, setShowPasswordModal] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() =>
 	{
@@ -47,6 +50,25 @@ const Client: React.FC = () =>
 			return <Skeleton />
 	}
 
+	function updateImage(file: File)
+	{
+		const data = new FormData()
+		data.append('imagem', file)
+
+		setLoading(true)
+		api.put(`clients/${user.id}`, data)
+			.then(() =>
+			{
+				setLoading(false)
+				sucessAlert('Imagem atualizada com sucesso!')
+			})
+			.catch(error =>
+			{
+				setLoading(false)
+				errorAlert(error.response.data.message)
+			})
+	}
+
 	return (
 		<Container className='page' >
 			<Head>
@@ -58,10 +80,14 @@ const Client: React.FC = () =>
 				setIsOpen={setShowPasswordModal}
 			/>
 
+			<LoadingModal
+				isOpen={loading}
+			/>
+
 			<header>
 				<div className='img'>
 					<Dropzone
-						onFileUploaded={() => {}}
+						onFileUploaded={updateImage}
 						shownFileUrl={user.data && user.data.image}
 					/>
 				</div>
