@@ -7,7 +7,10 @@ const theme =
     primaryLight: '#ED271D',
     secondary: '#CC9749',
     secondaryStrong: '#E2AD25',
-    background: '#E2DADB'
+    background: '#E2DADB',
+
+		buttonRed: '#c94040',
+		buttonGreen: '#59d359'
 	}
 }
 

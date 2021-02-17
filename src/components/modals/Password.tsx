@@ -84,7 +84,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 				</form>
 				<button className='submit' onClick={handleSubmit} >
 					<FiSend size={25} />
-					<span>Enviar</span>
+					<span>Confirmar</span>
 				</button>
 			</Container>
 		</ModalContainer>
