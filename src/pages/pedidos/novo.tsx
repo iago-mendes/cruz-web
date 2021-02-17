@@ -16,7 +16,7 @@ import {defaultProductListedPriced, ProductListedPriced} from '../../models/prod
 import {RequestProduct} from '../../models/request'
 import formatPrice from '../../utils/formatPrice'
 import getDate from '../../utils/getDate'
-import confirmAlert from '../../utils/alerts/confirm'
+import sucessAlert from '../../utils/alerts/sucess'
 import errorAlert from '../../utils/alerts/error'
 import {ClientConditions, defaultCientConditions} from '../../models/client'
 import {selectStyles} from '../../styles/global'
@@ -198,7 +198,7 @@ const Pedido: React.FC = () =>
 		api.post('requests', data)
 			.then(() =>
 			{
-				confirmAlert('Seu pedido foi realizado com sucesso!')
+				sucessAlert('Seu pedido foi realizado com sucesso!')
 				router.back()
 			})
 			.catch(err =>

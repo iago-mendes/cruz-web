@@ -1,7 +1,12 @@
 import {useState} from 'react'
 import { FiEye, FiEyeOff, FiSend } from 'react-icons/fi'
+import useUser from '../../hooks/useUser'
+import api from '../../services/api'
 
 import Container from '../../styles/components/modals/Password'
+import errorAlert from '../../utils/alerts/error'
+import sucessAlert from '../../utils/alerts/sucess'
+import warningAlert from '../../utils/alerts/warning'
 import ModalContainer from './Container'
 
 interface PasswordModalProps
@@ -12,6 +17,7 @@ interface PasswordModalProps
 
 const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 {
+	const {user} = useUser();
 	const [inputType, setInputType] = useState('password')
 
 	const [currentPwd, setCurrentPwd] = useState('')
@@ -27,7 +33,45 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 	}
 
 	function handleSubmit()
-	{}
+	{
+		if (currentPwd === '' || newPwd === '' || newPwd2 === '')
+			return warningAlert('Você precisa preencher todos os campos!')
+
+		if (newPwd !== newPwd2)
+			return warningAlert('A confirmação da senha não corresponde à senha!')
+
+		if (!user.data)
+			return errorAlert('Os dados da sua conta não foram encontrados.')
+		
+		const auth =
+		{
+			email: user.data.email,
+			password: currentPwd
+		}
+		const changePwd =
+		{
+			senha: newPwd
+		}
+
+		api.post('login/client', auth)
+			.then(() =>
+			{
+				api.put(`change-password/client/${user.id}`, changePwd)
+					.then(() =>
+					{
+						setIsOpen(false)
+						sucessAlert('Senha atualizada com sucesso!')
+					})
+					.catch(error =>
+					{
+						errorAlert(error.response.data.message)
+					})
+			})
+			.catch(error =>
+			{
+				errorAlert(error.response.data.message)
+			})
+	}
 
 	return (
 		<ModalContainer
@@ -72,7 +116,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 						/>
 					</div>
 					<div className='field'>
-						<label htmlFor='new2'>Digite novamente sua nova senha</label>
+						<label htmlFor='new2'>Confirme nova senha</label>
 						<input
 							type={inputType}
 							id='new2'
