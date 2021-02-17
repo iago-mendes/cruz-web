@@ -10,6 +10,7 @@ import illustration from '../assets/illustration2.svg'
 import logo from '../assets/logo.svg'
 import Container from '../styles/pages/login'
 import useUser from '../hooks/useUser'
+import LoadingModal from '../components/modals/Loading'
 
 export default function Login()
 {
@@ -18,7 +19,9 @@ export default function Login()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+
 	const [showedError, setShowedError] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() =>
 	{
@@ -41,6 +44,8 @@ export default function Login()
 	async function handleSubmit(e: FormEvent)
 	{
 		e.preventDefault()
+
+		setLoading(true)
 		signIn('credentials', {email, password})
 	}
 
@@ -49,6 +54,10 @@ export default function Login()
 			<Head>
 				<title>Entrar | Cruz Representações</title>
 			</Head>
+
+			<LoadingModal
+				isOpen={loading}
+			/>
 
 			<main>
 				<div className='left'>
