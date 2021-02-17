@@ -8,6 +8,7 @@ import errorAlert from '../../utils/alerts/error'
 import sucessAlert from '../../utils/alerts/sucess'
 import warningAlert from '../../utils/alerts/warning'
 import ModalContainer from './Container'
+import LoadingModal from './Loading'
 
 interface PasswordModalProps
 {
@@ -19,6 +20,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 {
 	const {user} = useUser();
 	const [inputType, setInputType] = useState('password')
+	const [loading, setLoading] = useState(false)
 
 	const [currentPwd, setCurrentPwd] = useState('')
 	const [newPwd, setNewPwd] = useState('')
@@ -52,23 +54,27 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 		{
 			senha: newPwd
 		}
-
+		
+		setLoading(true)
 		api.post('login/client', auth)
 			.then(() =>
 			{
 				api.put(`change-password/client/${user.id}`, changePwd)
 					.then(() =>
 					{
+						setLoading(false)
 						setIsOpen(false)
 						sucessAlert('Senha atualizada com sucesso!')
 					})
 					.catch(error =>
 					{
+						setLoading(false)
 						errorAlert(error.response.data.message)
 					})
 			})
 			.catch(error =>
 			{
+				setLoading(false)
 				errorAlert(error.response.data.message)
 			})
 	}
@@ -78,6 +84,10 @@ const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 			isOpen={isOpen}
 			setIsOpen={setIsOpen}
 		>
+			<LoadingModal
+				isOpen={loading}
+			/>
+
 			<Container>
 				<button
 					className='showPwd'

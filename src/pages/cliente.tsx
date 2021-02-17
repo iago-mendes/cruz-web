@@ -86,7 +86,7 @@ const Client: React.FC = () =>
 				<div className='info'>
 					<h3>Senha</h3>
 					<button className='password' onClick={() => setShowPasswordModal(true)} >
-						Modificar senha
+						Atualizar senha
 					</button>
 				</div>
 				<div className='info'>
