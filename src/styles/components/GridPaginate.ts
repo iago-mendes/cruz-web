@@ -7,7 +7,7 @@ interface ContainerProps
 }
 
 const Container = styled.div<ContainerProps>`
-	min-height: 70vh;
+	min-height: calc(100vh - 7.5rem);
 	
 	display: flex;
 	flex-direction: column;
