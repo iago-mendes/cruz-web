@@ -5,6 +5,9 @@ import api from '../../services/api'
 const posts: NextApiHandler = async (req, res) =>
 {
 	const {page, client} = req.query
+	if (client === 'not-logged')
+		return res.end()
+
 	const {data, headers} = await api.get('requests', {params: {client, page}})
 
 	const paginate =
