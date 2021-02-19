@@ -1,4 +1,4 @@
-import {ChangeEvent} from 'react'
+import {ChangeEvent, useEffect} from 'react'
 import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
 import {Paginate} from '../models'
 

@@ -22,21 +22,16 @@ const useRequests = () =>
 	async function updateRequests()
 	{
 		setLoading(true)
-
-		let tmpRequests: RequestListed[] = []
-		let tmpPaginate = {page: 1, total: 1}
-
-		await api.get('requests', {params: {client: user.id, page: paginate.page}})
-			.then(({data, headers}) =>
-			{
-				tmpRequests = data
-
-				tmpPaginate =
-				{
-					page: Number(headers.page),
-					total: Number(headers.totalpages)
-				}
-			})
+		
+		const {data, headers} = await api.get('requests', {params: {client: user.id, page: paginate.page}})
+		
+		
+		let tmpRequests: RequestListed[] = data || []
+		const tmpPaginate =
+		{
+			page: Number(headers.page) || 1,
+			total: Number(headers.totalpages) || 1
+		}
 
 		setRequests(tmpRequests)
 		setPaginate(tmpPaginate)
