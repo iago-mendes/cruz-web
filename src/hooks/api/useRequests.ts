@@ -3,15 +3,14 @@ import {useEffect, useState} from 'react'
 import useUser from '../useUser'
 import api from '../../services/api'
 import {RequestListed} from '../../models/request'
-
-const defaultPaginate = {page: 1, total: 1}
+import {defaultPaginate, Paginate} from '../../models'
 
 const useRequests = () =>
 {
 	const {user} = useUser()
 
 	const [requests, setRequests] = useState<RequestListed[]>([])
-	const [paginate, setPaginate] = useState(defaultPaginate)
+	const [paginate, setPaginate] = useState<Paginate>(defaultPaginate)
 	const [loading, setLoading] = useState(true)
 	
 	useEffect(() =>

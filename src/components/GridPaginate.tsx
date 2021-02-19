@@ -1,5 +1,6 @@
 import {ChangeEvent} from 'react'
 import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
+import {Paginate} from '../models'
 
 import Container from '../styles/components/GridPaginate'
 import Loading from './Loading'
@@ -9,18 +10,26 @@ interface GridPaginateProps
 	cardWidth: number
 	cardHeight: number
 
-	page: number
-	setPage: (p: number) => void
-
-	totalPages: number
+	paginate: Paginate
+	setPaginate: (p: Paginate) => void
 
 	loading: boolean
 	noResults: boolean
 }
 
 const GridPaginate: React.FC<GridPaginateProps> =
-({cardWidth, cardHeight, page, setPage, totalPages, loading, noResults, children}) =>
+({cardWidth, cardHeight, paginate, setPaginate, loading, noResults, children}) =>
 {
+	const page = paginate.page
+	const totalPages = paginate.total
+
+	function setPage(page: number)
+	{
+		let tmpPaginate = paginate
+		tmpPaginate.page = page
+		setPaginate(tmpPaginate)
+	}
+
 	function goBack()
 	{
 		if (page > 1)

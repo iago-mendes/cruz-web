@@ -6,8 +6,6 @@ import useRequests from '../../hooks/api/useRequests'
 
 const Requests: React.FC = () =>
 {
-	
-
 	const {requests, loading, paginate, setPaginate} = useRequests()
 
 	return (
@@ -21,6 +19,7 @@ const Requests: React.FC = () =>
 				cardHeight={300}
 
 				paginate={paginate}
+				setPaginate={setPaginate}
 
 				loading={loading}
 				noResults={false}
