@@ -24,8 +24,8 @@ const Requests: React.FC = () =>
 				loading={loading}
 				noResults={false}
 			>
-				{requests.map(request => (
-					<div className="request">
+				{requests.map((request, index) => (
+					<div key={index} className='request'>
 						<h1>{request.data}</h1>
 						<h2>{request.representada.nome_fantasia}</h2>
 					</div>
