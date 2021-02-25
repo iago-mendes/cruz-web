@@ -27,6 +27,7 @@ export default createGlobalStyle`
 	body
 	{
 		background-color: ${p => p.theme.colors.background};
+		color: ${p => p.theme.colors.text};
 	}
 
 	.page

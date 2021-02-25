@@ -8,6 +8,7 @@ const theme =
     secondary: '#CC9749',
     secondaryStrong: '#E2AD25',
     background: '#E2DADB',
+		text: '#313131',
 
 		buttonRed: '#c94040',
 		buttonGreen: '#59d359'

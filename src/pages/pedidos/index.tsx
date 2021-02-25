@@ -42,17 +42,6 @@ const Requests: React.FC = () =>
 								)}
 								<h2>{formatDate(request.data)}</h2>
 							</div>
-							<div className='status'>
-								<span style={{backgroundColor: request.status.concluido ? '#16881a' : '#881616'}} >
-									{request.status.concluido ? 'concluído' : 'em orçamento' }
-								</span>
-								<span style={{backgroundColor: request.status.enviado ? '#16881a' : '#881616'}} >
-									{request.status.enviado ? 'enviado' : 'não enviado' }
-								</span>
-								<span style={{backgroundColor: request.status.faturado ? '#16881a' : '#881616'}} >
-									{request.status.faturado ? 'faturado' : 'não faturado' }
-								</span>
-							</div>
 							<div className='buttons'>
 								<button title='Ver pedido' onClick={() => {}}>
 									<FaRegEye size={20} />

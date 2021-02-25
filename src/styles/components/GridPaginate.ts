@@ -18,8 +18,8 @@ const Container = styled.div<ContainerProps>`
 	{
 		width: 100%;
 		display: grid;
-		grid-auto-rows: ${p => p.cardHeight};
-		grid-template-columns: ${p => `repeat(auto-fill, minmax(${p.cardWidth}, 1fr))`};
+		grid-auto-rows: ${p => p.cardHeight}px;
+		grid-template-columns: ${p => `repeat(auto-fill, minmax(${p.cardWidth}px, 1fr))`};
 		grid-gap: 2rem;
 		align-items: center;
 		justify-items: center;
