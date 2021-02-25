@@ -1,7 +1,6 @@
 import {FiArrowLeft} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import {signIn} from 'next-auth/client'
 import Image from 'next/image'
@@ -11,6 +10,7 @@ import logo from '../assets/logo.svg'
 import Container from '../styles/pages/login'
 import useUser from '../hooks/useUser'
 import LoadingModal from '../components/modals/Loading'
+import SEOHead from '../components/SEOHead'
 
 export default function Login()
 {
@@ -51,9 +51,9 @@ export default function Login()
 
 	return (
 		<Container className='container'>
-			<Head>
-				<title>Entrar | Cruz Representações</title>
-			</Head>
+			<SEOHead
+				title='Entrar | Cruz Representações'
+			/>
 
 			<LoadingModal
 				isOpen={loading}

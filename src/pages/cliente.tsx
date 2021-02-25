@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Skeleton from 'react-loading-skeleton';
 
 import Container from '../styles/pages/cliente'
@@ -11,6 +10,7 @@ import PasswordModal from '../components/modals/Password';
 import errorAlert from '../utils/alerts/error';
 import LoadingModal from '../components/modals/Loading';
 import sucessAlert from '../utils/alerts/sucess';
+import SEOHead from '../components/SEOHead';
 
 const Client: React.FC = () =>
 {
@@ -71,9 +71,9 @@ const Client: React.FC = () =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Client</title>
-			</Head>
+			<SEOHead
+				title='Minha conta | Cruz Representações'
+			/>
 
 			<PasswordModal
 				isOpen={showPasswordModal}

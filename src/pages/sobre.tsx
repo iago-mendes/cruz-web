@@ -1,10 +1,10 @@
-import Head from 'next/head'
 import {GetStaticProps} from 'next'
 import {FiGithub, FiLinkedin} from 'react-icons/fi'
 
 import Container from '../styles/pages/sobre'
 import logo from '../assets/logo.svg'
 import api from '../services/api'
+import SEOHead from '../components/SEOHead'
 
 interface AboutProps
 {
@@ -21,9 +21,9 @@ const About: React.FC<AboutProps> = ({sellers}) =>
 {
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Sobre | Cruz Representações</title>
-			</Head>
+			<SEOHead
+				title='Sobre | Cruz Representações'
+			/>
 
 			<main>
 				<div className='cardGroup history'>

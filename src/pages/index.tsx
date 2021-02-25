@@ -1,8 +1,8 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 
 import illustration from '../assets/illustration1.svg'
 import Carousel from '../components/Carousel'
+import SEOHead from '../components/SEOHead'
 import Container from '../styles/pages/index'
 
 interface HomeProps
@@ -14,9 +14,7 @@ const Home: React.FC<HomeProps> = ({carouselImages}) =>
 {
   return (
     <Container className='page' >
-      <Head>
-        <title>Cruz representações</title>
-      </Head>
+      <SEOHead />
 			
 			<Carousel images={carouselImages} />
       <main>

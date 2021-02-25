@@ -1,7 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useRouter} from 'next/router'
 import Loading from '../../../components/Loading'
+import SEOHead from '../../../components/SEOHead'
 
 import api from '../../../services/api'
 import Container from '../../../styles/pages/catalogo/[company]/index'
@@ -26,9 +26,9 @@ const CompanyLines: React.FC <CompanyLinesProps> = ({lines, company}) =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>{company.name} — Linhas | Cruz Representações</title>
-			</Head>
+			<SEOHead
+				title={`${company.name} — Linhas | Cruz Representações`}
+			/>
 
 			<main>
 				{lines.map(line => (

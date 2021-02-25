@@ -1,10 +1,10 @@
-import Head from 'next/head'
 import {FaRegEye} from 'react-icons/fa'
 
 import Container from '../../styles/pages/pedidos/index'
 import GridPaginate from '../../components/GridPaginate'
 import useRequests from '../../hooks/api/useRequests'
 import formatDate from '../../utils/formatDate'
+import SEOHead from '../../components/SEOHead'
 
 const Requests: React.FC = () =>
 {
@@ -12,9 +12,9 @@ const Requests: React.FC = () =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Requests</title>
-			</Head>
+			<SEOHead
+				title='Meus pedidos | Cruz Representações'
+			/>
 
 			<GridPaginate
 				cardWidth={300}

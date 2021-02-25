@@ -7,6 +7,7 @@ import Container from '../../../styles/pages/catalogo/[company]/[line]'
 import ProductModal from '../../../components/modals/ProductModal'
 import Product from '../../../models/product'
 import Loading from '../../../components/Loading'
+import SEOHead from '../../../components/SEOHead'
 
 interface LineProductsProps
 {
@@ -36,9 +37,9 @@ const LineProducts: React.FC<LineProductsProps> = ({products, companyName}) =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>{companyName} — Produtos | Cruz Representações</title>
-			</Head>
+			<SEOHead
+				title={`${companyName} — Produtos | Cruz Representações`}
+			/>
 
 			<ProductModal product={product} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
 

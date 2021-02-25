@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {FiArrowLeft, FiInfo, FiMinus, FiPlus} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
@@ -21,6 +20,7 @@ import errorAlert from '../../utils/alerts/error'
 import {ClientConditions, defaultCientConditions} from '../../models/client'
 import {selectStyles} from '../../styles/global'
 import RequestProductModal from '../../components/modals/RequestProduct'
+import SEOHead from '../../components/SEOHead'
 
 const Pedido: React.FC = () =>
 {
@@ -209,9 +209,9 @@ const Pedido: React.FC = () =>
 
 	return (
 		<Container step={step} >
-			<Head>
-				<title>Pedido</title>
-			</Head>
+			<SEOHead
+				title='Novo pedido | Cruz Representações'
+			/>
 
 			<RequestProductModal
 				isOpen={isProductModalOpen}

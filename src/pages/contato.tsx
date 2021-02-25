@@ -1,14 +1,13 @@
-import Head from "next/head";
-
 import Container from '../styles/pages/contato'
+import SEOHead from "../components/SEOHead";
 
 export default function Contact()
 {
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Contato | Cruz Representações</title>
-			</Head>
+			<SEOHead
+				title='Contato | Cruz Representações'
+			/>
 
 			<div className="scrollable">
 				<form>

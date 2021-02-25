@@ -6,6 +6,7 @@ import api from '../services/api'
 import CompanyModal from '../components/modals/Company'
 import Company from '../models/company'
 import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 
 interface CompaniesProps
 {
@@ -33,10 +34,12 @@ const Companies: React.FC<CompaniesProps> = ({companies, companiesInfo}) =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Empresas | Cruz representações</title>
-			</Head>
+			<SEOHead
+				title='Empresas | Cruz representações'
+			/>
+
 			<CompanyModal company={company} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+			
 			<main>
 				{companies.map(company => (
 					<div className='flipCard' key={company.id} onClick={() => handleCompanyClick(company.id)} >
