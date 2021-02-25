@@ -2,13 +2,15 @@ import styled from 'styled-components'
 
 const Container = styled.div`
 	width: 20rem;
+	direction: ltr;
 
 	.detail
 	{
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 2rem;
+
 		color: ${p => p.theme.colors.primary};
+		padding-right: 3rem;
 	}
 
 	main
@@ -33,7 +35,6 @@ const Container = styled.div`
 				font-family: Roboto;
 				font-size: 1.5rem;
 				color: ${p => p.theme.colors.background};
-				word-break: break-all;
 			}
 
 			button
