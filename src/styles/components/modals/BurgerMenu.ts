@@ -49,16 +49,28 @@ const Container = styled.ul<ContainerProps>`
 	{
 		height: fit-content !important;
 		flex-direction: column;
+		gap: 1rem;
 
 		.group svg
 		{
 			transform: ${p => p.showCatalogDropdown ? 'rotate(180deg)' : 'rotate(90deg)'} !important;
 		}
 
-		ul
+		.catalog
 		{
 			position: static !important;
 			box-shadow: none !important;
+
+			background-color: ${p => p.theme.colors.primary};
+			box-shadow: 0px 5px 5px black;
+
+			width: 15rem;
+			height: fit-content;
+
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2rem;
 		}
 	}
 `

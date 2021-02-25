@@ -55,6 +55,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 
 				height: 'calc(100vh - 7.5rem)',
 				overflowY: 'auto',
+				overflowX: 'hidden',
 				boxShadow: '5px 5px 5px rgba(0,0, 0, 0.5)',
 			}}
 		>
@@ -81,17 +82,37 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 						<BsFillTriangleFill size={10} className='indicator' />
 						<span className='link' >Catálogo</span>
 					</div>
-					{showCatalogDropdown && (
-						<ul>
-							{companies && companies.map((company: Company) => (
-								<Link href={`/catalogo/${company.id}`} key={company.id}>
-									<a className='link' onClick={() => setIsOpen(false)} >
-										{company.nome_fantasia}
-									</a>
-								</Link>
-							))}
-						</ul>
-					)}
+					<motion.div
+						className='catalog'
+						initial={false}
+						transition={{duration: 0.25}}
+						animate={showCatalogDropdown ? 'open' : 'closed'}
+						variants=
+						{{
+							open:
+							{
+								height: 'fit-content',
+								opacity: 1,
+							},
+							closed:
+							{
+								height: 0,
+								opacity: 0,
+							}
+						}}
+						style=
+						{{
+							overflow: 'hidden'
+						}}
+					>
+						{companies && companies.map((company: Company) => (
+							<Link href={`/catalogo/${company.id}`} key={company.id}>
+								<a className='link' onClick={() => setIsOpen(false)} >
+									{company.nome_fantasia}
+								</a>
+							</Link>
+						))}
+					</motion.div>
 				</div>
 				<Link href='/contato'>
 					<a className='link row' onClick={() => setIsOpen(false)} >
