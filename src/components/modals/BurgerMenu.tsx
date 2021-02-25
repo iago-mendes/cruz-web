@@ -6,6 +6,7 @@ import {useRouter} from 'next/router'
 
 import Container from '../../styles/components/modals/BurgerMenu'
 import Company from '../../models/company'
+import useClickOutside from '../../hooks/useClickOutside'
 
 interface BurgerMenuProps
 {
@@ -20,6 +21,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 	const {pathname} = useRouter()
 
 	const [showCatalogDropdown, setShowCatalogDropdown] = useState(false)
+	const burgerRef = useClickOutside(() => setIsOpen(false))
 
 	useEffect(() =>
 	{
@@ -56,7 +58,10 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 				boxShadow: '5px 5px 5px rgba(0,0, 0, 0.5)',
 			}}
 		>
-			<Container showCatalogDropdown={showCatalogDropdown} >
+			<Container
+				showCatalogDropdown={showCatalogDropdown}
+				ref={burgerRef}
+			>
 				<Link href='/pedidos/novo'>
 					<a className='linkBlock' onClick={() => setIsOpen(false)} >
 						Fazer pedido

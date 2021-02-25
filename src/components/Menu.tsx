@@ -14,18 +14,21 @@ import BurgerMenu from './modals/BurgerMenu'
 import UserMenu from './modals/UserMenu'
 import useUser from '../hooks/useUser'
 import useDimensions from '../hooks/useDimensions'
+import useClickOutside from '../hooks/useClickOutside'
 
 export default function MenuTabs()
 {
 	const router = useRouter()
 	const {user} = useUser()
 	const {inMobile, inDesktop} = useDimensions()
-
-	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+	
 	const [showDropdown, setShowDropdown] = useState(false)
 	const {data: companies} = useSWR('/api/getCompanies')
+	
+	const [isBurgerOpen, setIsBurgerOpen] = useState(false)
 
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+	const userRef = useClickOutside(() => setIsUserMenuOpen(false))
 	
 	if (['/login', '/pedidos/novo'].includes(router.pathname))
 		return null
@@ -125,7 +128,7 @@ export default function MenuTabs()
 					)
 				}
 				<div className='user'
-					onMouseLeave={() => setIsUserMenuOpen(false)}
+					ref={userRef}
 				>
 					{
 						user.id !== 'not-logged'
