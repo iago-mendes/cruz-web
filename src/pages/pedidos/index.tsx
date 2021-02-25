@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import {FaRegEye} from 'react-icons/fa'
 
 import Container from '../../styles/pages/pedidos/index'
 import GridPaginate from '../../components/GridPaginate'
 import useRequests from '../../hooks/api/useRequests'
+import formatDate from '../../utils/formatDate'
 
 const Requests: React.FC = () =>
 {
@@ -25,9 +27,55 @@ const Requests: React.FC = () =>
 				noResults={false}
 			>
 				{requests.map((request, index) => (
-					<div key={index} className='request'>
-						<h1>{request.data}</h1>
-						<h2>{request.representada.nome_fantasia}</h2>
+					<div className='request' key={index} >
+						<div className='header'>
+							<div className='typeDate'>
+								{request.tipo.venda && (
+									<span style={{backgroundColor: '#357435'}} >
+										venda
+									</span>
+								)}
+								{request.tipo.troca && (
+									<span style={{backgroundColor: '#2b2b68'}} >
+										troca
+									</span>
+								)}
+								<h2>{formatDate(request.data)}</h2>
+							</div>
+							<div className='status'>
+								<span style={{backgroundColor: request.status.concluido ? '#16881a' : '#881616'}} >
+									{request.status.concluido ? 'concluído' : 'em orçamento' }
+								</span>
+								<span style={{backgroundColor: request.status.enviado ? '#16881a' : '#881616'}} >
+									{request.status.enviado ? 'enviado' : 'não enviado' }
+								</span>
+								<span style={{backgroundColor: request.status.faturado ? '#16881a' : '#881616'}} >
+									{request.status.faturado ? 'faturado' : 'não faturado' }
+								</span>
+							</div>
+							<div className='buttons'>
+								<button title='Ver pedido' onClick={() => {}}>
+									<FaRegEye size={20} />
+								</button>
+							</div>
+						</div>
+						<ul className='info' >
+							<li>
+								<div className='imgName'>
+									<img src={request.representada.imagem} alt={request.representada.nome_fantasia}/>
+									<h1>{request.representada.nome_fantasia}</h1>
+								</div>
+								<div className='description'>
+									<h2>{request.representada.razao_social}</h2>
+								</div>
+							</li>
+							<li>
+								<div className='imgName'>
+									<img src={request.vendedor.imagem} alt={request.vendedor.nome}/>
+									<h1>{request.vendedor.nome}</h1>
+								</div>
+							</li>
+						</ul>
 					</div>
 				))}
 			</GridPaginate>
