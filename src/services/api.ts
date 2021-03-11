@@ -12,4 +12,6 @@ const api = axios.create(
 	}
 })
 
+export const apiUrl = String(env.apiUrl)
+
 export default api

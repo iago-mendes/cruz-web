@@ -5,6 +5,7 @@ import GridPaginate from '../../components/GridPaginate'
 import useRequests from '../../hooks/api/useRequests'
 import formatDate from '../../utils/formatDate'
 import SEOHead from '../../components/SEOHead'
+import {apiUrl} from '../../services/api'
 
 const Requests: React.FC = () =>
 {
@@ -42,11 +43,14 @@ const Requests: React.FC = () =>
 								)}
 								<h2>{formatDate(request.data)}</h2>
 							</div>
-							<div className='buttons'>
-								<button title='Ver pedido' onClick={() => {}}>
-									<FaRegEye size={20} />
-								</button>
-							</div>
+							<a
+								title='Ver pedido'
+								href={`${apiUrl}/pdf/requests/${request.id}`}
+								target='_blank'
+								rel='nonreferrer'
+							>
+								<FaRegEye size={20} />
+							</a>
 						</div>
 						<ul className='info' >
 							<li>
