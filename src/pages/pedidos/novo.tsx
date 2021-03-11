@@ -25,7 +25,7 @@ import SEOHead from '../../components/SEOHead'
 const Pedido: React.FC = () =>
 {
 	const {user} = useUser()
-	const router = useRouter()
+	const {push, back} = useRouter()
 
 	const [step, setStep] = useState(1)
 	const [representada, setRepresentada] = useState('')
@@ -199,7 +199,7 @@ const Pedido: React.FC = () =>
 			.then(() =>
 			{
 				sucessAlert('Seu pedido foi realizado com sucesso!')
-				router.back()
+				push('/pedidos')
 			})
 			.catch(err =>
 			{
@@ -221,7 +221,7 @@ const Pedido: React.FC = () =>
 
 			<header>
 				<div className='group'>
-					<button className='cancel' onClick={() => router.back()} >
+					<button className='cancel' onClick={() => back()} >
 						<FiArrowLeft size={30} />
 						<span>Cancelar</span>
 					</button>
