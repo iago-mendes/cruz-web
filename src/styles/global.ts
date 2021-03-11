@@ -30,6 +30,22 @@ export default createGlobalStyle`
 		color: ${p => p.theme.colors.text};
 	}
 
+	body, input, textarea, button
+	{
+		font-family: Roboto;
+	}
+
+	button
+	{
+		cursor: pointer;
+	}
+	
+	a
+	{
+		color: inherit;
+		text-decoration: none;
+	}
+
 	.page
 	{
 		min-height: calc(100vh - 7.5rem);

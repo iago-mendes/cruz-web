@@ -49,30 +49,24 @@ const Container = styled.div`
 				}
 			}
 
-			.buttons
+			a
 			{
+				width: 4rem;
+				height: 4rem;
+				border-radius: 10rem;
+	
+				border: none;
+				background: none;
 				display: flex;
-				gap: 1rem;
+				align-items: center;
+				justify-content: center;
 
-				button
+				cursor: pointer;
+				transition: 0.25s;
+	
+				:hover
 				{
-					width: 4rem;
-					height: 4rem;
-					border-radius: 10rem;
-		
-					border: none;
-					background: none;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-		
-					cursor: pointer;
-					transition: 0.25s;
-		
-					:hover
-					{
-						background-color: ${p => p.theme.colors.background};
-					}
+					background-color: ${p => p.theme.colors.background};
 				}
 			}
 		}
