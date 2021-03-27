@@ -23,7 +23,7 @@ const Container = styled.div`
 			{
 				width: 100%;
 				padding: 1rem;
-				border-radius: 2rem;
+				border-radius: 1rem;
 
 				border-color: var(--primary);
 				border-style: solid;
@@ -59,6 +59,7 @@ const Container = styled.div`
 				:hover
 				{
 					transform: scale(1.1);
+					border-radius: 0;
 				}
 			}
 
