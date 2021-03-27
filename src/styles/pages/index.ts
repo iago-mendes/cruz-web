@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	background-color: ${p => p.theme.colors.primary};
 
-	height: calc(100vh - 7.5rem);
+	min-height: calc(100vh - 7.5rem);
 	overflow: hidden;
 
 	.carousel
