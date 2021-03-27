@@ -193,7 +193,7 @@ const Container = styled.div`
 					a
 					{
 						color: ${p => p.theme.colors.secondaryStrong};
-						transition: 0.25s;
+						text-decoration: underline;
 					}
 				}
 			}
