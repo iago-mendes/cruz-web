@@ -1,11 +1,17 @@
 import Link from 'next/link'
 import Container from '../styles/components/Footer'
 import {FiFacebook, FiInstagram} from 'react-icons/fi'
+import {useRouter} from 'next/router'
 
 import logo from '../assets/logo.svg'
 
 const Footer: React.FC = () =>
 {
+	const {pathname} = useRouter()
+
+	if (pathname === '/login')
+		return null
+
 	return (
 		<Container>
 			<Link href='/' >
