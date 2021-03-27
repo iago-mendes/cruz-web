@@ -48,13 +48,13 @@ const Footer: React.FC = () =>
 				<div className='group'>
 					<h3>Redes sociais</h3>
 					<ul>
-						<a target='_blank' rel='nonreferrer' href='https://wa.me/3899856208' className='social' >
+						<a target='_blank' rel='nonreferrer' href='https://wa.me/5538999856208' className='social' >
 							<FaWhatsapp size={25} />
-							<span>(38) 9985-6208 (Comercial) </span>
+							<span>(38) 9 9985-6208 (Comercial) </span>
 						</a>
-						<a target='_blank' rel='nonreferrer' href='https://wa.me/3899866208' className='social' >
+						<a target='_blank' rel='nonreferrer' href='https://wa.me/5538999866208' className='social' >
 							<FaWhatsapp size={25} />
-							<span>(38) 9986-6208 (Admnistrativo) </span>
+							<span>(38) 9 9986-6208 (Admnistrativo) </span>
 						</a>
 						<a target='_blank' rel='nonreferrer' href='https://www.facebook.com/CruzRepresentacoes' className='social' >
 							<FiFacebook size={25} />
