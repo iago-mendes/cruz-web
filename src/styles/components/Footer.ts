@@ -7,6 +7,8 @@ const Container = styled.footer`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	overflow-x: hidden;
 	
 	*
 	{
@@ -54,7 +56,7 @@ const Container = styled.footer`
 				margin-left: 2rem;
 				display: grid;
 				grid-auto-rows: 3rem;
-				grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 				grid-gap: 1rem;
 				align-items: center;
 			
