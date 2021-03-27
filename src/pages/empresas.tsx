@@ -5,7 +5,6 @@ import Container from '../styles/pages/empresas'
 import api from '../services/api'
 import CompanyModal from '../components/modals/Company'
 import Company from '../models/company'
-import Head from 'next/head'
 import SEOHead from '../components/SEOHead'
 
 interface CompaniesProps

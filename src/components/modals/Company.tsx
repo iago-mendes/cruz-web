@@ -2,7 +2,6 @@ import Link from 'next/link'
 
 import Container from '../../styles/components/modals/Company'
 import Company from '../../models/company'
-import React from 'react'
 import ModalContainer from './Container'
 
 interface CompanyModalProps
