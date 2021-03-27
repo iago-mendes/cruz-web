@@ -1,18 +1,12 @@
 import styled from 'styled-components'
 
-import bg from '../assets/loginBackground.svg'
-
 const Container = styled.div`
 	background-color: ${p => p.theme.colors.primary};
-	background-image: url(${bg});
-	background-position: right;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
 
 	main
 	{
 		width: 100%;
-		height: 100vh;
+		min-height: 100vh;
 
 		overflow: hidden;
 
@@ -159,12 +153,12 @@ const Container = styled.div`
 					justify-content: center;
 
 					cursor: pointer;
-					transition: 0.5s;
+					transition: 0.25s;
 					
 					:hover
 					{
-						transform: scale(1.05);
-						box-shadow: 5px 5px 5px black;
+						transform: scale(1.1);
+						border-radius: 0;
 					}
 				}
 			}
@@ -189,27 +183,19 @@ const Container = styled.div`
 				justify-content: flex-end;
 				padding: 2rem;
 				
-				h2
+				p
 				{
-					color: ${p => p.theme.colors.primaryDark};
+					color: ${p => p.theme.colors.secondary};
 					font-family: Roboto;
 					font-size: 3rem;
 					width: 50rem;
 					
 					a
 					{
-						color: ${p => p.theme.colors.primary};
-						text-decoration-color: ${p => p.theme.colors.secondary};
+						color: ${p => p.theme.colors.secondaryStrong};
 						transition: 0.25s;
-						
-						:hover
-						{
-							text-decoration-color: ${p => p.theme.colors.primary};
-						}
 					}
-			
 				}
-		
 			}
 		}
 	}
