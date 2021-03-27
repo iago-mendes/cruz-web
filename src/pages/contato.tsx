@@ -25,7 +25,7 @@ export default function Contact()
 					<h1>Telefones</h1>
 					<p>Para entrar em contato conosco por telefone, use algum dos números abaixo.</p>
 					<h2>(38) 9 9985-6208</h2>
-					<h2>(38) 9 9999-9999</h2>
+					<h2>(38) 9 9986-6208</h2>
 				</div>
 			</div>
 		</Container>
