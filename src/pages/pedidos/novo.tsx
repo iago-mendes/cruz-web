@@ -77,7 +77,7 @@ const Pedido: React.FC = () =>
 			setProdutos([])
 			setCondicao('')
 
-			api.get(`companies/${representada}/products-priced`, {params: {client: user.id}})
+			api.get(`companies/${representada}/products/priced`, {params: {client: user.id}})
 				.then(({data}) =>
 				{
 					if (data[0])
