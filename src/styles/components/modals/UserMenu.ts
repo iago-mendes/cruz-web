@@ -17,7 +17,7 @@ const Container = styled.div`
 	{
 		margin-top: -3px;
 		background-color: ${p => p.theme.colors.primary};
-		border-radius: 1rem;
+		border-radius: 0.5rem;
 
 		box-shadow: 0px 0px 10px rgba(0,0,0,1);
 
