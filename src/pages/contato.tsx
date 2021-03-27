@@ -24,15 +24,20 @@ export default function Contact()
 
 		const mailSubject = `Mensagem do E-commerce: ${subject}`
 		const text =
-		`E-mail: ${email}
+		`<h3>E-mail</h3>
+		${email}
 
-		Nome: ${name}
+		<h3>Nome</h3>
+		${name}
 
-		Cidade: ${city}
+		<h3>Cidade</h3>
+		${city}
 
-		Assunto: ${subject}
+		<h3>Assunto</h3>
+		${subject}
 
-		Mensagem: ${message}`
+		<h3>Mensagem</h3>
+		${message}`
 		
 		const data =
 		{
