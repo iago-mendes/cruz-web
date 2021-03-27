@@ -21,7 +21,7 @@ const Home: React.FC<HomeProps> = ({carouselImages}) =>
 				<img src={illustration} alt='Homem mexendo no computador' />
 				<div className='info' >
 					<h1>Cruz Representações</h1>
-					<h2>Excelência em representação comercial em Minas Gerais.</h2>
+					<h2>Excelência em representação comercial.</h2>
 				</div>
       </main>
     </Container>
