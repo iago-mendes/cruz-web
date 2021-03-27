@@ -102,7 +102,7 @@ export default function MenuTabs()
 											overflow: 'hidden'
 										}}
 									>
-										{companies && companies.map((company: Company) => (
+										{(companies && user.id !== 'not-logged') && companies.map((company: Company) => (
 											<Link href={`/catalogo/${company.id}`} key={company.id}>
 												<a className='link'>{company.nome_fantasia}</a>
 											</Link>
