@@ -11,6 +11,7 @@ import Container from '../styles/pages/login'
 import useUser from '../hooks/useUser'
 import LoadingModal from '../components/modals/Loading'
 import SEOHead from '../components/SEOHead'
+import errorAlert from '../utils/alerts/error'
 
 export default function Login()
 {
@@ -28,7 +29,7 @@ export default function Login()
 		if (user.errorMessage && !showedError)
 		{
 			setShowedError(true)
-			alert(user.errorMessage)
+			errorAlert(user.errorMessage)
 		}
 
 		if (user.id !== 'not-logged' && router.pathname === '/login')
