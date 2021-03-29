@@ -32,9 +32,10 @@ export const getStaticProps: GetStaticProps = async ctx =>
 {
 	const carouselImages =
 	[
+		'https://api.cruzrepresentacoes.com.br/public/banners/casaredo.png',
 		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-3.jpg',
 		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-2.jpg',
-		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A02.jpg'
+		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A02.jpg',
 	]
 
 	return {
