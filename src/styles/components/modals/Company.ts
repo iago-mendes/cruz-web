@@ -16,8 +16,8 @@ const Container = styled.main`
 
 		img
 		{
-			height: 90%;
-			width: auto;
+			max-height: 90%;
+			max-width: 500px;
 		}
 
 		h1
