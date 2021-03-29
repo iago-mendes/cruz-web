@@ -59,10 +59,12 @@ const Container = styled.div`
 		font-size: 1.75rem;
 		font-weight: 700;
 
-		padding: 0 2rem;
+		padding: 1rem 2rem;
+
+		width: 100%;
+		text-align: center;
 	}
 	
-
 	@media (min-width: 850px)
 	{
 		gap: 0;
