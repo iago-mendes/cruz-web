@@ -18,7 +18,7 @@ const Requests: React.FC = () =>
 			/>
 
 			<GridPaginate
-				cardWidth={400}
+				cardWidth={300}
 				cardHeight={300}
 
 				paginate={paginate}

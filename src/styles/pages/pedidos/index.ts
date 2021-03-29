@@ -3,8 +3,8 @@ import styled from 'styled-components'
 const Container = styled.div`
 	.request
 	{
-		width: 400px;
-		height: 300px;
+		width: 30rem;
+		height: 30rem;
 
 		background: #fff;
 		border-radius: 1rem;
@@ -33,19 +33,17 @@ const Container = styled.div`
 					align-items: center;
 					justify-content: center;
 					
-					padding: 0.5rem;
-					padding-left: 1rem;
-					padding-right: 1rem;
+					padding: 0.5rem 1rem;
 					border-radius: 1rem;
 					font-family: Ubuntu;
 					color: #fff;
-					font-size: 1.5rem;
+					font-size: 1.25rem;
 				}
 				
 				h2
 				{
 					font-family: Roboto;
-					
+					font-size: 1.25rem;
 				}
 			}
 
@@ -64,7 +62,7 @@ const Container = styled.div`
 				align-items: center;
 				justify-content: center;
 
-				font-size: 2rem;
+				font-size: 1.5rem;
 
 				cursor: pointer;
 				transition: 0.25s;
@@ -137,6 +135,20 @@ const Container = styled.div`
 						font-family: Roboto;
 						font-size: 1.5rem;
 					}
+				}
+			}
+		}
+	}
+
+	@media(min-width: 850px)
+	{
+		.request .header
+		{
+			.typeDate
+			{
+				span, h2
+				{
+					font-size: 1.5rem;
 				}
 			}
 		}
