@@ -18,7 +18,7 @@ const Requests: React.FC = () =>
 			/>
 
 			<GridPaginate
-				cardWidth={300}
+				cardWidth={400}
 				cardHeight={300}
 
 				paginate={paginate}
@@ -44,12 +44,15 @@ const Requests: React.FC = () =>
 								<h2>{formatDate(request.data)}</h2>
 							</div>
 							<a
-								title='Ver pedido'
+								title='Visualizar pedido'
 								href={`${apiUrl}/pdf/requests/${request.id}`}
 								target='_blank'
 								rel='nonreferrer'
 							>
-								<FaRegEye size={20} />
+								<FaRegEye />
+								<span>
+									Visualizar
+								</span>
 							</a>
 						</div>
 						<ul className='info' >

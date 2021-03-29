@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	.request
 	{
-		width: 300px;
+		width: 400px;
 		height: 300px;
 
 		background: #fff;
@@ -51,9 +51,12 @@ const Container = styled.div`
 
 			a
 			{
-				width: 4rem;
-				height: 4rem;
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
 				border-radius: 10rem;
+				padding: 0.5rem 1rem;
 	
 				border: none;
 				background: none;
@@ -61,12 +64,20 @@ const Container = styled.div`
 				align-items: center;
 				justify-content: center;
 
+				font-size: 2rem;
+
 				cursor: pointer;
 				transition: 0.25s;
 	
 				:hover
 				{
 					background-color: ${p => p.theme.colors.background};
+				}
+
+				span
+				{
+					font-family: Ubuntu;
+					font-weight: 400;
 				}
 			}
 		}
