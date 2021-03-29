@@ -15,7 +15,7 @@ const Container = styled.div`
 		padding-left: 10rem;
 		padding-right: 10rem;
 
-		div
+		.product
 		{
 			width: 25rem;
 			height: 25rem;
@@ -40,9 +40,20 @@ const Container = styled.div`
 				transform: scale(1.05);
 			}
 
-			img
+			.img
 			{
-				max-height: 80%;
+				height: 80%;
+				width: 100%;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img
+				{
+					max-height: 100%;
+					max-width: 100%;
+				}
 			}
 
 			h1

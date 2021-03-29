@@ -45,8 +45,14 @@ const Products: React.FC<ProductsProps> = ({products, companyName}) =>
 
 			<main>
 				{products.map(product => (
-					<div key={product.id} onClick={() => handleProductClick(product)}>
-						<img src={product.imagem} alt={product.nome}/>
+					<div
+						className='product'
+						key={product.id}
+						onClick={() => handleProductClick(product)}
+					>
+						<div className='img'>
+							<img src={product.imagem} alt={product.nome}/>
+						</div>
 						<h1>{product.nome}</h1>
 					</div>
 				))}
