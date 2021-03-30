@@ -29,6 +29,12 @@ export interface CompanyCondition
 	precoMin: number
 }
 
+export interface CompanyContact
+{
+	nome: string
+	telefone: string
+}
+
 export interface CompanyRaw
 {
 	_id: string
@@ -43,8 +49,8 @@ export interface CompanyRaw
 	site?: string
 	comissao: {porcentagem: number, obs: Array<string>}
 	tabelas: Array<{_id?: string, nome: string}>
-	condicoes: Array<{_id?: string, nome: string, precoMin: number}>
-	contatos: Array<{_id?: string, nome: string, telefone: string}>
+	condicoes: CompanyCondition[]
+	contatos: CompanyContact[]
 	produtos: any[]
 }
 

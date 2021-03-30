@@ -11,7 +11,7 @@ import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
 import api from '../../services/api'
-import {CompanyCondition, CompanyListed, CompanyRaw, defaultCompanyListed} from '../../models/company'
+import {CompanyCondition, CompanyContact, CompanyListed, CompanyRaw, defaultCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
 import {defaultProductListedPriced, ProductListedPriced} from '../../models/product'
 import {RequestProduct} from '../../models/request'
@@ -38,6 +38,7 @@ const Pedido: React.FC = () =>
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
 	const [conditionOptions, setConditionOptions] = useState<CompanyCondition[]>([])
+	const [contactOptions, setContactOptions] = useState<CompanyContact[]>([])
 
 	const [isProductModalOpen, setIsProductModalOpen] = useState(false)
 	const [selectedProduct, setSelectedProduct] = useState<ProductListedPriced>(defaultProductListedPriced)
@@ -46,6 +47,9 @@ const Pedido: React.FC = () =>
 		.filter(option => option.precoMin <= calcTotalPrice())
 		.sort((a,b) => a.precoMin < b.precoMin ? -1 : 1)
 		.map(option => ({label: option.nome, value: option.nome}))
+	
+	const contactSelectOptions = contactOptions
+		.map(option => ({label: `${option.nome} / ${option.telefone}`, value: `${option.nome} / ${option.telefone}`}))
 
 	useEffect(() =>
 	{
@@ -80,16 +84,16 @@ const Pedido: React.FC = () =>
 						setProductOptions(data)
 				})
 
-			// api.get(`clients/${user.id}/conditions/${representada}`)
-			// 	.then(({data}:{data: ClientConditions}) =>
-			// 	{
-			// 		setConditionOptions(data)
-			// 	})
-
-			api.get(`companies/${representada}/raw`)
-				.then(({data}:{data: CompanyRaw}) =>
+			api.get(`clients/${user.id}/conditions/${representada}`)
+				.then(({data}:{data: CompanyCondition[]}) =>
 				{
-					setConditionOptions(data.condicoes)
+					setConditionOptions(data)
+				})
+			
+			api.get(`clients/${user.id}/contacts`)
+				.then(({data}:{data: CompanyContact[]}) =>
+				{
+					setContactOptions(data)
 				})
 		}
 	}, [representada])
@@ -355,6 +359,18 @@ const Pedido: React.FC = () =>
 							onChange={e => setFrete(e.value)}
 							styles={selectStyles}
 							placeholder='Frete'
+							isSearchable={false}
+						/>
+					</div>
+
+					<h1>Escolha uma opção de contato</h1>
+					<div className='group'>
+						<Select
+							value={contactSelectOptions.find(option => option.label === frete)}
+							options={contactSelectOptions}
+							onChange={e => setFrete(e.value)}
+							styles={selectStyles}
+							placeholder='Contato'
 							isSearchable={false}
 						/>
 					</div>
