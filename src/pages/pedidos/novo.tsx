@@ -5,6 +5,8 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Select from 'react-select'
 
+import freteOptions from '../../../db/options/frete.json'
+
 import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
@@ -31,6 +33,7 @@ const Pedido: React.FC = () =>
 	const [representada, setRepresentada] = useState('')
 	const [produtos, setProdutos] = useState<RequestProduct[]>([])
 	const [condicao, setCondicao] = useState('')
+	const [frete, setFrete] = useState('')
 
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
@@ -341,6 +344,7 @@ const Pedido: React.FC = () =>
 							onChange={e => setCondicao(e.label)}
 							styles={selectStyles}
 							placeholder='Condição de pagamento'
+							isSearchable={false}
 						/>
 					</div>
 
@@ -355,6 +359,18 @@ const Pedido: React.FC = () =>
 							/>
 						</div>
 					)}
+
+					<h1>Escolha uma opção de frete</h1>
+					<div className='group'>
+						<Select
+							value={freteOptions.find(option => option.label === frete)}
+							options={freteOptions}
+							onChange={e => setFrete(e.label)}
+							styles={selectStyles}
+							placeholder='Frete'
+							isSearchable={false}
+						/>
+					</div>
 				</main>
 			)}
 
