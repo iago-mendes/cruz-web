@@ -11,7 +11,7 @@ import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
 import api from '../../services/api'
-import {CompanyListed, defaultCompanyListed} from '../../models/company'
+import {CompanyCondition, CompanyListed, CompanyRaw, defaultCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
 import {defaultProductListedPriced, ProductListedPriced} from '../../models/product'
 import {RequestProduct} from '../../models/request'
@@ -19,7 +19,6 @@ import formatPrice from '../../utils/formatPrice'
 import getDate from '../../utils/getDate'
 import sucessAlert from '../../utils/alerts/sucess'
 import errorAlert from '../../utils/alerts/error'
-import {ClientConditions, defaultCientConditions} from '../../models/client'
 import {selectStyles} from '../../styles/global'
 import RequestProductModal from '../../components/modals/RequestProduct'
 import SEOHead from '../../components/SEOHead'
@@ -38,18 +37,12 @@ const Pedido: React.FC = () =>
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
-	const [conditionOptions, setConditionOptions] = useState<ClientConditions>(defaultCientConditions)
+	const [conditionOptions, setConditionOptions] = useState<CompanyCondition[]>([])
 
 	const [isProductModalOpen, setIsProductModalOpen] = useState(false)
 	const [selectedProduct, setSelectedProduct] = useState<ProductListedPriced>(defaultProductListedPriced)
 
-	const conditionsSelectOptions =
-	[
-		{label: 'À vista', value: 'vista'},
-		{label: 'Cheque', value: 'cheque'},
-		{label: 'Prazo', value: 'prazo'},
-	]
-	const prazoSelectOptions = conditionOptions.prazoOpcoes
+	const conditionSelectOptions = conditionOptions
 		.filter(option => option.precoMin <= calcTotalPrice())
 		.sort((a,b) => a.precoMin < b.precoMin ? -1 : 1)
 		.map(option => ({label: option.nome, value: option.nome}))
@@ -87,10 +80,16 @@ const Pedido: React.FC = () =>
 						setProductOptions(data)
 				})
 
-			api.get(`clients/${user.id}/conditions/${representada}`)
-				.then(({data}:{data: ClientConditions}) =>
+			// api.get(`clients/${user.id}/conditions/${representada}`)
+			// 	.then(({data}:{data: ClientConditions}) =>
+			// 	{
+			// 		setConditionOptions(data)
+			// 	})
+
+			api.get(`companies/${representada}/raw`)
+				.then(({data}:{data: CompanyRaw}) =>
 				{
-					setConditionOptions(data)
+					setConditionOptions(data.condicoes)
 				})
 		}
 	}, [representada])
@@ -110,9 +109,9 @@ const Pedido: React.FC = () =>
 		else if (step === 3)
 		{
 			if (condicao === '')
-				warningAlert('Selecione uma condição de pagamento')
-			else if (condicao === 'Prazo')
-				warningAlert('Selecione uma opção de prazo')
+				warningAlert(' Você precisa selecionar uma condição de pagamento.')
+			else if (frete === '')
+				warningAlert(' Você precisa selecionar uma opção de frete.')
 			else
 				setStep(step + 1)
 		}
@@ -339,33 +338,21 @@ const Pedido: React.FC = () =>
 					<h1>Escolha uma condição de pagamento</h1>
 					<div className='group'>
 						<Select
-							value={conditionsSelectOptions.find(option => option.label === condicao)}
-							options={conditionsSelectOptions}
-							onChange={e => setCondicao(e.label)}
+							value={conditionSelectOptions.find(option => option.label === condicao)}
+							options={conditionSelectOptions}
+							onChange={e => setCondicao(e.value)}
 							styles={selectStyles}
 							placeholder='Condição de pagamento'
 							isSearchable={false}
 						/>
 					</div>
 
-					{!['', 'À vista', 'Cheque'].includes(condicao) && (
-						<div className='group'>
-							<Select
-								value={prazoSelectOptions.find(option => option.label === condicao)}
-								options={prazoSelectOptions}
-								onChange={e => setCondicao(e.label)}
-								styles={selectStyles}
-								placeholder='Opção de prazo'
-							/>
-						</div>
-					)}
-
 					<h1>Escolha uma opção de frete</h1>
 					<div className='group'>
 						<Select
 							value={freteOptions.find(option => option.label === frete)}
 							options={freteOptions}
-							onChange={e => setFrete(e.label)}
+							onChange={e => setFrete(e.value)}
 							styles={selectStyles}
 							placeholder='Frete'
 							isSearchable={false}
