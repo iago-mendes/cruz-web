@@ -148,6 +148,18 @@ const Container = styled.div<ContainerProps>`
 			color: ${p => p.theme.colors.primaryDark};
 		}
 
+		.grid
+		{
+			width: 100%;
+			
+			display: grid;
+			grid-auto-rows: 25rem;
+			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+			grid-gap: 2rem;
+			align-items: center;
+			justify-items: center;
+		}
+
 		table.products
 		{
 			width: 100%;
