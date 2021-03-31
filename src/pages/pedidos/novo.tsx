@@ -23,6 +23,7 @@ import errorAlert from '../../utils/alerts/error'
 import {selectStyles} from '../../styles/global'
 import RequestProductModal from '../../components/modals/RequestProduct'
 import SEOHead from '../../components/SEOHead'
+import { SelectOption } from '../../models'
 
 const Pedido: React.FC = () =>
 {
@@ -34,6 +35,8 @@ const Pedido: React.FC = () =>
 	const [produtos, setProdutos] = useState<RequestProduct[]>([])
 	const [condicao, setCondicao] = useState('')
 	const [frete, setFrete] = useState('')
+	const [contactName, setContactName] = useState('')
+	const [contactPhone, setContactPhone] = useState('')
 
 	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
@@ -55,7 +58,7 @@ const Pedido: React.FC = () =>
 		.map(option => ({label: option.nome, value: option.nome}))
 	
 	const contactSelectOptions = contactOptions
-		.map(option => ({label: `${option.nome} / ${option.telefone}`, value: `${option.nome} / ${option.telefone}`}))
+		.map(option => ({label: option.nome, value: option.telefone}))
 
 	useEffect(() =>
 	{
@@ -194,12 +197,24 @@ const Pedido: React.FC = () =>
 		setIsProductModalOpen(true)
 	}
 
+	function handleSelectContact(e: SelectOption)
+	{
+		setContactName(e.label)
+		setContactPhone(e.value)
+	}
+
 	async function handleSubmit()
 	{
+		const contato = isAddingNewContact
+			? {nome: newContactName, telefone: newContactPhone}
+			: {nome: contactName, telefone: contactPhone}
+
 		const data =
 		{
 			cliente: user.id,
 			representada,
+			contato,
+			frete,
 			produtos,
 			data: getDate(),
 			condicao,
@@ -217,6 +232,17 @@ const Pedido: React.FC = () =>
 			{
 				errorAlert(err.response.data.message)
 			})
+		
+		if (isAddingNewContact && isSavingNewContact)
+		{
+			const data =
+			{
+				nome: newContactName,
+				telefone: newContactPhone
+			}
+
+			api.post(`clients/${user.id}/contacts`, data)
+		}
 	}
 
 	return (
@@ -376,7 +402,7 @@ const Pedido: React.FC = () =>
 								<Select
 									value={contactSelectOptions.find(option => option.label === frete)}
 									options={contactSelectOptions}
-									onChange={e => setFrete(e.value)}
+									onChange={handleSelectContact}
 									styles={selectStyles}
 									placeholder='Contato'
 									isSearchable={false}
@@ -401,6 +427,7 @@ const Pedido: React.FC = () =>
 									<FiX />
 									<span>Cancelar</span>
 								</button>
+
 								<div className='newContactFields'>
 									<input
 										type='text'
@@ -417,6 +444,7 @@ const Pedido: React.FC = () =>
 										onChange={e => setNewContactPhone(e.target.value)}
 									/>
 								</div>
+
 								<div className='newContactSave'>
 									<Switch
 										checked={isSavingNewContact}
