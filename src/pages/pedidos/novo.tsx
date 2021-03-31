@@ -24,6 +24,8 @@ import {selectStyles} from '../../styles/global'
 import RequestProductModal from '../../components/modals/RequestProduct'
 import SEOHead from '../../components/SEOHead'
 import {SelectOption} from '../../models'
+import formatDate from '../../utils/formatDate'
+import formatPercentage from '../../utils/formatPercentage'
 
 const Pedido: React.FC = () =>
 {
@@ -185,6 +187,38 @@ const Pedido: React.FC = () =>
 			const ipi = subtotal * listedProduct.ipi / 100
 
 			total += subtotal + st + ipi
+		})
+
+		return total
+	}
+
+	function calcTotalProductsPrice()
+	{
+		let total = 0
+
+		produtos.map(requestProduct =>
+		{
+			const subtotal = requestProduct.quantidade * requestProduct.preco
+			total += subtotal
+		})
+
+		return total
+	}
+
+	function calcSubtotal(price: number, st: number, ipi: number)
+	{
+		const taxes = price * st / 100 + price * ipi / 100
+
+		return price + taxes
+	}
+
+	function calcTotalQuantity()
+	{
+		let total = 0
+
+		produtos.map(requestProduct =>
+		{
+			total += requestProduct.quantidade
 		})
 
 		return total
@@ -464,48 +498,75 @@ const Pedido: React.FC = () =>
 					<h1>Confirme seu pedido</h1>
 					<div className='group'>
 						<label>Representada</label>
-						<Card
-							isSelected={false}
-							type='product'
-						>
-							<div className='img'>
-								<img src={selectedCompany.imagem} alt={selectedCompany.nome_fantasia} />
-							</div>
-							<h2>{selectedCompany.nome_fantasia}</h2>
-							<h3>{selectedCompany.descricao_curta}</h3>
-						</Card>
+						<span className='value' >
+							{selectedCompany.nome_fantasia}
+						</span>
 					</div>
-					<div className='group'>
+					<div className='group productsContainer'>
 						<label>Produtos</label>
-						<div className='grid'>
-							{produtos.map(product =>
-							{
-								const pricedProduct = productOptions.find(({id}) => id === product.id)
+						<table className='products'>
+							<thead>
+								<tr>
+									<th>Produto</th>
+									<th>Qtde.</th>
+									<th>Preço</th>
+									<th>ST</th>
+									<th>IPI</th>
+									<th>Subtotal</th>
+								</tr>
+							</thead>
+							<tbody>
+								{produtos.map((product, index) =>
+								{
+									const pricedProduct = productOptions.find(({id}) => id === product.id)
 
-								return (
-									<Card
-										isSelected={false}
-										type='product'
-										onClick={() => {}}
-										key={product.id}
-									>
-										<button className='info' onClick={() => openProductModal(pricedProduct)}>
-											<FiInfo size={25} />
-										</button>
-										<div className='img'>
-											<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
-										</div>
-										<h3>{pricedProduct.nome}</h3>
-										<span>{formatPrice(product.preco)}</span>
-										<span>Quantidade: {product.quantidade}</span>
-									</Card>
-								)
-							})}
-						</div>
+									return (
+										<tr key={index} >
+											<td className='product' >
+												<div className='img'>
+													<img src={pricedProduct.imagem} alt={pricedProduct.nome} />
+												</div>
+
+												<span>{pricedProduct.nome}</span>
+											</td>
+											<td className='small'>
+												{product.quantidade}
+											</td>
+											<td className='large'>
+												{formatPrice(product.preco)}
+											</td>
+											<td className='small'>
+												{formatPercentage(pricedProduct.st)}
+											</td>
+											<td className='small'>
+												{formatPercentage(pricedProduct.ipi)}
+											</td>
+											<td className='large'>
+												{formatPrice(calcSubtotal(product.preco, pricedProduct.st, pricedProduct.ipi))}
+											</td>
+										</tr>
+									)
+								})}
+							</tbody>
+						</table>
 					</div>
 					<div className='group'>
-						<label>Condição de pagamento</label>
-						<span className='condition' >{condicao}</span>
+						<label>Detalhes</label>
+						<span className='value' >
+							<strong>Quantidade Total: </strong> {calcTotalQuantity()}
+						</span>
+						<span className='value' >
+							<strong>Valor Total em Produtos: </strong> {formatPrice(calcTotalProductsPrice())}
+						</span>
+						<span className='value' >
+							<strong>Valor Total: </strong> {formatPrice(calcTotalPrice())}
+						</span>
+						<span className='value' >
+							<strong>Condição de Pagamento: </strong> {condicao}
+						</span>
+						<span className='value' >
+							<strong>Data de Emissão: </strong> {formatDate(getDate())}
+						</span>
 					</div>
 				</main>
 			)}
