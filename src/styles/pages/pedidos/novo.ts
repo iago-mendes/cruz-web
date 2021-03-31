@@ -144,7 +144,7 @@ const Container = styled.div<ContainerProps>`
 		h1
 		{
 			font-family: Ubuntu;
-			font-size: 3rem;
+			font-size: 2rem;
 			color: ${p => p.theme.colors.primaryDark};
 		}
 
@@ -188,7 +188,7 @@ const Container = styled.div<ContainerProps>`
 				margin-left: 2rem;
 			}
 
-			button.newContact
+			button.newContactButton
 			{
 				width: fit-content;
 				padding: 0.5rem 1rem;
@@ -210,6 +210,43 @@ const Container = styled.div<ContainerProps>`
 				{
 					border-radius: 0;
 					transform: scale(1.1);
+				}
+			}
+
+			.newContactFields
+			{
+				width: 100%;
+
+				display: flex;
+				gap: 1rem;
+
+				input
+				{
+					border: none;
+					width: 100%;
+
+					font-size: 1.75rem;
+					padding: 0.25rem 1rem;
+
+					border-bottom: ${p => p.theme.colors.text}80 2px solid;
+					transition: 0.25s;
+
+					:focus, :hover
+					{
+						border-bottom: ${p => p.theme.colors.primaryDark} 2px solid;
+					}
+				}
+			}
+
+			.newContactSave
+			{
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
+				span
+				{
+					font-size: 1.75rem;
 				}
 			}
 		}
@@ -260,6 +297,14 @@ const Container = styled.div<ContainerProps>`
 			.cancel
 			{
 				margin-right: 50vw;
+			}
+		}
+		
+		main .group
+		{
+			.newContactFields
+			{
+				flex-direction: column;
 			}
 		}
 	}

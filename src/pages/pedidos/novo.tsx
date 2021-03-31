@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {FiArrowLeft, FiInfo, FiMinus, FiPlus} from 'react-icons/fi'
+import {FiArrowLeft, FiInfo, FiMinus, FiPlus, FiX} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
@@ -383,7 +383,7 @@ const Pedido: React.FC = () =>
 								/>
 
 								<button
-									className='newContact'
+									className='newContactButton'
 									onClick={() => setIsAddingNewContact(true)}
 								>
 									<FiPlus />
@@ -394,6 +394,13 @@ const Pedido: React.FC = () =>
 
 						{isAddingNewContact && (
 							<>
+								<button
+									className='newContactButton'
+									onClick={() => setIsAddingNewContact(false)}
+								>
+									<FiX />
+									<span>Cancelar</span>
+								</button>
 								<div className='newContactFields'>
 									<input
 										type='text'
