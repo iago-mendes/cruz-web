@@ -21,6 +21,7 @@
     "react-modal": "^3.11.2",
     "react-responsive-carousel": "^3.2.10",
     "react-select": "^4.1.0",
+    "react-switch": "^6.0.0",
     "styled-components": "^5.2.1",
     "sweetalert2": "^10.13.3",
     "sweetalert2-react-content": "^3.2.2",

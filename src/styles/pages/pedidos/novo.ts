@@ -187,6 +187,31 @@ const Container = styled.div<ContainerProps>`
 
 				margin-left: 2rem;
 			}
+
+			button.newContact
+			{
+				width: fit-content;
+				padding: 0.5rem 1rem;
+
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
+				border: none;
+				border-radius: 1.5rem;
+
+				background-color: ${p => p.theme.colors.primaryDark};
+				color: #fff;
+				font-size: 1.5rem;
+
+				transition: 0.25s;
+
+				:hover
+				{
+					border-radius: 0;
+					transform: scale(1.1);
+				}
+			}
 		}
 	}
 

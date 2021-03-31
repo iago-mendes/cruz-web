@@ -4,6 +4,7 @@ import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Select from 'react-select'
+import Switch from 'react-switch'
 
 import freteOptions from '../../../db/options/frete.json'
 
@@ -42,6 +43,11 @@ const Pedido: React.FC = () =>
 
 	const [isProductModalOpen, setIsProductModalOpen] = useState(false)
 	const [selectedProduct, setSelectedProduct] = useState<ProductListedPriced>(defaultProductListedPriced)
+
+	const [isAddingNewContact, setIsAddingNewContact] = useState(false)
+	const [newContactName, setNewContactName] = useState('')
+	const [newContactPhone, setNewContactPhone] = useState('')
+	const [isSavingNewContact, setIsSavingNewContact] = useState(true)
 
 	const conditionSelectOptions = conditionOptions
 		.filter(option => option.precoMin <= calcTotalPrice())
@@ -365,14 +371,56 @@ const Pedido: React.FC = () =>
 
 					<h1>Escolha uma opção de contato</h1>
 					<div className='group'>
-						<Select
-							value={contactSelectOptions.find(option => option.label === frete)}
-							options={contactSelectOptions}
-							onChange={e => setFrete(e.value)}
-							styles={selectStyles}
-							placeholder='Contato'
-							isSearchable={false}
-						/>
+						{!isAddingNewContact && (
+							<>
+								<Select
+									value={contactSelectOptions.find(option => option.label === frete)}
+									options={contactSelectOptions}
+									onChange={e => setFrete(e.value)}
+									styles={selectStyles}
+									placeholder='Contato'
+									isSearchable={false}
+								/>
+
+								<button
+									className='newContact'
+									onClick={() => setIsAddingNewContact(true)}
+								>
+									<FiPlus />
+									<span>Novo contato</span>
+								</button>
+							</>
+						)}
+
+						{isAddingNewContact && (
+							<>
+								<div className='newContactFields'>
+									<input
+										type='text'
+										name='nome'
+										placeholder='Nome'
+										value={newContactName}
+										onChange={e => setNewContactName(e.target.value)}
+									/>
+									<input
+										type='text'
+										name='telefone'
+										placeholder='Telefone'
+										value={newContactPhone}
+										onChange={e => setNewContactPhone(e.target.value)}
+									/>
+								</div>
+								<div className='newContactSave'>
+									<Switch
+										checked={isSavingNewContact}
+										onChange={e => setIsSavingNewContact(e)}
+									/>
+									<span>
+										Salvar contato
+									</span>
+								</div>
+							</>
+						)}
 					</div>
 				</main>
 			)}
@@ -421,7 +469,7 @@ const Pedido: React.FC = () =>
 							})}
 						</div>
 					</div>
-					<div className="group">
+					<div className='group'>
 						<label>Condição de pagamento</label>
 						<span className='condition' >{condicao}</span>
 					</div>
