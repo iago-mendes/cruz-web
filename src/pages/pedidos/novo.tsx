@@ -12,7 +12,7 @@ import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
 import api from '../../services/api'
-import {CompanyCondition, CompanyContact, CompanyListed, CompanyRaw, defaultCompanyListed} from '../../models/company'
+import {CompanyCondition, CompanyContact, CompanyListed, defaultCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
 import {defaultProductListedPriced, ProductListedPriced} from '../../models/product'
 import {RequestProduct} from '../../models/request'
@@ -23,7 +23,7 @@ import errorAlert from '../../utils/alerts/error'
 import {selectStyles} from '../../styles/global'
 import RequestProductModal from '../../components/modals/RequestProduct'
 import SEOHead from '../../components/SEOHead'
-import { SelectOption } from '../../models'
+import {SelectOption} from '../../models'
 
 const Pedido: React.FC = () =>
 {
@@ -164,7 +164,6 @@ const Pedido: React.FC = () =>
 				id: product.id,
 				preco: product.preco,
 				quantidade: quantity,
-				linhaId: product.linhaId
 			})
 		}
 

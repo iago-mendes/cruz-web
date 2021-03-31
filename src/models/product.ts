@@ -15,7 +15,6 @@ export interface ProductListedPriced
 	st: number
 	ipi: number
 	preco: number
-	linhaId: string
 }
 
 export const defaultProductListedPriced: ProductListedPriced =
@@ -26,8 +25,7 @@ export const defaultProductListedPriced: ProductListedPriced =
 	unidade: '',
 	st: 0,
 	ipi: 0,
-	preco: 0,
-	linhaId: ''
+	preco: 0
 }
 
 export default Product
