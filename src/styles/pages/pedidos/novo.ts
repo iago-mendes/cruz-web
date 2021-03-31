@@ -278,7 +278,7 @@ export const Card = styled.div<CardProps>`
 
 	.img
 	{
-		width: 100%;
+		width: 75%;
 		height: 50%;
 
 		display: flex;
