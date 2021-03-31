@@ -148,16 +148,49 @@ const Container = styled.div<ContainerProps>`
 			color: ${p => p.theme.colors.primaryDark};
 		}
 
-		.grid
+		table.products
 		{
 			width: 100%;
 
-			display: grid;
-			grid-auto-rows: 25rem;
-			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-			grid-gap: 2rem;
-			align-items: center;
-			justify-items: center;
+			border-collapse: collapse;
+
+			th, td
+			{
+				border: 1px solid rgba(0,0,0,0.75);
+			}
+
+			tbody
+			{
+				tr
+				{
+					height: 3rem;
+
+					td.product
+					{
+						display: flex;
+						align-items: center;
+						gap: 1rem;
+
+						height: 3rem;
+
+						.img
+						{
+							width: 2.5rem;
+							height: 2.5rem;
+
+							display: flex;
+							align-items: center;
+							justify-content: center;
+
+							img
+							{
+								max-width: 100%;
+								max-height: 100%;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.group
