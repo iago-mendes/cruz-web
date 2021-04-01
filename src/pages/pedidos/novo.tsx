@@ -55,6 +55,7 @@ const Pedido: React.FC = () =>
 	const [isSavingNewContact, setIsSavingNewContact] = useState(true)
 
 	const [productSearch, setProductSearch] = useState('')
+	const [companySearch, setCompanySearch] = useState('')
 
 	const conditionSelectOptions = conditionOptions
 		.filter(option => option.precoMin <= calcTotalPrice())
@@ -72,6 +73,16 @@ const Pedido: React.FC = () =>
 				return index >= 0
 			})
 	productSearchedOptions.sort((a, b) => a.nome < b.nome ? -1 : 1)
+	
+	const companySearchedOptions = companySearch === ''
+		? companyOptions
+		: companyOptions.filter(company =>
+			{
+				const indexName = company.nome_fantasia.toLowerCase().search(companySearch.toLowerCase())
+				const indexDescription = company.descricao_curta.toLowerCase().search(companySearch.toLowerCase())
+				return indexName >= 0 || indexDescription >= 0
+			})
+	companySearchedOptions.sort((a, b) => a.nome_fantasia < b.nome_fantasia ? -1 : 1)
 
 	useEffect(() =>
 	{
@@ -345,8 +356,23 @@ const Pedido: React.FC = () =>
 			{step === 1 && (
 				<main>
 					<h1>Escolha uma representada</h1>
+					<div className='searchField'>
+						<FiSearch />
+						<input
+							type='text'
+							name='search'
+							value={companySearch}
+							onChange={e => setCompanySearch(e.target.value)}
+							placeholder='Pesquise por uma representada'
+						/>
+					</div>
+					{(companySearchedOptions.length === 0 && companyOptions.length !== 0) && (
+						<div className='searchNotFound'>
+							<span>Nenhum resultado foi encontrado!</span>
+						</div>
+					)}
 					<div className='grid'>
-						{companyOptions.map(company => (
+						{companySearchedOptions.map(company => (
 							<Card
 								isSelected={representada === company.id}
 								type='company'
