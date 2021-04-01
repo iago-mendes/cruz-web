@@ -163,7 +163,8 @@ const Container = styled.div<ContainerProps>`
 		table.products
 		{
 			width: 100%;
-			font-size: 1.25rem;
+			font-size: 1.75rem;
+			color: #000;
 
 			th, td
 			{
@@ -177,7 +178,7 @@ const Container = styled.div<ContainerProps>`
 
 			.small
 			{
-				width: 5vw;
+				width: 7.5vw;
 			}
 
 			.large
@@ -366,6 +367,36 @@ const Container = styled.div<ContainerProps>`
 			.newContactFields
 			{
 				flex-direction: column;
+			}
+		}
+	}
+
+	@media(max-width: 900px)
+	{
+		main .productsContainer
+		{
+			overflow-x: auto;
+
+			table.products
+			{
+				width: fit-content;
+				table-layout: fixed;
+				font-size: 1.25rem;
+
+				.product
+				{
+					width: 350px !important;
+				}
+
+				.small
+				{
+					width: 75px !important;
+				}
+
+				.large
+				{
+					width: 100px !important;
+				}
 			}
 		}
 	}
