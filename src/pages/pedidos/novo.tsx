@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {FiArrowLeft, FiInfo, FiMinus, FiPlus, FiSearch, FiX} from 'react-icons/fi'
+import {FiInfo, FiMinus, FiPlus, FiSearch, FiX} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
@@ -306,7 +306,7 @@ const Pedido: React.FC = () =>
 			<header>
 				<div className='group'>
 					<button className='cancel' onClick={() => back()} >
-						<FiArrowLeft size={30} />
+						<FiX size={30} />
 						<span>Cancelar</span>
 					</button>
 					<h1>Você está fazendo um novo pedido</h1>

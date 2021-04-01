@@ -54,6 +54,7 @@ const Container = styled.div<ContainerProps>`
 				{
 					font-family: Ubuntu;
 					font-size: 1.75rem;
+					font-weight: 700;
 				}
 			}
 
@@ -109,6 +110,7 @@ const Container = styled.div<ContainerProps>`
 				{
 					font-family: Ubuntu;
 					font-size: 1.75rem;
+					font-weight: 700;
 
 					::after
 					{
