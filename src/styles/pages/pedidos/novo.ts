@@ -163,19 +163,36 @@ const Container = styled.div<ContainerProps>`
 		table.products
 		{
 			width: 100%;
-
-			border-collapse: collapse;
+			font-size: 1.25rem;
 
 			th, td
 			{
 				border: 1px solid rgba(0,0,0,0.75);
 			}
 
+			tr
+			{
+				height: 3rem;
+			}
+
+			.small
+			{
+				width: 5vw;
+			}
+
+			.large
+			{
+				width: 10vw;
+			}
+
 			tbody
 			{
 				tr
 				{
-					height: 3rem;
+					td
+					{
+						text-align: center;
+					}
 
 					td.product
 					{
@@ -213,24 +230,23 @@ const Container = styled.div<ContainerProps>`
 			flex-direction: column;
 			gap: 1rem;
 
+			padding-left: 2rem;
+
 			label
 			{
 				font-family: Roboto;
 				font-weight: 700;
-				font-size: 2.5rem;
+				font-size: 1.75rem;
 				color: ${p => p.theme.colors.primaryDark};
 
 				border-left: ${p => p.theme.colors.primaryDark} 5px solid;
 				padding-left: 1rem;
+				margin-left: -2rem;
 			}
 
-			span.condition
+			span.value
 			{
-				font-family: Roboto;
-				font-size: 2rem;
-				font-weight: 700;
-
-				margin-left: 2rem;
+				font-size: 1.75rem;
 			}
 
 			button.newContactButton

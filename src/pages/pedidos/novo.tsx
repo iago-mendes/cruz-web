@@ -507,12 +507,12 @@ const Pedido: React.FC = () =>
 						<table className='products'>
 							<thead>
 								<tr>
-									<th>Produto</th>
-									<th>Qtde.</th>
-									<th>Preço</th>
-									<th>ST</th>
-									<th>IPI</th>
-									<th>Subtotal</th>
+									<th className='product' >Produto</th>
+									<th className='small' >Qtde.</th>
+									<th className='large' >Preço</th>
+									<th className='small' >ST</th>
+									<th className='small' >IPI</th>
+									<th className='large' >Subtotal</th>
 								</tr>
 							</thead>
 							<tbody>
