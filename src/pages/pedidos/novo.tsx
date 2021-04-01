@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {FiArrowLeft, FiInfo, FiMinus, FiPlus, FiX} from 'react-icons/fi'
+import {FiArrowLeft, FiInfo, FiMinus, FiPlus, FiSearch, FiX} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
@@ -54,6 +54,8 @@ const Pedido: React.FC = () =>
 	const [newContactPhone, setNewContactPhone] = useState('')
 	const [isSavingNewContact, setIsSavingNewContact] = useState(true)
 
+	const [productSearch, setProductSearch] = useState('')
+
 	const conditionSelectOptions = conditionOptions
 		.filter(option => option.precoMin <= calcTotalPrice())
 		.sort((a,b) => a.precoMin < b.precoMin ? -1 : 1)
@@ -61,6 +63,15 @@ const Pedido: React.FC = () =>
 	
 	const contactSelectOptions = contactOptions
 		.map(option => ({label: option.nome, value: option.telefone}))
+	
+	const productSearchedOptions = productSearch === ''
+		? productOptions
+		: productOptions.filter(product =>
+			{
+				const index = product.nome.toLowerCase().search(productSearch.toLowerCase())
+				return index >= 0
+			})
+	productSearchedOptions.sort((a, b) => a.nome < b.nome ? -1 : 1)
 
 	useEffect(() =>
 	{
@@ -356,8 +367,23 @@ const Pedido: React.FC = () =>
 			{step === 2 && (
 				<main>
 					<h1>Escolha os produtos</h1>
+					<div className='searchField'>
+						<FiSearch />
+						<input
+							type='text'
+							name='search'
+							value={productSearch}
+							onChange={e => setProductSearch(e.target.value)}
+							placeholder='Pesquise por um produto'
+						/>
+					</div>
+					{productSearchedOptions.length === 0 && (
+						<div className='searchNotFound'>
+							<span>Nenhum resultado foi encontrado!</span>
+						</div>
+					)}
 					<div className='grid'>
-						{productOptions.map(product =>
+						{productSearchedOptions.map(product =>
 						{
 							const selectedProduct = produtos.find(({id}) => id === product.id)
 
