@@ -312,6 +312,43 @@ const Container = styled.div<ContainerProps>`
 				}
 			}
 		}
+
+		.searchField
+		{
+			background-color: #fff;
+			padding: 0 1rem;
+			border-radius: 2rem;
+
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			
+			color: ${p => p.theme.colors.primaryDark};
+			font-size: 2rem;
+
+			input
+			{
+				width: 25rem;
+				height: 4rem;
+
+				border: none;
+				background: none;
+
+				font-size: 1.75rem;
+				color: ${p => p.theme.colors.primaryDark};
+			}
+		}
+
+		.searchNotFound
+		{
+			margin-top: 7.5rem;
+
+			span
+			{
+				font-size: 2rem;
+				font-weight: 700;
+			}
+		}
 	}
 
 	#totalPrice
