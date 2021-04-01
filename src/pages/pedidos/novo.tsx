@@ -127,6 +127,8 @@ const Pedido: React.FC = () =>
 				warningAlert(' Você precisa selecionar uma condição de pagamento.')
 			else if (frete === '')
 				warningAlert(' Você precisa selecionar uma opção de frete.')
+			else if (contactPhone === '' && newContactPhone === '')
+				warningAlert(' Você precisa selecionar uma opção de contato.')
 			else
 				setStep(step + 1)
 		}
@@ -433,7 +435,7 @@ const Pedido: React.FC = () =>
 						{!isAddingNewContact && (
 							<>
 								<Select
-									value={contactSelectOptions.find(option => option.label === frete)}
+									value={contactSelectOptions.find(option => option.value === contactPhone)}
 									options={contactSelectOptions}
 									onChange={handleSelectContact}
 									styles={selectStyles}
