@@ -107,7 +107,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 							overflow: 'hidden'
 						}}
 					>
-						{(companies && user.id !== 'not-logged') && companies.map((company: Company) => (
+						{companies && companies.map((company: Company) => (
 							<Link href={`/catalogo/${company.id}`} key={company.id}>
 								<a className='link' onClick={() => setIsOpen(false)} >
 									{company.nome_fantasia}
