@@ -7,6 +7,7 @@ import {useRouter} from 'next/router'
 import Container from '../../styles/components/modals/BurgerMenu'
 import Company from '../../models/company'
 import useClickOutside from '../../hooks/useClickOutside'
+import useUser from '../../hooks/useUser'
 
 interface BurgerMenuProps
 {
@@ -19,6 +20,7 @@ interface BurgerMenuProps
 const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =>
 {
 	const {pathname} = useRouter()
+	const {user} = useUser()
 
 	const [showCatalogDropdown, setShowCatalogDropdown] = useState(false)
 	const burgerRef = useClickOutside(() => setIsOpen(false))
@@ -105,7 +107,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({isOpen, setIsOpen, companies}) =
 							overflow: 'hidden'
 						}}
 					>
-						{companies && companies.map((company: Company) => (
+						{(companies && user.id !== 'not-logged') && companies.map((company: Company) => (
 							<Link href={`/catalogo/${company.id}`} key={company.id}>
 								<a className='link' onClick={() => setIsOpen(false)} >
 									{company.nome_fantasia}
