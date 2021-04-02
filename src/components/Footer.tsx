@@ -38,11 +38,11 @@ const Footer: React.FC = () =>
 								Sobre
 							</a>
 						</Link>
-						<Link href='/sobre/politica-de-privacidade' >
+						{/* <Link href='/sobre/politica-de-privacidade' >
 							<a className='link'>
 								Política de Privacidade
 							</a>
-						</Link>
+						</Link> */}
 					</ul>
 				</div>
 				<div className='group'>
