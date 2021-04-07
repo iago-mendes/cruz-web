@@ -3,6 +3,7 @@ import {GetStaticProps} from 'next'
 import illustration from '../assets/illustration1.svg'
 import Carousel from '../components/Carousel'
 import SEOHead from '../components/SEOHead'
+import api from '../services/api'
 import Container from '../styles/pages/index'
 
 interface HomeProps
@@ -25,21 +26,15 @@ const Home: React.FC<HomeProps> = ({carouselImages}) =>
 				<img src={illustration} alt='Homem mexendo no computador' />
       </main>
 			<p className='message' >
-				Impulsione suas compras com o nosso E-Commerce
+				Acelere suas compras com o nosso E-Commerce
 			</p>
     </Container>
   )
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
+export const getStaticProps: GetStaticProps = async () =>
 {
-	const carouselImages =
-	[
-		'https://api.cruzrepresentacoes.com.br/public/banners/casaredo.png',
-		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-3.jpg',
-		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A01-2.jpg',
-		'https://pachaalimentos.com/wp-content/uploads/2017/05/home_BANNER-PRINCIPAL_A02.jpg',
-	]
+	const {data: carouselImages}:{data: string[]} = await api.get('banners')
 
 	return {
 		props: {carouselImages},
