@@ -29,7 +29,11 @@ const About: React.FC<AboutProps> = ({sellers}) =>
 				<div className='cardGroup history'>
 					<span>História</span>
 					<img src={logo} alt='Cruz representações' />
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa massa, cursus eget ultrices sed, laoreet non sapien. Mauris vitae pellentesque metus. Suspendisse scelerisque molestie felis, sit amet iaculis turpis. Quisque sagittis vehicula enim, vitae hendrerit magna ullamcorper vel. Quisque eu imperdiet tellus, sit amet porta tellus. Vestibulum vehicula facilisis justo, eu feugiat tortor placerat tincidunt. Aenean vitae est vitae neque venenatis semper. Mauris velit metus, volutpat et fringilla a, auctor eu massa. Suspendisse nec neque eget risus dapibus maximus et id metus. Aliquam vitae eleifend tellus. Etiam vel nisl vitae nisi pulvinar dignissim non in eros. </p>
+					<p>
+						Criada em 2010, a Cruz Representações cresceu em qualidade e excelência em representação comercial. Temos orgulho em oferecer a nossos clientes as principais marcas do Brasil.
+						<br/><br/>
+						Localizada na cidade de Montes Claros, a Cruz Representações possui em sua estrutura uma equipe de vendedores pronta para atendê-lo na região de Minas Gerais. Toda essa estrutura foi montada para agilizar nosso trabalho junto a nossos parceiros.
+					</p>
 				</div>
 
 				<div className='cardGroup team'>
