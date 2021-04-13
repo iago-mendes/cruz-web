@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = ({carouselImages}) =>
 				<img src={illustration} alt='Homem mexendo no computador' />
       </main>
 			<p className='message' >
-				Facilite suas compras com o nosso E-Commerce
+				Faça suas compras online pelo nosso E-commerce
 			</p>
     </Container>
   )
