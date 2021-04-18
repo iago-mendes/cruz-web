@@ -60,9 +60,9 @@ const Footer: React.FC = () =>
 							<FiFacebook size={25} />
 							<span>@CruzRepresentacoes </span>
 						</a>
-						<a target='_blank' rel='nonreferrer' href='https://www.instagram.com/gilmar_cruzrepresentacoes/' className='social' >
+						<a target='_blank' rel='nonreferrer' href='https://www.instagram.com/cruz_representacoes' className='social' >
 							<FiInstagram size={25} />
-							<span>@gilmar_cruzrepresentacoes</span>
+							<span>cruz_representacoes</span>
 						</a>
 					</ul>
 				</div>
