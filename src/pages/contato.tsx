@@ -41,7 +41,7 @@ export default function Contact()
 		
 		const data =
 		{
-			to: 'cruzrepresentacoes@gmail.com',
+			to: ['cruzrepresentacoes@gmail.com'],
 			subject: mailSubject,
 			text
 		}
