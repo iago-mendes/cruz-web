@@ -15,7 +15,7 @@ import api from '../../services/api'
 import {CompanyCondition, CompanyContact, CompanyListed, defaultCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
 import {defaultProductListedPriced, ProductListedPriced} from '../../models/product'
-import {RequestProduct} from '../../models/request'
+import {RequestProduct, RequestRaw} from '../../models/request'
 import formatPrice from '../../utils/formatPrice'
 import getDate from '../../utils/getDate'
 import sucessAlert from '../../utils/alerts/sucess'
@@ -260,6 +260,29 @@ const Pedido: React.FC = () =>
 		setContactPhone(e.value)
 	}
 
+	async function sendMails(requestId: string)
+	{
+		const text =
+		'<h1>Pedido realizado com sucesso!</h1>'
+		+ `<p>O pedido feito no dia <strong>${formatDate(getDate())}</strong> por <strong>${user.data ? user.data.name : 'um cliente no e-commerce'}</strong> foi salvo no sistema e o PDF está anexado neste e-mail.</p>`
+		+ '<br /><br />'
+		+ '<h2>Cruz Representações</h2>'
+		+ '<h3>Excelência em Representação Comercial!</h3>'
+
+		let to = ['pedidoscruzrepresentacoes@gmail.com']
+		if (user.data)
+			to.push(user.data.email)
+		
+		const data =
+		{
+			text,
+			to
+		}
+
+		await api.post(`/mail/requests/${requestId}/ecommerce`, data)
+			.catch(error => console.error('< error sending mails >', error))
+	}
+
 	async function handleSubmit()
 	{
 		const contato = isAddingNewContact
@@ -280,10 +303,12 @@ const Pedido: React.FC = () =>
 		}
 
 		api.post('requests', data)
-			.then(() =>
+			.then(({data}:{data: RequestRaw}) =>
 			{
 				sucessAlert('Seu pedido foi realizado com sucesso!')
 				push('/pedidos')
+
+				sendMails(String(data._id))
 			})
 			.catch(err =>
 			{
