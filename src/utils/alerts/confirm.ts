@@ -3,7 +3,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-function confirmAlert(title: string, text: string, callback: () => void)
+function confirmAlert(title: string, text: string, callback: () => void, confirmText = 'Continuar', cancelText = 'Cancelar')
 {
 	MySwal.fire(
 		{
@@ -11,8 +11,8 @@ function confirmAlert(title: string, text: string, callback: () => void)
 			title: title,
 			text: text,
 			showCancelButton: true,
-			confirmButtonText: 'Continuar',
-			cancelButtonText: 'Cancelar'
+			confirmButtonText: confirmText,
+			cancelButtonText: cancelText
 		})
 		.then(res =>
 		{

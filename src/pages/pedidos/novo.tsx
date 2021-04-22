@@ -26,6 +26,7 @@ import SEOHead from '../../components/SEOHead'
 import {SelectOption} from '../../models'
 import formatDate from '../../utils/formatDate'
 import formatPercentage from '../../utils/formatPercentage'
+import confirmAlert from '../../utils/alerts/confirm'
 
 const Pedido: React.FC = () =>
 {
@@ -169,6 +170,17 @@ const Pedido: React.FC = () =>
 			return setStep(step + 1)
 		if (step === 4)
 			return handleSubmit()
+	}
+
+	function cancel()
+	{
+		confirmAlert(
+			'Você deseja cancelar?',
+			'Se você cancelar, o seu novo pedido será descartado.',
+			back,
+			'Cancelar pedido',
+			'Continuar fazendo pedido'
+		)
 	}
 
 	function handleSelectCompany(company: CompanyListed)
@@ -352,7 +364,7 @@ const Pedido: React.FC = () =>
 
 			<header>
 				<div className='group'>
-					<button className='cancel' onClick={() => back()} >
+					<button className='cancel' onClick={cancel} >
 						<FiX size={30} />
 						<span>Cancelar</span>
 					</button>
