@@ -84,6 +84,10 @@ const Pedido: React.FC = () =>
 			})
 	companySearchedOptions.sort((a, b) => a.nome_fantasia < b.nome_fantasia ? -1 : 1)
 
+	const minimumPrice = conditionOptions.length > 0
+		? conditionOptions.sort((a,b) => a.precoMin < b.precoMin ? -1 : 1)[0].precoMin
+		: 0
+
 	useEffect(() =>
 	{
 		api.get('companies').then(({data}:{data: CompanyListed[]}) =>
@@ -140,24 +144,31 @@ const Pedido: React.FC = () =>
 	function goNext()
 	{
 		if (step === 1 && representada === '')
-			warningAlert('Você precisa escolher uma representada para continuar.')
-		else if (step === 2 && produtos.length === 0)
-			warningAlert('Você precisa escolher pelo menos um produto para continuar.')
-		else if (step === 3)
+			return warningAlert('Você precisa escolher uma representada para continuar.')
+		
+		if (step === 2)
+		{
+			if (produtos.length === 0)
+				return warningAlert('Você precisa escolher pelo menos um produto para continuar.')
+			
+			if (calcTotalPrice() < minimumPrice)
+				return warningAlert(`O pedido mínimo dessa representada é de ${formatPrice(minimumPrice)}.`)
+		}
+
+		if (step === 3)
 		{
 			if (condicao === '')
-				warningAlert(' Você precisa selecionar uma condição de pagamento.')
-			else if (frete === '')
-				warningAlert(' Você precisa selecionar uma opção de frete.')
-			else if (contactPhone === '' && newContactPhone === '')
-				warningAlert(' Você precisa selecionar uma opção de contato.')
-			else
-				setStep(step + 1)
+				return warningAlert(' Você precisa selecionar uma condição de pagamento.')
+			if (frete === '')
+				return warningAlert(' Você precisa selecionar uma opção de frete.')
+			if (contactPhone === '' && newContactPhone === '')
+				return warningAlert(' Você precisa selecionar uma opção de contato.')
 		}
-		else if (step < 4)
-			setStep(step + 1)
-		else if (step === 4)
-			handleSubmit()
+
+		if (step < 4)
+			return setStep(step + 1)
+		if (step === 4)
+			return handleSubmit()
 	}
 
 	function handleSelectCompany(company: CompanyListed)
