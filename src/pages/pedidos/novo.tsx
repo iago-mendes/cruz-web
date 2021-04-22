@@ -36,7 +36,7 @@ const Pedido: React.FC = () =>
 	const [representada, setRepresentada] = useState('')
 	const [produtos, setProdutos] = useState<RequestProduct[]>([])
 	const [condicao, setCondicao] = useState('')
-	const [frete, setFrete] = useState('')
+	const [frete, setFrete] = useState(freteOptions[0].value)
 	const [contactName, setContactName] = useState('')
 	const [contactPhone, setContactPhone] = useState('')
 
@@ -269,7 +269,7 @@ const Pedido: React.FC = () =>
 		+ '<h2>Cruz Representações</h2>'
 		+ '<h3>Excelência em Representação Comercial!</h3>'
 
-		let to = ['pedidoscruzrepresentacoes@gmail.com']
+		let to = ['cruzrepresentacoes@gmail.com']
 		if (user.data)
 			to.push(user.data.email)
 		
