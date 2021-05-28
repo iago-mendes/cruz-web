@@ -199,13 +199,70 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.burger
+	button.controller
 	{
+		font-size: 3rem;
+		color: ${p => p.theme.colors.secondary};
+
 		background: none;
 		border: none;
+		border-radius: 5rem;
 
+		padding: 0.5rem;
 		margin-left: 2rem;
-		color: ${p => p.theme.colors.secondary};
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		transition: background-color 0.25s;
+
+		:hover
+		{
+			background-color: ${p => p.theme.colors.primaryDark}80;
+		}
+	}
+`
+
+interface BurgerMenuProps
+{
+	isOpen: boolean
+}
+
+export const BurgerMenu = styled.div<BurgerMenuProps>`
+	position: fixed;
+	left: ${p => p.isOpen ? 0 : '-100vw'};
+	top: 0;
+	z-index: 2;
+
+	width: 75vw;
+	height: 100vh;
+	background-color: ${p => p.theme.colors.primary};
+	box-shadow: 5px 0px 5px rgba(0,0, 0, 0.5);
+
+	overflow-y: auto;
+	padding: 1rem;
+
+	transition: left 0.25s;
+
+	button.controller
+	{
+		margin-left: auto;
+		margin-bottom: 5rem;
+	}
+
+	ul
+	{
+		flex-direction: column;
+		gap: 5rem;
+
+		width: 100%;
+		height: fit-content;
+
+		.dropdown
+		{
+			height: fit-content;
+		}
 	}
 `
 
