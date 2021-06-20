@@ -23,6 +23,14 @@ export const defaultCompanyListed: CompanyListed =
 	descricao_curta: ''
 }
 
+export const loadingCompanyListed: CompanyListed =
+{
+	id: 'loading',
+	imagem: '',
+	nome_fantasia: '',
+	descricao_curta: ''
+}
+
 export interface CompanyCondition
 {
 	nome: string

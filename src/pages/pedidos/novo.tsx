@@ -12,7 +12,7 @@ import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
 import useUser from '../../hooks/useUser'
 import api from '../../services/api'
-import {CompanyCondition, CompanyContact, CompanyListed, defaultCompanyListed} from '../../models/company'
+import {CompanyCondition, CompanyContact, CompanyListed, defaultCompanyListed, loadingCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
 import {defaultProductListedPriced, ProductListedPriced} from '../../models/product'
 import {RequestProduct, RequestRaw} from '../../models/request'
@@ -27,6 +27,7 @@ import {SelectOption} from '../../models'
 import formatDate from '../../utils/formatDate'
 import formatPercentage from '../../utils/formatPercentage'
 import confirmAlert from '../../utils/alerts/confirm'
+import {SkeletonLoading} from '../../utils/skeletonLoading'
 
 const Pedido: React.FC = () =>
 {
@@ -41,7 +42,8 @@ const Pedido: React.FC = () =>
 	const [contactName, setContactName] = useState('')
 	const [contactPhone, setContactPhone] = useState('')
 
-	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>([])
+	const defaultCompanyOptions = Array(8).fill(loadingCompanyListed)
+	const [companyOptions, setCompanyOptions] = useState<CompanyListed[]>(defaultCompanyOptions)
 	const [productOptions, setProductOptions] = useState<ProductListedPriced[]>([])
 	const [selectedCompany, setSelectedCompany] = useState<CompanyListed>(defaultCompanyListed)
 	const [conditionOptions, setConditionOptions] = useState<CompanyCondition[]>([])
@@ -420,20 +422,43 @@ const Pedido: React.FC = () =>
 						</div>
 					)}
 					<div className='grid'>
-						{companySearchedOptions.map(company => (
-							<Card
-								isSelected={representada === company.id}
-								type='company'
-								onClick={() => handleSelectCompany(company)}
-								key={company.id}
-							>
-								<div className='img'>
-									<img src={company.imagem} alt={company.nome_fantasia} />
-								</div>
-								<h2>{company.nome_fantasia}</h2>
-								<h3>{company.descricao_curta}</h3>
-							</Card>
-						))}
+						{companySearchedOptions.map((company, index) =>
+						{
+							if (company.id === 'loading')
+								return (
+									<Card
+										isSelected={false}
+										type='company'
+										onClick={() => {}}
+										key={index}
+									>
+										<div className='img'>
+											<SkeletonLoading height='7.5rem' width='7.5rem' />
+										</div>
+										<h2>
+											<SkeletonLoading height='2.5rem' width='20rem' />
+										</h2>
+										<h3>
+											<SkeletonLoading height='2rem' width='15rem' />
+										</h3>
+									</Card>
+								)
+							else
+								return (
+									<Card
+										isSelected={representada === company.id}
+										type='company'
+										onClick={() => handleSelectCompany(company)}
+										key={index}
+									>
+										<div className='img'>
+											<img src={company.imagem} alt={company.nome_fantasia} />
+										</div>
+										<h2>{company.nome_fantasia}</h2>
+										<h3>{company.descricao_curta}</h3>
+									</Card>
+								)
+						})}
 					</div>
 				</main>
 			)}
