@@ -3,8 +3,8 @@ interface Company
   id: string
   imagem: string
   nome_fantasia: string
-  descricao: string
-  site: string
+  descricao?: string
+  site?: string
 }
 
 export interface CompanyListed

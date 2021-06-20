@@ -28,9 +28,11 @@ const CompanyModal: React.FC<CompanyModalProps> = ({company, isOpen, setIsOpen})
 				<p>{company.descricao}</p>
 			
 				<div className='links' >
-					<a href={company.site} target='_blank' rel='noreferrer' >
-						Site da empresa
-					</a>
+					{company.site && (
+						<a href={company.site} target='_blank' rel='noreferrer' >
+							Site da empresa
+						</a>
+					)}
 					<Link href={`/catalogo/${company.id}`} >
 						Catálogo de produtos
 					</Link>
