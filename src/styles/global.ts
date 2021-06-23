@@ -28,6 +28,8 @@ export default createGlobalStyle`
 	{
 		background-color: ${p => p.theme.colors.background};
 		color: ${p => p.theme.colors.text};
+
+		overscroll-behavior: contain;
 	}
 
 	body, input, textarea, button
@@ -67,6 +69,17 @@ export default createGlobalStyle`
 		{
 			font-size: 15px !important;
 			font-family: Ubuntu !important;
+		}
+	}
+
+	@media (max-width: 850px)
+	{
+		body
+		{
+			-webkit-user-select: none;
+			-moz-user-select: -moz-none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 	}
 `
