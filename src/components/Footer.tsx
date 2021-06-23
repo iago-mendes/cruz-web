@@ -21,7 +21,7 @@ const Footer: React.FC = () =>
 
 			<div className='links'>
 				<div className='group'>
-					<h3>Links do site</h3>
+					<h3>Links úteis</h3>
 					<ul>
 						<Link href='/' >
 							<a className='link'>

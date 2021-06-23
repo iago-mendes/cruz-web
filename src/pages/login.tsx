@@ -93,7 +93,7 @@ export default function Login()
 				</div>
 				<div className='right'>
 					<div className='firstRow'>
-						<h1>Entre em sua conta para acessar as funções deste site.</h1>
+						<h1>Entre em sua conta para acessar as funções do nosso E-Commerce.</h1>
 							<button title='Voltar' onClick={router.back}>
 							<FiArrowLeft />
 						</button>

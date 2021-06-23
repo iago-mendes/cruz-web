@@ -52,7 +52,7 @@ const About: React.FC<AboutProps> = ({sellers}) =>
 				</div>
 
 				<div className='cardGroup site'>
-					<span>Site</span>
+					<span>Softwares</span>
 					<div className="seller">
 						<img
 							src={sellers.find(seller => seller.funcao === 'Desenvolvedor').imagem}
