@@ -17,7 +17,7 @@ import api from '../services/api'
 
 const Menu: React.FC = () =>
 {
-	const router = useRouter()
+	const {pathname, push} = useRouter()
 	const {user} = useUser()
 	const {inMobile, inDesktop} = useDimensions()
 	
@@ -28,8 +28,13 @@ const Menu: React.FC = () =>
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	const userRef = useClickOutside(() => setIsUserMenuOpen(false))
 	const burgerMenuRef = useClickOutside(() => setIsBurgerOpen(false))
+
+	useEffect(() =>
+	{
+		setIsBurgerOpen(false)
+	}, [pathname])
 	
-	if (['/login', '/pedidos/novo'].includes(router.pathname))
+	if (['/login', '/pedidos/novo'].includes(pathname))
 		return null
 
 	return (
@@ -97,7 +102,7 @@ const Menu: React.FC = () =>
 							</button>
 						)
 						: (
-							<span onClick={() => router.push('/login')} className='linkBlock' >
+							<span onClick={() => push('/login')} className='linkBlock' >
 								Entrar
 							</span>
 						)
