@@ -19,5 +19,40 @@
 			"type": "image/png",
 			"purpose": "any maskable"
 		}
+	],
+	"screenshots": [
+		{
+			"src": "/screenshots/1_home.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		},
+		{
+			"src": "/screenshots/2_companies.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		},
+		{
+			"src": "/screenshots/3_catalog.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		},
+		{
+			"src": "/screenshots/4_new_request_companies.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		},
+		{
+			"src": "/screenshots/5_new_request_products.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		},
+		{
+			"src": "/screenshots/6_new_request_confirm.jpg",
+			"sizes": "1280x720",
+			"type": "image/jpeg"
+		}
+	],
+	"categories": [
+		"business"
 	]
 }
