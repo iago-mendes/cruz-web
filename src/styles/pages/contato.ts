@@ -126,11 +126,17 @@ const Container = styled.div`
 		{
 			flex-direction: column-reverse;
 			gap: 2rem;
+			padding: 2rem;
 
 			form
 			{
 				width: 100%;
 				align-items: center;
+			}
+
+			p
+			{
+				word-break: break-word;
 			}
 
 			.phones

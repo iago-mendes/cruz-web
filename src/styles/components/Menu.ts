@@ -115,7 +115,7 @@ const Container = styled.div<ContainerProps>`
 				background-color: ${p => p.theme.colors.primary};
 				box-shadow: 0px 5px 5px black;
 
-				width: 15rem;
+				width: 20rem;
 				height: fit-content;
 				padding: 1rem;
 				padding-top: 2rem;
@@ -123,7 +123,12 @@ const Container = styled.div<ContainerProps>`
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
-				gap: 2rem;
+				gap: 1rem;
+
+				a.link
+				{
+					font-size: 1.5rem;
+				}
 			}
 		}
 	}
