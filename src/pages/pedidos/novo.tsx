@@ -238,6 +238,9 @@ const Pedido: React.FC = () =>
 			total += subtotal + st + ipi
 		})
 
+		if (Number.isNaN(total))
+			return 0
+
 		return total
 	}
 

@@ -33,6 +33,7 @@ export const loadingCompanyListed: CompanyListed =
 
 export interface CompanyCondition
 {
+	_id?: string
 	nome: string
 	precoMin: number
 }

@@ -1,6 +1,10 @@
-function formatPrice(p: number)
+function formatPrice(price: number | undefined)
 {
-	return 'R$ ' + p.toFixed(2).replace('.', ',')
+	if (!price)
+		return 'R$ 0,00'
+
+	const formatedPrice = 'R$ ' + price.toFixed(2).replace('.', ',')
+	return formatedPrice
 }
 
 export default formatPrice
