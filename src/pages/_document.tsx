@@ -58,7 +58,7 @@ class MyDocument extends Document
 						<meta name='theme-color' content='#84130B' />
 						<link rel='apple-touch-icon' sizes='192x192' href='/icons/192px.png' />
 						<link rel='manifest' href='/manifest.json' />
-						<link rel='shortcut icon' href='/icons/192px.png' type='image/png' />
+						<link rel='shortcut' href='/icons/192px.png' type='image/png' />
 						<meta name='viewport' content= 'width=device-width, user-scalable=no' />
 				</Head>
 				<body>
