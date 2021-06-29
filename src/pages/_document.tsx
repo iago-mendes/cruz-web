@@ -56,9 +56,9 @@ class MyDocument extends Document
 						<meta name='format-detection' content='telephone=no' />
 						<meta name='mobile-web-app-capable' content='yes' />
 						<meta name='theme-color' content='#84130B' />
-						<link rel='apple-touch-icon' sizes='192x192' href='/icons/192px.png' />
+						<link rel='apple-touch-icon' sizes='192x192' href='/icons/192px_background.png' />
 						<link rel='manifest' href='/manifest.json' />
-						<link rel='shortcut' href='/icons/192px.png' type='image/png' />
+						<link rel='shortcut' href='/icons/192px_background.png' type='image/png' />
 						<meta name='viewport' content= 'width=device-width, user-scalable=no' />
 				</Head>
 				<body>
