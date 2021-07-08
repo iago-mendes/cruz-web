@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react'
 
-import useUser from '../useUser'
+import {useAuth} from '../useAuth'
 import api from '../../services/api'
 import {RequestListed} from '../../models/request'
 import {defaultPaginate, Paginate} from '../../models'
 
 const useRequests = () =>
 {
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [requests, setRequests] = useState<RequestListed[]>([])
 	const [paginate, setPaginate] = useState<Paginate>(defaultPaginate)
@@ -15,7 +15,7 @@ const useRequests = () =>
 	
 	useEffect(() =>
 	{
-		if (user.id !== 'not-logged')
+		if (user)
 			updateRequests()
 	}, [user.id])
 

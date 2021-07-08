@@ -2,37 +2,26 @@ import {FiArrowLeft} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
-import {signIn} from 'next-auth/client'
 import Image from 'next/image'
 
 import illustration from '../assets/illustration2.svg'
 import logo from '../assets/logo.svg'
 import Container from '../styles/pages/login'
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 import LoadingModal from '../components/modals/Loading'
 import SEOHead from '../components/SEOHead'
-import errorAlert from '../utils/alerts/error'
 
 export default function Login()
 {
-	const {user} = useUser()
+	const {user, signIn, loading} = useAuth()
 	const router = useRouter()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const [showedError, setShowedError] = useState(false)
-	const [loading, setLoading] = useState(false)
-
 	useEffect(() =>
 	{
-		if (user.errorMessage && !showedError)
-		{
-			setShowedError(true)
-			errorAlert(user.errorMessage)
-		}
-
-		if (user.id !== 'not-logged' && router.pathname === '/login')
+		if (user && router.pathname === '/login')
 			router.back()
 	}, [user])
 	
@@ -46,8 +35,7 @@ export default function Login()
 	{
 		e.preventDefault()
 
-		setLoading(true)
-		signIn('credentials', {email, password})
+		signIn(email, password)
 	}
 
 	return (

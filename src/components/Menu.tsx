@@ -10,7 +10,7 @@ import {useEffect, useState} from 'react'
 import Container, { BurgerMenu } from '../styles/components/Menu'
 import { CompanyListed } from '../models/company'
 import UserMenu from './modals/UserMenu'
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 import useDimensions from '../hooks/useDimensions'
 import useClickOutside from '../hooks/useClickOutside'
 import api from '../services/api'
@@ -18,7 +18,7 @@ import api from '../services/api'
 const Menu: React.FC = () =>
 {
 	const {pathname, push} = useRouter()
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {inMobile, inDesktop} = useDimensions()
 	
 	const [showDropdown, setShowDropdown] = useState(false)
@@ -90,7 +90,7 @@ const Menu: React.FC = () =>
 					ref={userRef}
 				>
 					{
-						user.id !== 'not-logged'
+						user
 						? (
 							<button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
 								{

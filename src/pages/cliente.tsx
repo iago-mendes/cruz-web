@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 
 import Container from '../styles/pages/cliente'
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import ClientInterface from '../models/client';
@@ -14,7 +14,7 @@ import SEOHead from '../components/SEOHead';
 
 const Client: React.FC = () =>
 {
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [userDetails, setUserDetails] = useState<ClientInterface>(null)
 	const [showPasswordModal, setShowPasswordModal] = useState(false)
@@ -22,7 +22,7 @@ const Client: React.FC = () =>
 
 	useEffect(() =>
 	{
-		if (user.id !== 'not-logged')
+		if (user)
 			api.get(`clients/${user.id}`)
 			.then(({data}:{data: ClientInterface}) =>
 			{
@@ -32,7 +32,7 @@ const Client: React.FC = () =>
 			{
 				console.log('[message]', err.response.data.message)
 			})
-	}, [user.id])
+	}, [user])
 
 	function useUserDataText(field: string)
 	{

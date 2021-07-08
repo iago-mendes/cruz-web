@@ -10,7 +10,7 @@ import freteOptions from '../../../db/options/frete.json'
 
 import Container, {Card} from '../../styles/pages/pedidos/novo'
 import logo from '../../assets/logo.svg'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import api from '../../services/api'
 import {CompanyCondition, CompanyContact, CompanyListed, defaultCompanyListed, loadingCompanyListed} from '../../models/company'
 import warningAlert from '../../utils/alerts/warning'
@@ -31,7 +31,7 @@ import {SkeletonLoading} from '../../utils/skeletonLoading'
 
 const Pedido: React.FC = () =>
 {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {push, back} = useRouter()
 
 	const [step, setStep] = useState(1)

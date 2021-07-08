@@ -3,11 +3,11 @@ import {useEffect, useState} from 'react';
 
 import Loading from './Loading'
 import Login from '../pages/login'
-import useUser from '../hooks/useUser';
+import {useAuth} from '../hooks/useAuth';
 
 const SessionHandler: React.FC = ({children}) =>
 {
-	const {user, loading} = useUser()
+	const {user, loading} = useAuth()
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')
 
@@ -25,7 +25,7 @@ const SessionHandler: React.FC = ({children}) =>
 		if (loading)
 			return <Loading style={{marginTop: '45vh'}} />
 
-		if (privateRoutes.includes(route) && user.id === 'not-logged')
+		if (privateRoutes.includes(route) && !user)
 			return <Login />
 	}
 

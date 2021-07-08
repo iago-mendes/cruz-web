@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import { FiEye, FiEyeOff, FiSend } from 'react-icons/fi'
-import useUser from '../../hooks/useUser'
 import api from '../../services/api'
 
 import Container from '../../styles/components/modals/Password'
@@ -9,6 +8,7 @@ import sucessAlert from '../../utils/alerts/sucess'
 import warningAlert from '../../utils/alerts/warning'
 import ModalContainer from './Container'
 import LoadingModal from './Loading'
+import {useAuth} from '../../hooks/useAuth'
 
 interface PasswordModalProps
 {
@@ -18,7 +18,7 @@ interface PasswordModalProps
 
 const PasswordModal: React.FC<PasswordModalProps> = ({isOpen, setIsOpen}) =>
 {
-	const {user} = useUser();
+	const {user} = useAuth();
 	const [inputType, setInputType] = useState('password')
 	const [loading, setLoading] = useState(false)
 
