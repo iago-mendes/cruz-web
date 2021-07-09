@@ -1,6 +1,6 @@
 import {GetStaticProps} from 'next'
 
-import illustration from '../assets/illustration1.svg'
+import illustration from '../assets/images/illustration1.svg'
 import Carousel from '../components/Carousel'
 import SEOHead from '../components/SEOHead'
 import api from '../services/api'

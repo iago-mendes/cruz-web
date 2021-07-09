@@ -2,7 +2,7 @@ import {GetStaticProps} from 'next'
 import {FiGithub, FiLinkedin} from 'react-icons/fi'
 
 import Container from '../styles/pages/sobre'
-import logo from '../assets/logo.svg'
+import logo from '../assets/images/logo.svg'
 import api from '../services/api'
 import SEOHead from '../components/SEOHead'
 

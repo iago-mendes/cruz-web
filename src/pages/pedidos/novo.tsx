@@ -6,10 +6,10 @@ import Image from 'next/image'
 import Select from 'react-select'
 import Switch from 'react-switch'
 
-import freteOptions from '../../../db/options/frete.json'
+import {freteOptions} from '../../assets/db/options/frete'
 
 import Container, {Card} from '../../styles/pages/pedidos/novo'
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/images/logo.svg'
 import {useAuth} from '../../hooks/useAuth'
 import api from '../../services/api'
 import {

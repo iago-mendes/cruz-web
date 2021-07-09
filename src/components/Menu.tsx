@@ -5,7 +5,7 @@ import {BsFillTriangleFill} from 'react-icons/bs'
 import {BiUserCircle} from 'react-icons/bi'
 import {motion} from 'framer-motion'
 
-import logo from '../assets/logo.svg'
+import logo from '../assets/images/logo.svg'
 import {useEffect, useState} from 'react'
 import Container, {BurgerMenu} from '../styles/components/Menu'
 import {CompanyListed} from '../models/company'

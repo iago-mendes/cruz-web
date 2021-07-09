@@ -4,7 +4,7 @@ import {FiFacebook, FiInstagram} from 'react-icons/fi'
 import {FaWhatsapp} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 
-import logo from '../assets/logo.svg'
+import logo from '../assets/images/logo.svg'
 
 const Footer: React.FC = () => {
 	const {pathname} = useRouter()
