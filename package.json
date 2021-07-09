@@ -26,8 +26,7 @@
 		"react-switch": "^6.0.0",
 		"styled-components": "^5.2.1",
 		"sweetalert2": "^10.13.3",
-		"sweetalert2-react-content": "^3.2.2",
-		"swr": "^0.3.9"
+		"sweetalert2-react-content": "^3.2.2"
 	},
 	"devDependencies": {
 		"@types/jsonwebtoken": "^8.5.4",
