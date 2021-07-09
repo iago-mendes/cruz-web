@@ -8,8 +8,7 @@ const Container = styled.main`
 	min-height: calc(85vh - (3.5rem + 1rem + 1rem));
 	overflow-y: auto;
 
-	.group
-	{
+	.group {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
@@ -18,8 +17,7 @@ const Container = styled.main`
 		padding-bottom: 1rem;
 		margin-bottom: 1rem;
 
-		.img
-		{
+		.img {
 			width: 40%;
 			height: 30rem;
 
@@ -27,15 +25,13 @@ const Container = styled.main`
 			align-items: center;
 			justify-content: center;
 
-			img
-			{
+			img {
 				max-width: 100%;
 				max-height: 100%;
 			}
 		}
 
-		h1
-		{
+		h1 {
 			width: 50%;
 
 			font-family: Ubuntu;
@@ -44,8 +40,7 @@ const Container = styled.main`
 		}
 	}
 
-	ul
-	{
+	ul {
 		display: grid;
 		grid-auto-rows: 10rem;
 		grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
@@ -53,8 +48,7 @@ const Container = styled.main`
 		align-items: center;
 		justify-items: center;
 
-		li
-		{
+		li {
 			text-decoration: none;
 
 			width: 100%;
@@ -67,8 +61,7 @@ const Container = styled.main`
 			justify-content: center;
 			gap: 1rem;
 
-			h2
-			{
+			h2 {
 				font-family: Roboto;
 				font-size: 2rem;
 				color: ${p => p.theme.colors.primaryDark};
@@ -79,8 +72,7 @@ const Container = styled.main`
 				padding-left: 1rem;
 			}
 
-			span
-			{
+			span {
 				font-family: Roboto;
 				font-size: 1.75rem;
 
@@ -90,21 +82,17 @@ const Container = styled.main`
 		}
 	}
 
-	@media(max-width: 600px)
-	{
-		.group
-		{
+	@media (max-width: 600px) {
+		.group {
 			flex-direction: column;
 			gap: 1rem;
 
-			.img
-			{
+			.img {
 				width: 75% !important;
 				height: 25rem !important;
 			}
 
-			h1
-			{
+			h1 {
 				width: 90% !important;
 			}
 		}

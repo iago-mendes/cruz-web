@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	.request
-	{
+	.request {
 		width: 30rem;
 		height: 30rem;
 
 		background: #fff;
 		border-radius: 1rem;
 
-		.header
-		{
+		.header {
 			width: 100%;
 			height: 6rem;
 
@@ -21,41 +19,37 @@ const Container = styled.div`
 
 			padding: 1rem 2rem;
 
-			.typeDate
-			{
+			.typeDate {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
 
-				span
-				{
+				span {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					
+
 					padding: 0.5rem 1rem;
 					border-radius: 1rem;
 					font-family: Ubuntu;
 					color: #fff;
 					font-size: 1.25rem;
 				}
-				
-				h2
-				{
+
+				h2 {
 					font-family: Roboto;
 					font-size: 1.25rem;
 				}
 			}
 
-			a
-			{
+			a {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
 
 				border-radius: 10rem;
 				padding: 0.5rem 1rem;
-	
+
 				border: none;
 				background: none;
 				display: flex;
@@ -66,22 +60,19 @@ const Container = styled.div`
 
 				cursor: pointer;
 				transition: 0.25s;
-	
-				:hover
-				{
+
+				:hover {
 					background-color: ${p => p.theme.colors.background};
 				}
 
-				span
-				{
+				span {
 					font-family: Ubuntu;
 					font-weight: 400;
 				}
 			}
 		}
 
-		ul.info
-		{
+		ul.info {
 			background-color: ${p => `${p.theme.colors.background}80`};
 			height: calc(100% - 6rem);
 
@@ -93,8 +84,7 @@ const Container = styled.div`
 			border-bottom-right-radius: 1rem;
 			padding: 2rem;
 
-			li
-			{
+			li {
 				list-style: none;
 
 				display: flex;
@@ -103,35 +93,29 @@ const Container = styled.div`
 
 				padding: 2rem 0.5rem;
 
-				:first-of-type
-				{
+				:first-of-type {
 					border-bottom: ${p => `${p.theme.colors.text}40`} 1px solid;
 				}
 
-				.imgName
-				{
+				.imgName {
 					display: flex;
 					align-items: center;
 					gap: 1rem;
 
-					img
-					{
+					img {
 						max-width: 5rem;
 						max-height: 5rem;
 						border-radius: 100rem;
 					}
 
-					h1
-					{
+					h1 {
 						font-family: Roboto;
 						font-size: 2rem;
 					}
 				}
 
-				.description
-				{
-					h2
-					{
+				.description {
+					h2 {
 						font-family: Roboto;
 						font-size: 1.5rem;
 					}
@@ -140,14 +124,11 @@ const Container = styled.div`
 		}
 	}
 
-	@media(min-width: 850px)
-	{
-		.request .header
-		{
-			.typeDate
-			{
-				span, h2
-				{
+	@media (min-width: 850px) {
+		.request .header {
+			.typeDate {
+				span,
+				h2 {
 					font-size: 1.5rem;
 				}
 			}

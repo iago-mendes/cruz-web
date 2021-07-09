@@ -9,16 +9,13 @@ import Loading from '../../components/Loading'
 import SEOHead from '../../components/SEOHead'
 import {CompanyListed} from '../../models/company'
 
-interface ProductsProps
-{
+interface ProductsProps {
 	products: Array<Product>
 	companyName: string
 }
 
-const Products: React.FC<ProductsProps> = ({products, companyName}) =>
-{
-	const [product, setProduct] = useState<Product>(
-	{
+const Products: React.FC<ProductsProps> = ({products, companyName}) => {
+	const [product, setProduct] = useState<Product>({
 		id: '',
 		imagem: '',
 		nome: '',
@@ -26,32 +23,32 @@ const Products: React.FC<ProductsProps> = ({products, companyName}) =>
 	})
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
-	if (!products || !companyName)
-		return <Loading />
+	if (!products || !companyName) return <Loading />
 
-	function handleProductClick(clickedProduct: Product)
-	{
+	function handleProductClick(clickedProduct: Product) {
 		setProduct(clickedProduct)
 		setIsModalOpen(true)
 	}
 
 	return (
-		<Container className='page' >
-			<SEOHead
-				title={`${companyName} — Produtos | Cruz Representações`}
-			/>
+		<Container className="page">
+			<SEOHead title={`${companyName} — Produtos | Cruz Representações`} />
 
-			<ProductModal product={product} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+			<ProductModal
+				product={product}
+				isOpen={isModalOpen}
+				setIsOpen={setIsModalOpen}
+			/>
 
 			<main>
 				{products.map(product => (
 					<div
-						className='product'
+						className="product"
 						key={product.id}
 						onClick={() => handleProductClick(product)}
 					>
-						<div className='img'>
-							<img src={product.imagem} alt={product.nome}/>
+						<div className="img">
+							<img src={product.imagem} alt={product.nome} />
 						</div>
 						<h1>{product.nome}</h1>
 					</div>
@@ -61,12 +58,12 @@ const Products: React.FC<ProductsProps> = ({products, companyName}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const companies = await api.get('companies').then(({data}:{data: CompanyListed[]}) => data)
-	
-	const paths = companies.map(company => (
-	{
+export const getStaticPaths: GetStaticPaths = async () => {
+	const companies = await api
+		.get('companies')
+		.then(({data}: {data: CompanyListed[]}) => data)
+
+	const paths = companies.map(company => ({
 		params: {company: company.id}
 	}))
 
@@ -76,15 +73,16 @@ export const getStaticPaths: GetStaticPaths = async () =>
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
-{
+export const getStaticProps: GetStaticProps = async ctx => {
 	const {company} = ctx.params
 
-	const products: Product[] = await api.get(`companies/${company}/products`)
+	const products: Product[] = await api
+		.get(`companies/${company}/products`)
 		.then(res => res.data)
 
-	const companyName = await api.get(`companies/${company}`)
-		.then(({data}:{data: CompanyListed}) => data.nome_fantasia)
+	const companyName = await api
+		.get(`companies/${company}`)
+		.then(({data}: {data: CompanyListed}) => data.nome_fantasia)
 
 	return {
 		props: {products, companyName},

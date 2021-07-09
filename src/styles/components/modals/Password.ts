@@ -7,8 +7,7 @@ const Container = styled.main`
 	justify-content: center;
 	gap: 2rem;
 
-	button
-	{
+	button {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
@@ -25,31 +24,26 @@ const Container = styled.main`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			transform: scale(1.1);
 		}
 	}
 
-	.showPwd
-	{
+	.showPwd {
 		margin-left: 35%;
 
-		:hover
-		{
-			background-color: ${p => p.theme.colors. primaryDark};
+		:hover {
+			background-color: ${p => p.theme.colors.primaryDark};
 			color: ${p => p.theme.colors.background};
 		}
 	}
 
-	.submit:hover
-	{
+	.submit:hover {
 		background-color: ${p => p.theme.colors.buttonGreen};
 		border-color: ${p => p.theme.colors.buttonGreen};
 	}
 
-	form
-	{
+	form {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -57,16 +51,14 @@ const Container = styled.main`
 		width: 100%;
 		padding: 1rem;
 
-		.field
-		{
+		.field {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
 
 			width: 100%;
 
-			label
-			{
+			label {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -75,8 +67,7 @@ const Container = styled.main`
 				padding-left: 1rem;
 			}
 
-			input
-			{
+			input {
 				background-color: #fff;
 				border: none;
 				height: 2.75rem;
@@ -87,27 +78,24 @@ const Container = styled.main`
 
 				font-family: Roboto;
 				font-size: 1.75rem;
-				
+
 				border-bottom: ${p => p.theme.colors.primaryDark}40 2px solid;
 				transition: 0.25s;
 
-				:hover, :focus
-				{
+				:hover,
+				:focus {
 					border-color: ${p => p.theme.colors.primaryDark};
 				}
 			}
 		}
 	}
 
-	@media(min-width: 600px)
-	{
-		.showPwd
-		{
+	@media (min-width: 600px) {
+		.showPwd {
 			margin-left: 50%;
 		}
 
-		form .field
-		{
+		form .field {
 			width: 75%;
 		}
 	}

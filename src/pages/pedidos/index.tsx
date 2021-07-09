@@ -7,67 +7,62 @@ import formatDate from '../../utils/formatDate'
 import SEOHead from '../../components/SEOHead'
 import {apiUrl} from '../../services/api'
 
-const Requests: React.FC = () =>
-{
+const Requests: React.FC = () => {
 	const {requests, loading, paginate, setPaginate} = useRequests()
 
 	return (
-		<Container className='page' >
-			<SEOHead
-				title='Meus pedidos | Cruz Representações'
-			/>
+		<Container className="page">
+			<SEOHead title="Meus pedidos | Cruz Representações" />
 
 			<GridPaginate
 				cardWidth={300}
 				cardHeight={300}
-
 				paginate={paginate}
 				setPaginate={setPaginate}
-
 				loading={loading}
 				noResults={false}
 			>
 				{requests.map((request, index) => (
-					<div className='request' key={index} >
-						<div className='header'>
-							<div className='typeDate'>
+					<div className="request" key={index}>
+						<div className="header">
+							<div className="typeDate">
 								{request.tipo.venda && (
-									<span style={{backgroundColor: '#357435'}} >
-										venda
-									</span>
+									<span style={{backgroundColor: '#357435'}}>venda</span>
 								)}
 								{request.tipo.troca && (
-									<span style={{backgroundColor: '#2b2b68'}} >
-										troca
-									</span>
+									<span style={{backgroundColor: '#2b2b68'}}>troca</span>
 								)}
 								<h2>{formatDate(request.data)}</h2>
 							</div>
 							<a
-								title='Visualizar pedido'
-								href={`${process.env.NEXT_PUBLIC_API_URL}/pdf/requests/${request.id}`}
-								target='_blank'
-								rel='nonreferrer'
+								title="Visualizar pedido"
+								href={`${apiUrl}/pdf/requests/${request.id}`}
+								target="_blank"
+								rel="nonreferrer noreferrer"
 							>
 								<FaRegEye />
-								<span>
-									Visualizar
-								</span>
+								<span>Visualizar</span>
 							</a>
 						</div>
-						<ul className='info' >
+						<ul className="info">
 							<li>
-								<div className='imgName'>
-									<img src={request.representada.imagem} alt={request.representada.nome_fantasia}/>
+								<div className="imgName">
+									<img
+										src={request.representada.imagem}
+										alt={request.representada.nome_fantasia}
+									/>
 									<h1>{request.representada.nome_fantasia}</h1>
 								</div>
-								<div className='description'>
+								<div className="description">
 									<h2>{request.representada.razao_social}</h2>
 								</div>
 							</li>
 							<li>
-								<div className='imgName'>
-									<img src={request.vendedor.imagem} alt={request.vendedor.nome}/>
+								<div className="imgName">
+									<img
+										src={request.vendedor.imagem}
+										alt={request.vendedor.nome}
+									/>
 									<h1>{request.vendedor.nome}</h1>
 								</div>
 							</li>

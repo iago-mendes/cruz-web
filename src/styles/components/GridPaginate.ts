@@ -1,48 +1,44 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	cardWidth: number
 	cardHeight: number
 }
 
 const Container = styled.div<ContainerProps>`
 	min-height: calc(100vh - 7.5rem);
-	
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	
-	main
-	{
+
+	main {
 		width: 100%;
 		display: grid;
 		grid-auto-rows: ${p => p.cardHeight}px;
-		grid-template-columns: ${p => `repeat(auto-fill, minmax(${p.cardWidth}px, 1fr))`};
+		grid-template-columns: ${p =>
+			`repeat(auto-fill, minmax(${p.cardWidth}px, 1fr))`};
 		grid-gap: 2rem;
 		align-items: center;
 		justify-items: center;
-		
+
 		padding: 1rem;
 	}
-	
-	.paginate
-	{
+
+	.paginate {
 		width: 100%;
 		padding: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 3rem;
-		
-		.buttons
-		{
+
+		.buttons {
 			display: flex;
 			gap: 1rem;
-			
-			button
-			{
+
+			button {
 				background: none;
 				border: none;
 				padding: 0.5rem;
@@ -53,20 +49,16 @@ const Container = styled.div<ContainerProps>`
 				justify-content: center;
 				cursor: pointer;
 				transition: 0.25s;
-				
-				:hover
-				{
+
+				:hover {
 					color: ${p => p.theme.colors.background};
 					background-color: ${p => p.theme.colors.primary};
 				}
 			}
 		}
-		
-		.controller
-		{
-			
-			input
-			{
+
+		.controller {
+			input {
 				background: none;
 				border: none;
 				border-bottom: ${p => p.theme.colors.primary}40 2px solid;
@@ -77,54 +69,47 @@ const Container = styled.div<ContainerProps>`
 				padding-right: 0.5rem;
 				width: 5rem;
 				transition: 0.25s;
-			
-				
-				:focus, :hover
-				{
+
+				:focus,
+				:hover {
 					border-bottom-color: ${p => p.theme.colors.primary};
 				}
-				
-				::-webkit-outer-spin-button, ::-webkit-inner-spin-button
-				{
+
+				::-webkit-outer-spin-button,
+				::-webkit-inner-spin-button {
 					-webkit-appearance: none;
 					margin: 0;
 				}
-				
-				[type=number]
-				{
+
+				[type='number'] {
 					-moz-appearance: textfield;
 				}
 			}
-			
-			span
-			{
+
+			span {
 				font-family: Roboto;
 				font-size: 1.5rem;
 				color: ${p => p.theme.colors.primary};
 			}
 		}
 	}
-	
-	.noResults
-	{
+
+	.noResults {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
 		height: calc(100vh - 5rem - 30rem - 10rem);
-		
-		h1
-		{
+
+		h1 {
 			font-family: Ubuntu;
 			font-size: 2.5rem;
 			color: ${p => p.theme.colors.primary};
 		}
 	}
-	
-	@media(max-width: 600px)
-	{
-		.paginate
-		{
+
+	@media (max-width: 600px) {
+		.paginate {
 			gap: 1rem;
 		}
 	}

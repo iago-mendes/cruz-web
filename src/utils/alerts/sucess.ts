@@ -3,8 +3,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-function sucessAlert(display: string)
-{
+function sucessAlert(display: string) {
 	MySwal.fire({
 		title: display,
 		icon: 'success',

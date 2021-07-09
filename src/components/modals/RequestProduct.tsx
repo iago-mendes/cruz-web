@@ -4,24 +4,23 @@ import formatPrice from '../../utils/formatPrice'
 import formatPercentage from '../../utils/formatPercentage'
 import ModalContainer from './Container'
 
-interface RequestProductProps
-{
+interface RequestProductProps {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 
 	selected: ProductListedPriced
 }
 
-const RequestProduct: React.FC<RequestProductProps> = ({isOpen, setIsOpen, selected}) =>
-{
+const RequestProduct: React.FC<RequestProductProps> = ({
+	isOpen,
+	setIsOpen,
+	selected
+}) => {
 	return (
-		<ModalContainer
-			isOpen={isOpen}
-			setIsOpen={setIsOpen}
-		>
+		<ModalContainer isOpen={isOpen} setIsOpen={setIsOpen}>
 			<Container>
-				<div className='group'>
-					<div className='img'>
+				<div className="group">
+					<div className="img">
 						<img src={selected.imagem} alt={selected.nome} />
 					</div>
 					<h1>{selected.nome}</h1>

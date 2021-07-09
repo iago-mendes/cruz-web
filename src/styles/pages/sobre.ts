@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	main
-	{
+	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -11,8 +10,7 @@ const Container = styled.div`
 		padding: 5rem;
 		overflow-y: auto;
 
-		.cardGroup
-		{
+		.cardGroup {
 			width: 75%;
 			height: fit-content;
 
@@ -27,8 +25,7 @@ const Container = styled.div`
 
 			position: relative;
 
-			span
-			{
+			span {
 				position: absolute;
 
 				color: ${p => p.theme.colors.primary};
@@ -42,14 +39,12 @@ const Container = styled.div`
 				padding-right: 1rem;
 			}
 
-			img
-			{
+			img {
 				width: 20rem;
 				height: 20rem;
 			}
 
-			.seller
-			{
+			.seller {
 				background-color: #fff;
 				padding: 2rem;
 				border-radius: 1rem;
@@ -59,24 +54,20 @@ const Container = styled.div`
 				align-items: center;
 				gap: 1rem;
 
-				img
-				{
+				img {
 					border-radius: 50rem;
 				}
 
-				.text
-				{
+				.text {
 					color: ${p => p.theme.colors.primaryDark};
 					text-align: center;
 
-					h1
-					{
+					h1 {
 						font-family: Ubuntu;
 						font-size: 2rem;
 					}
 
-					h2
-					{
+					h2 {
 						font-family: Roboto;
 						font-size: 1.5rem;
 					}
@@ -84,21 +75,18 @@ const Container = styled.div`
 			}
 		}
 
-		.history
-		{
+		.history {
 			flex-direction: row;
 			gap: 2rem;
 
-			p
-			{
+			p {
 				font-family: Roboto;
 				color: ${p => p.theme.colors.primaryDark};
 				font-size: 1.5rem;
 			}
 		}
-		
-		.team
-		{
+
+		.team {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 			grid-auto-rows: 30rem;
@@ -107,20 +95,17 @@ const Container = styled.div`
 			justify-items: center;
 		}
 
-		.site
-		{
+		.site {
 			width: fit-content;
 
-			.links
-			{
+			.links {
 				width: 100%;
 
 				display: flex;
 				align-items: center;
 				justify-content: space-around;
 
-				a
-				{
+				a {
 					text-decoration: none;
 					transition: 0.5s;
 
@@ -131,28 +116,23 @@ const Container = styled.div`
 					padding: 1rem;
 					border-radius: 20rem;
 
-					:hover
-					{
+					:hover {
 						color: #fff;
 					}
 				}
 
-				.github
-				{
+				.github {
 					color: #000;
 
-					:hover
-					{
+					:hover {
 						background-color: #000;
 					}
 				}
 
-				.linkedin
-				{
+				.linkedin {
 					color: #00f;
 
-					:hover
-					{
+					:hover {
 						background-color: #00f;
 					}
 				}
@@ -160,20 +140,16 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 850px)
-	{
-		main
-		{
+	@media (max-width: 850px) {
+		main {
 			padding-left: 1rem;
 			padding-right: 1rem;
 
-			.cardGroup
-			{
+			.cardGroup {
 				width: 100%;
 			}
 
-			.history
-			{
+			.history {
 				flex-direction: column;
 			}
 		}

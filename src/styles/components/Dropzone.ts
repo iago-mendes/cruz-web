@@ -12,21 +12,18 @@ const Container = styled.div`
 
 	cursor: pointer;
 	transition: 0.25s;
-	
-	:hover
-	{
+
+	:hover {
 		transform: scale(1.1);
 	}
-	
-	img
-	{
+
+	img {
 		max-width: 100%;
-		max-height: 100%; 
+		max-height: 100%;
 		object-fit: cover;
 	}
-	
-	p
-	{
+
+	p {
 		width: calc(100% - 6rem);
 		height: calc(100% - 6rem);
 		display: flex;
@@ -39,10 +36,8 @@ const Container = styled.div`
 		font-family: Ubuntu;
 		font-size: 2rem;
 		font-weight: bold;
-		
-		
-		svg
-		{
+
+		svg {
 			width: 2.5rem;
 			height: 2.5rem;
 			color: ${p => p.theme.colors.primary};

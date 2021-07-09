@@ -7,8 +7,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	header
-	{
+	header {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
@@ -22,8 +21,7 @@ const Container = styled.div`
 		border-top-right-radius: 0.5rem;
 		background-color: ${p => p.theme.colors.primary};
 
-		.close
-		{
+		.close {
 			width: 3.5rem;
 			height: 3.5rem;
 
@@ -40,8 +38,7 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.colors.secondary};
 				color: ${p => p.theme.colors.primary};
 
@@ -50,8 +47,7 @@ const Container = styled.div`
 		}
 	}
 
-	main
-	{
+	main {
 		padding-top: 1rem;
 		background-color: ${p => p.theme.colors.background};
 
@@ -60,8 +56,7 @@ const Container = styled.div`
 		overflow-y: auto;
 	}
 
-	@media(max-width: 600px)
-	{
+	@media (max-width: 600px) {
 		width: 95vw;
 	}
 `

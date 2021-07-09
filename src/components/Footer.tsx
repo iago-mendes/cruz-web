@@ -6,37 +6,29 @@ import {useRouter} from 'next/router'
 
 import logo from '../assets/logo.svg'
 
-const Footer: React.FC = () =>
-{
+const Footer: React.FC = () => {
 	const {pathname} = useRouter()
 
-	if (pathname === '/login')
-		return null
+	if (pathname === '/login') return null
 
 	return (
 		<Container>
-			<Link href='/' >
-				<img src={logo} alt='Cruz representações' className='logo' />
+			<Link href="/">
+				<img src={logo} alt="Cruz representações" className="logo" />
 			</Link>
 
-			<div className='links'>
-				<div className='group'>
+			<div className="links">
+				<div className="group">
 					<h3>Links úteis</h3>
 					<ul>
-						<Link href='/' >
-							<a className='link'>
-								Página Principal
-							</a>
+						<Link href="/">
+							<a className="link">Página Principal</a>
 						</Link>
-						<Link href='/contato' >
-							<a className='link'>
-								Contato
-							</a>
+						<Link href="/contato">
+							<a className="link">Contato</a>
 						</Link>
-						<Link href='/sobre' >
-							<a className='link'>
-								Sobre
-							</a>
+						<Link href="/sobre">
+							<a className="link">Sobre</a>
 						</Link>
 						{/* <Link href='/sobre/politica-de-privacidade' >
 							<a className='link'>
@@ -45,22 +37,42 @@ const Footer: React.FC = () =>
 						</Link> */}
 					</ul>
 				</div>
-				<div className='group'>
+				<div className="group">
 					<h3>Redes sociais</h3>
 					<ul>
-						<a target='_blank' rel='nonreferrer' href='https://wa.me/5538999856208' className='social' >
+						<a
+							target="_blank"
+							rel="nonreferrer noreferrer"
+							href="https://wa.me/5538999856208"
+							className="social"
+						>
 							<FaWhatsapp size={25} />
 							<span>(38) 9 9985-6208 (Comercial) </span>
 						</a>
-						<a target='_blank' rel='nonreferrer' href='https://wa.me/5538999866208' className='social' >
+						<a
+							target="_blank"
+							rel="nonreferrer noreferrer"
+							href="https://wa.me/5538999866208"
+							className="social"
+						>
 							<FaWhatsapp size={25} />
 							<span>(38) 9 9986-6208 (Admnistrativo) </span>
 						</a>
-						<a target='_blank' rel='nonreferrer' href='https://www.facebook.com/CruzRepresentacoes' className='social' >
+						<a
+							target="_blank"
+							rel="nonreferrer noreferrer"
+							href="https://www.facebook.com/CruzRepresentacoes"
+							className="social"
+						>
 							<FiFacebook size={25} />
 							<span>@CruzRepresentacoes </span>
 						</a>
-						<a target='_blank' rel='nonreferrer' href='https://www.instagram.com/cruz_representacoes' className='social' >
+						<a
+							target="_blank"
+							rel="nonreferrer noreferrer"
+							href="https://www.instagram.com/cruz_representacoes"
+							className="social"
+						>
 							<FiInstagram size={25} />
 							<span>cruz_representacoes</span>
 						</a>

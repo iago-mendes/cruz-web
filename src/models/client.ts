@@ -1,7 +1,7 @@
-import {CompanyCondition} from './company';
+import {CompanyCondition} from './company'
 
-interface Client // show
-{
+interface Client {
+	// show
 	id: string
 	imagem: string
 	razao_social: string
@@ -10,8 +10,7 @@ interface Client // show
 	insc_estadual: string
 	telefone: number
 	email: string
-	endereco:
-	{
+	endereco: {
 		rua: string
 		numero: number
 		bairro: string
@@ -19,30 +18,26 @@ interface Client // show
 		cidade: string
 		uf: string
 	}
-	status:
-	{
+	status: {
 		ativo: boolean
 		aberto: boolean
 		nome_sujo: boolean
 	}
-	representadas: Array<
-	{
+	representadas: Array<{
 		id: string
 		nome_fantasia: string
 		tabela: string
 	}>
 }
 
-export interface ClientConditions
-{
+export interface ClientConditions {
 	vista: boolean
 	cheque: boolean
 	prazo: boolean
 	prazoOpcoes: CompanyCondition[]
 }
 
-export const defaultCientConditions: ClientConditions =
-{
+export const defaultCientConditions: ClientConditions = {
 	vista: true,
 	cheque: true,
 	prazo: false,

@@ -52,7 +52,5 @@
 			"type": "image/jpeg"
 		}
 	],
-	"categories": [
-		"business"
-	]
+	"categories": ["business"]
 }

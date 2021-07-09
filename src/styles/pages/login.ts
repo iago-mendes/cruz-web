@@ -3,8 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	background-color: ${p => p.theme.colors.primary};
 
-	main
-	{
+	main {
 		width: 100%;
 		min-height: 100vh;
 
@@ -14,8 +13,7 @@ const Container = styled.div`
 		align-items: center;
 		justify-content: space-between;
 
-		.left
-		{
+		.left {
 			height: 100%;
 			width: 35%;
 
@@ -24,8 +22,7 @@ const Container = styled.div`
 			align-items: center;
 			justify-content: space-around;
 
-			form
-			{
+			form {
 				width: 100%;
 
 				display: flex;
@@ -37,8 +34,7 @@ const Container = styled.div`
 				padding-left: 10rem;
 				height: fit-content;
 
-				.fieldInput
-				{
+				.fieldInput {
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
@@ -46,15 +42,13 @@ const Container = styled.div`
 
 					width: 100%;
 
-					label
-					{
+					label {
 						font-family: Ubuntu;
 						color: ${p => p.theme.colors.secondary};
 						font-size: 1.5rem;
 					}
-					
-					input
-					{
+
+					input {
 						width: 100%;
 						background-color: ${p => p.theme.colors.primaryDark};
 						border: none;
@@ -66,23 +60,22 @@ const Container = styled.div`
 						color: ${p => p.theme.colors.primaryLight};
 
 						transition: 0.5s;
-						
-						:hover, :focus
-						{
+
+						:hover,
+						:focus {
 							border-radius: 0;
 						}
 					}
 				}
 
-				button
-				{
+				button {
 					width: 10rem;
 					height: 4rem;
 					border-radius: 1.5rem;
 
 					background: none;
 					border: ${p => p.theme.colors.secondary} 2px solid;
-					
+
 					color: ${p => p.theme.colors.secondary};
 					font-family: Ubuntu;
 					font-size: 2rem;
@@ -93,9 +86,8 @@ const Container = styled.div`
 
 					cursor: pointer;
 					transition: 0.25s;
-					
-					:hover
-					{
+
+					:hover {
 						transform: scale(1.1);
 						background-color: ${p => p.theme.colors.secondary};
 						color: ${p => p.theme.colors.primary};
@@ -103,33 +95,28 @@ const Container = styled.div`
 				}
 			}
 
-			.illustration
-			{
+			.illustration {
 				width: 100%;
 				padding: 2rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 			}
-
 		}
 
-		.right
-		{
+		.right {
 			height: 100%;
 			width: 65%;
 
-			.firstRow
-			{
+			.firstRow {
 				height: 20%;
 
 				display: flex;
 				justify-content: space-between;
 
 				padding: 2rem;
-				
-				h1
-				{
+
+				h1 {
 					font-family: Ubuntu;
 					color: ${p => p.theme.colors.secondary};
 					font-size: 3rem;
@@ -137,8 +124,7 @@ const Container = styled.div`
 					width: 40rem;
 				}
 
-				button
-				{
+				button {
 					background-color: ${p => p.theme.colors.primaryLight};
 					height: 5rem;
 					width: 5rem;
@@ -154,17 +140,15 @@ const Container = styled.div`
 
 					cursor: pointer;
 					transition: 0.25s;
-					
-					:hover
-					{
+
+					:hover {
 						transform: scale(1.1);
 						border-radius: 0;
 					}
 				}
 			}
 
-			.secondRow
-			{
+			.secondRow {
 				height: 50%;
 
 				display: flex;
@@ -174,24 +158,21 @@ const Container = styled.div`
 				padding-right: 2rem;
 			}
 
-			.thirdRow
-			{
+			.thirdRow {
 				height: 30%;
 
 				display: flex;
 				align-items: center;
 				justify-content: flex-end;
 				padding: 2rem;
-				
-				p
-				{
+
+				p {
 					color: ${p => p.theme.colors.secondary};
 					font-family: Roboto;
 					font-size: 3rem;
 					width: 50rem;
-					
-					a
-					{
+
+					a {
 						color: ${p => p.theme.colors.secondaryStrong};
 						text-decoration: underline;
 					}
@@ -200,69 +181,57 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 850px)
-	{
+	@media (max-width: 850px) {
 		background-image: none;
 
-		main
-		{
+		main {
 			height: fit-content;
 			flex-direction: column;
 
 			padding-top: 2rem;
 
-			.left, .right
-			{
+			.left,
+			.right {
 				width: 100%;
 				height: fit-content;
 			}
 
-			.left
-			{
-				form
-				{
+			.left {
+				form {
 					padding: 4rem;
 				}
 			}
 
-			.right
-			{
-				.firstRow
-				{
+			.right {
+				.firstRow {
 					height: fit-content;
 
-					button
-					{
+					button {
 						position: fixed;
 						right: 1rem;
 						top: 1rem;
 					}
 				}
 
-				.secondRow
-				{
+				.secondRow {
 					height: fit-content;
 					padding: 0;
 					justify-content: center;
 				}
 
-				.thirdRow
-				{
+				.thirdRow {
 					height: fit-content;
 					justify-content: center;
 
-					h2
-					{
+					h2 {
 						color: ${p => p.theme.colors.secondary};
 
-						a
-						{
+						a {
 							color: ${p => p.theme.colors.secondary};
 							text-decoration-color: ${p => p.theme.colors.secondary};
 							transition: 0.25s;
-							
-							:hover
-							{
+
+							:hover {
 								color: ${p => p.theme.colors.primaryDark};
 								text-decoration-color: ${p => p.theme.colors.primaryDark};
 							}

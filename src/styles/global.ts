@@ -84,10 +84,9 @@ export default createGlobalStyle`
 	}
 `
 
-export const selectStyles: StylesConfig<{label: string, value: string}, false> =
-{
-	option: (provided, state) => (
-		{
+export const selectStyles: StylesConfig<{label: string; value: string}, false> =
+	{
+		option: (provided, state) => ({
 			cursor: 'pointer',
 
 			fontFamily: 'Roboto',
@@ -95,20 +94,22 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			padding: '1rem',
 
 			transition: '0.1s',
-			color: state.isSelected ? '#fff' : state.isFocused ? '#84130B' : '#7B7B7B',
+			color: state.isSelected
+				? '#fff'
+				: state.isFocused
+				? '#84130B'
+				: '#7B7B7B',
 			backgroundColor: state.isSelected ? '#84130B' : '#fff'
 		}),
 
-	menu: (provided) => (
-		{
+		menu: provided => ({
 			...provided,
-			fontFamily: 'Roboto',
+			fontFamily: 'Roboto'
 		}),
 
-	control: (provided, state) => (
-		{
+		control: (provided, state) => ({
 			cursor: 'pointer',
-		
+
 			transition: '0.25s',
 
 			fontFamily: 'Roboto',
@@ -117,47 +118,45 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			width: '100%',
 			backgroundColor: '#fff',
 
-			borderColor: state.menuIsOpen ? '#84130B' : state.isFocused ? '#84130B80' : '#7B7B7B',
+			borderColor: state.menuIsOpen
+				? '#84130B'
+				: state.isFocused
+				? '#84130B80'
+				: '#7B7B7B',
 			borderWidth: 2,
 			borderStyle: 'solid',
 			borderRadius: 5,
 
 			display: 'flex',
-			alignItems: 'center',
+			alignItems: 'center'
 		}),
 
-	singleValue: (provided) => (
-		{
+		singleValue: provided => ({
 			...provided,
 
 			color: '#84130B'
 		}),
 
-	indicatorSeparator: (provided, state) => (
-		{
+		indicatorSeparator: (provided, state) => ({
 			...provided,
 
 			backgroundColor: state.isFocused ? '#84130B' : '#7B7B7B'
 		}),
 
-	dropdownIndicator: (provided, state) => (
-		{
+		dropdownIndicator: (provided, state) => ({
 			...provided,
 
 			color: state.isFocused ? '#84130B' : '#7B7B7B'
 		})
-}
+	}
 
-export const modalStyle: Modal.Styles =
-{
-	overlay:
-	{
+export const modalStyle: Modal.Styles = {
+	overlay: {
 		backgroundColor: 'rgba(0, 0, 0, 0.6)',
 		zIndex: 2
 	},
 
-	content:
-	{
+	content: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',

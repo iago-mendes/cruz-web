@@ -1,5 +1,4 @@
-function formatPercentage(p: number)
-{
+function formatPercentage(p: number) {
 	return p.toFixed(2).replace('.', ',') + ' %'
 }
 

@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	.info
-	{
+	.info {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
 
 		width: 30rem;
 
-		h3
-		{
+		h3 {
 			font-family: Ubuntu;
 			font-size: 2rem;
 			color: ${p => p.theme.colors.primaryDark};
@@ -19,16 +17,14 @@ const Container = styled.div`
 			padding-left: 1rem;
 		}
 
-		span
-		{
+		span {
 			margin-left: 2rem;
 
 			font-family: Roboto;
 			font-size: 1.75rem;
 		}
 
-		.password
-		{
+		.password {
 			background: none;
 			border: ${p => p.theme.colors.primaryDark} 2px solid;
 			border-radius: 100rem;
@@ -44,8 +40,7 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.colors.primaryDark};
 				color: ${p => p.theme.colors.background};
 
@@ -54,41 +49,35 @@ const Container = styled.div`
 		}
 	}
 
-	header
-	{
+	header {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 
 		padding: 2rem;
 
-		.img
-		{
+		.img {
 			width: 40%;
 		}
 
-		.group
-		{
+		.group {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
 
 			width: 40%;
 
-			.info
-			{
+			.info {
 				width: 100%;
 
-				span
-				{
+				span {
 					font-size: 2rem;
 				}
 			}
 		}
 	}
 
-	main
-	{
+	main {
 		padding: 2rem;
 
 		display: grid;
@@ -98,15 +87,13 @@ const Container = styled.div`
 		align-items: center;
 	}
 
-	@media(max-width: 850px)
-	{
-		header
-		{
+	@media (max-width: 850px) {
+		header {
 			flex-direction: column;
 			gap: 2rem;
 
-			.img, .group
-			{
+			.img,
+			.group {
 				width: 100%;
 			}
 		}

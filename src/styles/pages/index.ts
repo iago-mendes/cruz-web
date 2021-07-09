@@ -10,15 +10,13 @@ const Container = styled.div`
 
 	color: ${p => p.theme.colors.secondary};
 
-	.carousel
-	{
+	.carousel {
 		z-index: 1;
 
 		width: 100%;
 	}
 
-	main
-	{
+	main {
 		min-height: 50vh;
 
 		display: flex;
@@ -29,33 +27,27 @@ const Container = styled.div`
 
 		padding: 2rem;
 
-
-		.info
-		{
+		.info {
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
 
-			h1
-			{
+			h1 {
 				font-size: 2.5rem;
 			}
 
-			h2
-			{
+			h2 {
 				font-size: 1.75rem;
 			}
 		}
-		
-		img
-		{
+
+		img {
 			margin: 0;
 			width: 50vw;
 		}
 	}
 
-	p
-	{
+	p {
 		font-size: 1.75rem;
 		font-weight: 700;
 
@@ -64,51 +56,43 @@ const Container = styled.div`
 		width: 100%;
 		text-align: center;
 	}
-	
-	@media (min-width: 850px)
-	{
+
+	@media (min-width: 850px) {
 		gap: 0;
 
-		main
-		{
+		main {
 			min-height: 0;
 
 			flex-direction: row;
 			justify-content: space-around;
 
-			img
-			{
+			img {
 				margin-top: -7.5rem;
 				z-index: 2;
 
 				width: 35rem;
 			}
 
-			.info
-			{
+			.info {
 				gap: 2rem;
-				
-				h1
-				{
+
+				h1 {
 					font-family: Ubuntu;
 					font-size: 4rem;
-			
+
 					color: ${p => p.theme.colors.secondary};
 				}
-			
-				h2
-				{
+
+				h2 {
 					font-family: Roboto;
 					font-size: 2rem;
-			
+
 					color: ${p => p.theme.colors.secondary};
 				}
 			}
-
 		}
 
-		p
-		{
+		p {
 			width: 100%;
 			text-align: center;
 			padding: 10rem 2rem;

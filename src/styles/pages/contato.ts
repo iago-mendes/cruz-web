@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	.scrollable
-	{
+	.scrollable {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 
 		padding: 5rem;
 
-		form
-		{
+		form {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-end;
@@ -19,8 +17,8 @@ const Container = styled.div`
 
 			width: 40%;
 
-			input, textarea
-			{
+			input,
+			textarea {
 				width: 100%;
 				padding: 1rem;
 				border-radius: 1rem;
@@ -33,14 +31,12 @@ const Container = styled.div`
 				font-family: Ubuntu;
 			}
 
-			textarea
-			{
+			textarea {
 				font-family: Roboto;
 				resize: vertical;
 			}
 
-			button
-			{
+			button {
 				background-color: var(--primary);
 				color: var(--secondary);
 				font-family: Ubuntu;
@@ -55,18 +51,15 @@ const Container = styled.div`
 
 				cursor: pointer;
 				transition: 0.25s;
-				
-				:hover
-				{
+
+				:hover {
 					transform: scale(1.1);
 					border-radius: 0;
 				}
 			}
-
 		}
 
-		h1
-		{
+		h1 {
 			width: 100%;
 			text-align: left;
 
@@ -75,31 +68,27 @@ const Container = styled.div`
 			color: var(--primary);
 		}
 
-		p
-		{
+		p {
 			width: 100%;
 			text-align: left;
 
 			font-family: Roboto;
 			font-size: 2rem;
 			color: var(--primary);
-			
-			a
-			{
+
+			a {
 				text-decoration-color: var(--background);
 				font-family: Ubuntu;
 				color: var(--primary);
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					text-decoration-color: var(--primary);
 				}
 			}
 		}
 
-		.phones
-		{
+		.phones {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -108,8 +97,7 @@ const Container = styled.div`
 
 			width: 40%;
 
-			h2
-			{
+			h2 {
 				font-size: 2.5rem;
 				color: var(--primary);
 				font-family: Ubuntu;
@@ -120,27 +108,22 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 850px)
-	{
-		.scrollable
-		{
+	@media (max-width: 850px) {
+		.scrollable {
 			flex-direction: column-reverse;
 			gap: 2rem;
 			padding: 2rem;
 
-			form
-			{
+			form {
 				width: 100%;
 				align-items: center;
 			}
 
-			p
-			{
+			p {
 				word-break: break-word;
 			}
 
-			.phones
-			{
+			.phones {
 				width: 100%;
 			}
 		}

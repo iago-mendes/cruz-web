@@ -11,12 +11,11 @@ import GlobalStyle from '../styles/global'
 import Footer from '../components/Footer'
 import {AuthProvider} from '../contexts/auth'
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
-{
-  return (
-    <AuthProvider>
+const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
+	return (
+		<AuthProvider>
 			<Head>
-				<meta name='viewport' content= 'width=device-width, user-scalable=no' />
+				<meta name="viewport" content="width=device-width, user-scalable=no" />
 			</Head>
 
 			<ThemeProvider theme={theme}>
@@ -27,8 +26,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) =>
 				</SessionHandler>
 				<GlobalStyle />
 			</ThemeProvider>
-    </AuthProvider>
-  )
+		</AuthProvider>
+	)
 }
 
 export default MyApp

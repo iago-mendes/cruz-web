@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	showDropdown: boolean
 	isUserMenuOpen: boolean
 }
@@ -16,8 +15,7 @@ const Container = styled.div<ContainerProps>`
 
 	background-color: ${p => p.theme.colors.primary};
 
-	.logo
-	{
+	.logo {
 		height: 100%;
 
 		margin-left: 2.5rem;
@@ -25,14 +23,12 @@ const Container = styled.div<ContainerProps>`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			transform: scale(1.1);
 		}
 	}
 
-	nav
-	{
+	nav {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
@@ -40,29 +36,25 @@ const Container = styled.div<ContainerProps>`
 		margin-right: 2rem;
 	}
 
-	ul
-	{
+	ul {
 		display: flex;
 		align-items: center;
 		gap: 3rem;
 
 		height: 100%;
 
-		*
-		{
+		* {
 			font-family: Ubuntu;
 		}
 
-		.link
-		{
+		.link {
 			font-weight: 700;
 			font-size: 1.75rem;
 			text-decoration: none;
 
 			color: ${p => p.theme.colors.secondary};
 
-			::after
-			{
+			::after {
 				content: '';
 				width: 0px;
 				height: 2px;
@@ -72,14 +64,12 @@ const Container = styled.div<ContainerProps>`
 				transition: 0.25s;
 			}
 
-			:hover::after
-			{
+			:hover::after {
 				width: 100%;
 			}
 		}
 
-		.dropdown
-		{
+		.dropdown {
 			height: 7.5rem;
 
 			color: ${p => p.theme.colors.secondary};
@@ -97,21 +87,19 @@ const Container = styled.div<ContainerProps>`
 
 			position: relative;
 
-			.group
-			{
+			.group {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 
-				svg
-				{
+				svg {
 					transition: 0.25s;
-					transform: ${p => p.showDropdown ? 'rotate(180deg)' : 'rotate(90deg)'};
+					transform: ${p =>
+						p.showDropdown ? 'rotate(180deg)' : 'rotate(90deg)'};
 				}
 			}
 
-			ul
-			{
+			ul {
 				background-color: ${p => p.theme.colors.primary};
 				box-shadow: 0px 5px 5px black;
 
@@ -125,16 +113,14 @@ const Container = styled.div<ContainerProps>`
 				align-items: flex-start;
 				gap: 1rem;
 
-				a.link
-				{
+				a.link {
 					font-size: 1.5rem;
 				}
 			}
 		}
 	}
 
-	.linkBlock
-	{
+	.linkBlock {
 		font-family: Ubuntu;
 		font-weight: 700;
 		font-size: 1.75rem;
@@ -151,15 +137,13 @@ const Container = styled.div<ContainerProps>`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			background-color: ${p => p.theme.colors.secondary};
 			color: ${p => p.theme.colors.primary};
 		}
 	}
 
-	.user
-	{
+	.user {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -167,8 +151,7 @@ const Container = styled.div<ContainerProps>`
 		height: 50%;
 		position: relative;
 
-		button
-		{
+		button {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
@@ -181,31 +164,28 @@ const Container = styled.div<ContainerProps>`
 			height: 5rem;
 			border-radius: 100rem;
 			color: ${p => p.theme.colors.secondary};
-			
+
 			cursor: pointer;
 			transition: 0.25s;
-			
-			:hover
-			{
+
+			:hover {
 				transform: scale(1.07);
 			}
 
-			.img
-			{
+			.img {
 				max-width: 100%;
 				max-height: 100%;
 				border-radius: 100rem;
 			}
-			.indicator
-			{
+			.indicator {
 				transition: 0.25s;
-				transform: ${p => p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
+				transform: ${p =>
+					p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
 			}
 		}
 	}
 
-	button.controller
-	{
+	button.controller {
 		font-size: 3rem;
 		color: ${p => p.theme.colors.secondary};
 
@@ -222,50 +202,45 @@ const Container = styled.div<ContainerProps>`
 
 		transition: background-color 0.25s;
 
-		:hover
-		{
+		:hover {
 			background-color: ${p => p.theme.colors.primaryDark}80;
 		}
 	}
 `
 
-interface BurgerMenuProps
-{
+interface BurgerMenuProps {
 	isOpen: boolean
 }
 
 export const BurgerMenu = styled.div<BurgerMenuProps>`
 	position: fixed;
-	left: ${p => p.isOpen ? 0 : '-100vw'};
+	left: ${p => (p.isOpen ? 0 : '-100vw')};
 	top: 0;
 	z-index: 2;
 
 	width: 75vw;
 	height: 100vh;
 	background-color: ${p => p.theme.colors.primary};
-	box-shadow: 5px 0px 5px rgba(0,0, 0, 0.5);
+	box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
 
 	overflow-y: auto;
 	padding: 1rem;
 
 	transition: left 0.25s;
 
-	button.controller
-	{
+	button.controller {
 		margin-left: auto;
 		margin-bottom: 5rem;
 	}
 
-	ul
-	{
+	ul {
 		flex-direction: column;
 		gap: 5rem;
 
 		width: 100%;
 		height: fit-content;
 
-		.dropdown
-		{
+		.dropdown {
 			height: fit-content;
 		}
 	}

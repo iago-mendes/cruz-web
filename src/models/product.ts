@@ -1,13 +1,11 @@
-interface Product
-{
+interface Product {
 	id: string
 	imagem: string
 	nome: string
 	unidade: string
 }
 
-export interface ProductListedPriced
-{
+export interface ProductListedPriced {
 	id: string
 	imagem: string
 	nome: string
@@ -17,8 +15,7 @@ export interface ProductListedPriced
 	preco: number
 }
 
-export const defaultProductListedPriced: ProductListedPriced =
-{
+export const defaultProductListedPriced: ProductListedPriced = {
 	id: '',
 	imagem: '',
 	nome: '',

@@ -8,11 +8,9 @@ try {
 	token = undefined
 }
 
-const api = axios.create(
-{
+const api = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL,
-	headers:
-	{
+	headers: {
 		key: process.env.NEXT_PUBLIC_API_KEY,
 		authorization: `Bearer ${token}`
 	}

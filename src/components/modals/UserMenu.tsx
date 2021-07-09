@@ -8,53 +8,44 @@ import {useEffect} from 'react'
 import Container from '../../styles/components/modals/UserMenu'
 import {useAuth} from '../../hooks/useAuth'
 
-interface UserMenuProps
-{
+interface UserMenuProps {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (isOpen: boolean) => void
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
-{
+const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
 	const {user, signOut} = useAuth()
 	const {pathname} = useRouter()
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		setIsOpen(false)
 	}, [pathname])
 
-	function handleSignOut()
-	{
+	function handleSignOut() {
 		setIsOpen(false)
 		signOut()
 	}
 
-	if (!user)
-		return null
+	if (!user) return null
 
 	return (
 		<motion.div
 			initial={false}
 			transition={{duration: 0.25}}
 			animate={isOpen ? 'open' : 'closed'}
-			variants=
-			{{
-				open:
-				{
+			variants={{
+				open: {
 					height: 'fit-content',
 					width: 'fit-content',
-					opacity: 1,
+					opacity: 1
 				},
-				closed:
-				{
+				closed: {
 					height: 0,
 					width: 0,
-					opacity: 0,
+					opacity: 0
 				}
 			}}
-			style=
-			{{
+			style={{
 				position: 'absolute',
 				right: 0,
 				top: '6rem',
@@ -63,32 +54,28 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 				overflow: 'hidden',
 				direction: 'rtl',
 				padding: '1rem',
-				paddingTop: 0,
+				paddingTop: 0
 			}}
 		>
 			<Container>
-				<div className='detail'>
+				<div className="detail">
 					<BsFillTriangleFill size={10} />
 				</div>
 				<main>
-					<div className='session'>
-						{
-							user.data && (
-								<p>Conectado como <strong>{user.data.name}</strong></p>
-							)
-						}
-						<button onClick={handleSignOut} >
+					<div className="session">
+						{user.data && (
+							<p>
+								Conectado como <strong>{user.data.name}</strong>
+							</p>
+						)}
+						<button onClick={handleSignOut}>
 							<FiLogOut size={20} />
 							<span>Sair</span>
 						</button>
 					</div>
-					<div className='links'>
-						<Link href='/cliente'>
-							Minha conta
-						</Link>
-						<Link href='/pedidos'>
-							Meus pedidos
-						</Link>
+					<div className="links">
+						<Link href="/cliente">Minha conta</Link>
+						<Link href="/pedidos">Meus pedidos</Link>
 					</div>
 				</main>
 			</Container>

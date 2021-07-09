@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	step: number
 }
 
 const Container = styled.div<ContainerProps>`
 	min-height: 100vh;
 
-	header
-	{
+	header {
 		background-color: ${p => p.theme.colors.primary};
 		padding: 1rem;
 
@@ -17,14 +15,12 @@ const Container = styled.div<ContainerProps>`
 		flex-direction: column;
 		gap: 1rem;
 
-		.group
-		{
+		.group {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 
-			.cancel
-			{
+			.cancel {
 				background: none;
 				border: ${p => p.theme.colors.secondary} 2px solid;
 				border-radius: 100rem;
@@ -42,44 +38,38 @@ const Container = styled.div<ContainerProps>`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					background-color: ${p => p.theme.colors.secondary};
 					color: ${p => p.theme.colors.primary};
 
 					transform: scale(1.1);
 				}
 
-				span
-				{
+				span {
 					font-family: Ubuntu;
 					font-size: 1.75rem;
 					font-weight: 700;
 				}
 			}
 
-			h1
-			{
+			h1 {
 				font-family: Roboto;
 				font-weight: 700;
 				font-size: 2.5rem;
 				color: ${p => p.theme.colors.secondary};
 			}
 
-			.img
-			{
+			.img {
 				width: 10rem;
 			}
 		}
 
-		.navigate
-		{
+		.navigate {
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
 
-			button
-			{
+			button {
 				background: none;
 				border: none;
 
@@ -96,24 +86,20 @@ const Container = styled.div<ContainerProps>`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					transform: scale(1.1);
 
-					span::after
-					{
+					span::after {
 						width: 100%;
 					}
 				}
 
-				span
-				{
+				span {
 					font-family: Ubuntu;
 					font-size: 1.75rem;
 					font-weight: 700;
 
-					::after
-					{
+					::after {
 						content: '';
 						width: 0px;
 						height: 2px;
@@ -124,8 +110,7 @@ const Container = styled.div<ContainerProps>`
 				}
 			}
 
-			ul
-			{
+			ul {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
@@ -133,8 +118,7 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	main
-	{
+	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -143,17 +127,15 @@ const Container = styled.div<ContainerProps>`
 		padding: 2rem;
 		padding-bottom: 7.5rem;
 
-		h1
-		{
+		h1 {
 			font-family: Ubuntu;
 			font-size: 2rem;
 			color: ${p => p.theme.colors.primaryDark};
 		}
 
-		.grid
-		{
+		.grid {
 			width: 100%;
-			
+
 			display: grid;
 			grid-auto-rows: 25rem;
 			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
@@ -162,51 +144,42 @@ const Container = styled.div<ContainerProps>`
 			justify-items: center;
 		}
 
-		table.products
-		{
+		table.products {
 			width: 100%;
 			font-size: 1.75rem;
 			color: #000;
 
-			th, td
-			{
-				border: 1px solid rgba(0,0,0,0.75);
+			th,
+			td {
+				border: 1px solid rgba(0, 0, 0, 0.75);
 			}
 
-			tr
-			{
+			tr {
 				height: 3rem;
 			}
 
-			.small
-			{
+			.small {
 				width: 7.5vw;
 			}
 
-			.large
-			{
+			.large {
 				width: 10vw;
 			}
 
-			tbody
-			{
-				tr
-				{
-					td
-					{
+			tbody {
+				tr {
+					td {
 						text-align: center;
 					}
 
-					td.product
-					{
+					td.product {
 						display: flex;
 						align-items: center;
 						gap: 1rem;
 
 						height: 3rem;
 
-						.img
-						{
+						.img {
 							width: 2.5rem;
 							height: 2.5rem;
 
@@ -214,8 +187,7 @@ const Container = styled.div<ContainerProps>`
 							align-items: center;
 							justify-content: center;
 
-							img
-							{
+							img {
 								max-width: 100%;
 								max-height: 100%;
 							}
@@ -225,8 +197,7 @@ const Container = styled.div<ContainerProps>`
 			}
 		}
 
-		.group
-		{
+		.group {
 			width: 100%;
 
 			display: flex;
@@ -235,8 +206,7 @@ const Container = styled.div<ContainerProps>`
 
 			padding-left: 2rem;
 
-			label
-			{
+			label {
 				font-family: Roboto;
 				font-weight: 700;
 				font-size: 1.75rem;
@@ -247,13 +217,11 @@ const Container = styled.div<ContainerProps>`
 				margin-left: -2rem;
 			}
 
-			span.value
-			{
+			span.value {
 				font-size: 1.75rem;
 			}
 
-			button.newContactButton
-			{
+			button.newContactButton {
 				width: fit-content;
 				padding: 0.5rem 1rem;
 
@@ -270,22 +238,19 @@ const Container = styled.div<ContainerProps>`
 
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					border-radius: 0;
 					transform: scale(1.1);
 				}
 			}
 
-			.newContactFields
-			{
+			.newContactFields {
 				width: 100%;
 
 				display: flex;
 				gap: 1rem;
 
-				input
-				{
+				input {
 					border: none;
 					width: 100%;
 
@@ -295,28 +260,25 @@ const Container = styled.div<ContainerProps>`
 					border-bottom: ${p => p.theme.colors.text}80 2px solid;
 					transition: 0.25s;
 
-					:focus, :hover
-					{
+					:focus,
+					:hover {
 						border-bottom: ${p => p.theme.colors.primaryDark} 2px solid;
 					}
 				}
 			}
 
-			.newContactSave
-			{
+			.newContactSave {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
 
-				span
-				{
+				span {
 					font-size: 1.75rem;
 				}
 			}
 		}
 
-		.searchField
-		{
+		.searchField {
 			background-color: #fff;
 			padding: 0 1rem;
 			border-radius: 2rem;
@@ -324,12 +286,11 @@ const Container = styled.div<ContainerProps>`
 			display: flex;
 			align-items: center;
 			gap: 1rem;
-			
+
 			color: ${p => p.theme.colors.primaryDark};
 			font-size: 2rem;
 
-			input
-			{
+			input {
 				width: 25rem;
 				height: 4rem;
 
@@ -341,20 +302,17 @@ const Container = styled.div<ContainerProps>`
 			}
 		}
 
-		.searchNotFound
-		{
+		.searchNotFound {
 			margin-top: 7.5rem;
 
-			span
-			{
+			span {
 				font-size: 2rem;
 				font-weight: 700;
 			}
 		}
 	}
 
-	#totalPrice
-	{
+	#totalPrice {
 		position: fixed;
 		right: 1rem;
 		bottom: 1rem;
@@ -373,67 +331,54 @@ const Container = styled.div<ContainerProps>`
 		padding-left: 1rem;
 		padding-right: 1rem;
 
-		h3
-		{
+		h3 {
 			font-family: Ubuntu;
 			font-size: 2rem;
 			color: ${p => p.theme.colors.background};
 		}
 
-		span
-		{
+		span {
 			font-family: Roboto;
 			font-size: 2rem;
 			color: ${p => p.theme.colors.background};
 		}
 	}
 
-	@media(max-width: 700px)
-	{
-		header .group
-		{
+	@media (max-width: 700px) {
+		header .group {
 			flex-direction: column;
 			gap: 1rem;
 
-			.cancel
-			{
+			.cancel {
 				margin-right: 50vw;
 			}
 		}
-		
-		main .group
-		{
-			.newContactFields
-			{
+
+		main .group {
+			.newContactFields {
 				flex-direction: column;
 			}
 		}
 	}
 
-	@media(max-width: 900px)
-	{
-		main .productsContainer
-		{
+	@media (max-width: 900px) {
+		main .productsContainer {
 			overflow-x: auto;
 
-			table.products
-			{
+			table.products {
 				width: fit-content;
 				table-layout: fixed;
 				font-size: 1.25rem;
 
-				.product
-				{
+				.product {
 					width: 350px !important;
 				}
 
-				.small
-				{
+				.small {
 					width: 75px !important;
 				}
 
-				.large
-				{
+				.large {
 					width: 100px !important;
 				}
 			}
@@ -441,8 +386,7 @@ const Container = styled.div<ContainerProps>`
 	}
 `
 
-interface CardProps
-{
+interface CardProps {
 	isSelected: boolean
 	type: string
 }
@@ -460,7 +404,9 @@ export const Card = styled.div<CardProps>`
 	padding: 1rem;
 	padding-bottom: 2rem;
 
-	border: ${p => p.isSelected ? p.theme.colors.primary : p.theme.colors.secondary + 80} 5px solid;
+	border: ${p =>
+			p.isSelected ? p.theme.colors.primary : p.theme.colors.secondary + 80}
+		5px solid;
 	border-radius: 2rem;
 
 	font-family: Roboto;
@@ -471,14 +417,12 @@ export const Card = styled.div<CardProps>`
 	${p => p.type === 'company' && 'cursor: pointer;'}
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		${p => p.type === 'company' && 'border-radius: 0;'}
 		${p => p.type === 'company' && 'transform: scale(1.05);'}
 	}
 
-	.img
-	{
+	.img {
 		width: 75%;
 		height: 50%;
 
@@ -486,39 +430,33 @@ export const Card = styled.div<CardProps>`
 		align-items: center;
 		justify-content: center;
 
-		img
-		{
+		img {
 			max-width: 100%;
 			max-height: 100%;
 		}
 	}
 
-	h2
-	{
+	h2 {
 		font-size: 2rem;
 	}
 
-	h3
-	{
+	h3 {
 		font-size: 1.5rem;
 	}
 
-	span
-	{
+	span {
 		font-family: Roboto;
 		font-weight: 700;
 		font-size: 1.25rem;
 		color: ${p => p.theme.colors.primaryDark};
 	}
 
-	.field
-	{
+	.field {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
 
-		input
-		{
+		input {
 			height: 2.5rem;
 			width: 5rem;
 
@@ -535,23 +473,22 @@ export const Card = styled.div<CardProps>`
 			padding-right: 0.5rem;
 
 			transition: 0.25s;
-		
-			:focus, :hover
-			{
+
+			:focus,
+			:hover {
 				border-bottom-color: ${p => p.theme.colors.primaryDark};
 			}
 
 			-moz-appearance: textfield;
 
-			::-webkit-outer-spin-button, ::-webkit-inner-spin-button
-			{
+			::-webkit-outer-spin-button,
+			::-webkit-inner-spin-button {
 				-webkit-appearance: none;
 				margin: 0;
 			}
 		}
 
-		button
-		{
+		button {
 			background: none;
 			border: none;
 
@@ -567,16 +504,14 @@ export const Card = styled.div<CardProps>`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				color: #fff;
 				background-color: ${p => p.theme.colors.primaryDark};
 			}
 		}
 	}
 
-	.info
-	{
+	.info {
 		position: absolute;
 		top: 1rem;
 		right: 1rem;
@@ -589,8 +524,7 @@ export const Card = styled.div<CardProps>`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			color: ${p => p.theme.colors.primary};
 			transform: scale(1.25);
 		}

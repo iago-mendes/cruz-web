@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	main
-	{
+	main {
 		display: grid;
 		grid-auto-rows: 25rem;
 		grid-template-columns: repeat(auto-fill, 25rem);
@@ -15,8 +14,7 @@ const Container = styled.div`
 		padding-left: 10rem;
 		padding-right: 10rem;
 
-		.product
-		{
+		.product {
 			width: 25rem;
 			height: 25rem;
 
@@ -34,14 +32,12 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
-				box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+			:hover {
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 				transform: scale(1.05);
 			}
 
-			.img
-			{
+			.img {
 				height: 80%;
 				width: 100%;
 
@@ -49,15 +45,13 @@ const Container = styled.div`
 				align-items: center;
 				justify-content: center;
 
-				img
-				{
+				img {
 					max-height: 100%;
 					max-width: 100%;
 				}
 			}
 
-			h1
-			{
+			h1 {
 				font-family: Ubuntu;
 				font-size: 1.5rem;
 
@@ -66,10 +60,8 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 850px)
-	{
-		main
-		{
+	@media (max-width: 850px) {
+		main {
 			padding: 2rem;
 		}
 	}

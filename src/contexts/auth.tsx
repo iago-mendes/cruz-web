@@ -10,8 +10,7 @@ type UserData = {
 	image: string
 	email: string
 
-	representadas: Array<
-	{
+	representadas: Array<{
 		id: string
 		nome_fantasia: string
 		tabela: string
@@ -52,7 +51,8 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 		if (!token) return setUser(undefined)
 
 		const payload = jwt.decode(token)
-		const {id, role} = typeof payload === 'string' ? JSON.parse(payload) : payload
+		const {id, role} =
+			typeof payload === 'string' ? JSON.parse(payload) : payload
 
 		if (id && role) {
 			const tmpUser = {id, role}
@@ -62,26 +62,30 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 	}
 
 	async function fetchUserData(user: User) {
-		await api.get(`clients/${user.id}`).then(({data: client}:{data: Client}) => {
-			const data: UserData = {
-				email: client.email,
-				image: client.imagem,
-				name: client.nome_fantasia,
-				representadas: client.representadas
-			}
+		await api
+			.get(`clients/${user.id}`)
+			.then(({data: client}: {data: Client}) => {
+				const data: UserData = {
+					email: client.email,
+					image: client.imagem,
+					name: client.nome_fantasia,
+					representadas: client.representadas
+				}
 
-			setUser({...user, data})
-		}).catch(error => {
-			console.log('<< error >>', error.response.data.message)
-			console.log('<< user.id >>', user.id)
-		})
+				setUser({...user, data})
+			})
+			.catch(error => {
+				console.log('<< error >>', error.response.data.message)
+				console.log('<< user.id >>', user.id)
+			})
 	}
 
 	async function signIn(email: string, password: string) {
 		setLoading(true)
 		const data = {email, password}
 
-		await api.post('login/client', data)
+		await api
+			.post('login/client', data)
 			.then(({data}) => {
 				const {token} = data
 				if (!token) return
@@ -89,12 +93,11 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 				localStorage.setItem('token', token)
 				updateUser(token)
 			})
-			.catch(error =>
-			{
+			.catch(error => {
 				const errorMessage = String(error.response.data.message || '')
 				errorAlert(errorMessage)
 			})
-		
+
 		setLoading(false)
 	}
 

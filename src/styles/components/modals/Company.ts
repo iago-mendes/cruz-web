@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.main`
-	.logoName
-	{
+	.logoName {
 		width: 100%;
 		height: 30%;
 
@@ -14,22 +13,19 @@ const Container = styled.main`
 
 		border-bottom: ${p => p.theme.colors.primary} solid 1px;
 
-		img
-		{
+		img {
 			max-height: 90%;
 			max-width: 500px;
 		}
 
-		h1
-		{
+		h1 {
 			font-family: Ubuntu;
 			font-size: 4rem;
 			color: ${p => p.theme.colors.primary};
 		}
 	}
 
-	p
-	{
+	p {
 		height: 40%;
 		width: 100%;
 
@@ -40,8 +36,7 @@ const Container = styled.main`
 		font-size: 1.5rem;
 	}
 
-	.links
-	{
+	.links {
 		width: 100%;
 		height: 30%;
 
@@ -49,8 +44,7 @@ const Container = styled.main`
 		align-items: center;
 		justify-content: space-around;
 
-		a
-		{
+		a {
 			text-decoration: none;
 			border: none;
 
@@ -70,41 +64,34 @@ const Container = styled.main`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				transform: scale(1.1);
 				border-radius: 0;
 			}
 		}
 	}
 
-	@media(max-width: 850px)
-	{
-		.logoName
-		{
+	@media (max-width: 850px) {
+		.logoName {
 			flex-direction: column;
 			padding: 1rem;
 
-			img
-			{
+			img {
 				height: 50%;
 				width: auto;
 				max-width: 100%;
 			}
 
-			h1
-			{
+			h1 {
 				font-size: 3rem;
 			}
 		}
 
-		p
-		{
+		p {
 			height: fit-content;
 		}
 
-		.links
-		{
+		.links {
 			flex-direction: column-reverse;
 		}
 	}
