@@ -62,6 +62,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 {
 	let companies = []
 	await api.get('companies').then(res => companies = res.data)
+	.catch(error => console.log('<< error.response >>', error.response))
 
 	let companiesInfo = []
 	if (companies.length != 0)
@@ -69,6 +70,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 		const promise = companies.map(async company =>
 		{
 			await api.get(`companies/${company.id}`).then(res => companiesInfo.push(res.data))
+			.catch(error => console.log('<< error.response >>', error.response))
 		})
 		await Promise.all(promise)
 	}

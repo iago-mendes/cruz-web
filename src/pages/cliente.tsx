@@ -36,7 +36,7 @@ const Client: React.FC = () =>
 
 	function useUserDataText(field: string)
 	{
-		if (user.data)
+		if (user && user.data)
 			return <span>{String(user.data[field])}</span>
 		else
 			return <Skeleton />
@@ -88,7 +88,7 @@ const Client: React.FC = () =>
 				<div className='img'>
 					<Dropzone
 						onFileUploaded={updateImage}
-						shownFileUrl={user.data && user.data.image}
+						shownFileUrl={(user && user.data) ? user.data.image : undefined}
 					/>
 				</div>
 

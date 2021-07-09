@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import getConfig from 'next/config'
 
-const {publicRuntimeConfig: env} = getConfig()
+import {apiUrl} from '../services/api'
 
 interface SEOHeadProps
 {
@@ -16,7 +15,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({title, description, image}) =>
 	{
 		title: title ? title : 'Cruz Representações',
 		description: description ? description : 'Excelência em representação comercial em Minas Gerais.',
-		image: image ? image : `${env.apiUrl}/assets/thumbnail.png`,
+		image: image ? image : `${apiUrl}/assets/thumbnail.png`,
 		url: 'https://cruzrepresentacoes.com.br'
 	}
 

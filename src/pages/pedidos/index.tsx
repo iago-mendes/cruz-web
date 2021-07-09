@@ -45,7 +45,7 @@ const Requests: React.FC = () =>
 							</div>
 							<a
 								title='Visualizar pedido'
-								href={`${apiUrl}/pdf/requests/${request.id}`}
+								href={`${process.env.NEXT_PUBLIC_API_URL}/pdf/requests/${request.id}`}
 								target='_blank'
 								rel='nonreferrer'
 							>

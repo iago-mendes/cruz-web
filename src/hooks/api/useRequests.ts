@@ -17,7 +17,7 @@ const useRequests = () =>
 	{
 		if (user)
 			updateRequests()
-	}, [user.id])
+	}, [user])
 
 	async function updateRequests()
 	{
