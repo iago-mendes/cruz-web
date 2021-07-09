@@ -1,7 +1,4 @@
 import axios from 'axios'
-import getConfig from 'next/config'
-
-const {publicRuntimeConfig: env} = getConfig()
 
 let token: string | undefined
 
@@ -13,14 +10,14 @@ try {
 
 const api = axios.create(
 {
-	baseURL: env.apiUrl,
+	baseURL: process.env.NEXT_PUBLIC_API_URL,
 	headers:
 	{
-		key: env.apiKey,
+		key: process.env.NEXT_PUBLIC_API_KEY,
 		authorization: `Bearer ${token}`
 	}
 })
 
-export const apiUrl = String(env.apiUrl)
+export const apiUrl = String(process.env.NEXT_PUBLIC_API_URL)
 
 export default api

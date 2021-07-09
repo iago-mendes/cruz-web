@@ -3,11 +3,6 @@ const withPWA = require('next-pwa')
 
 module.exports = withPWA(withImages({
 	esModule: true,
-	publicRuntimeConfig:
-	{
-		apiUrl: process.env.API_URL,
-		apiKey: process.env.API_KEY
-	},
 	pwa:
 	{
 		dest: 'public',
