@@ -59,7 +59,6 @@ class MyDocument extends Document
 						<link rel='apple-touch-icon' sizes='192x192' href='/icons/192px_background.png' />
 						<link rel='manifest' href='/manifest.json' />
 						<link rel='shortcut' href='/icons/192px_background.png' type='image/png' />
-						<meta name='viewport' content= 'width=device-width, user-scalable=no' />
 				</Head>
 				<body>
 					<Main />
