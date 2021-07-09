@@ -9,6 +9,13 @@ type UserData = {
 	name: string
 	image: string
 	email: string
+
+	representadas: Array<
+	{
+		id: string
+		nome_fantasia: string
+		tabela: string
+	}>
 }
 
 type User = {
@@ -59,7 +66,8 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 			const data: UserData = {
 				email: client.email,
 				image: client.imagem,
-				name: client.nome_fantasia
+				name: client.nome_fantasia,
+				representadas: client.representadas
 			}
 
 			setUser({...user, data})
