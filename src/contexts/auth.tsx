@@ -3,24 +3,19 @@ import jwt from 'jsonwebtoken'
 
 import api from '../services/api'
 import errorAlert from '../utils/alerts/error'
+import Client from '../models/client'
+
+type UserData = {
+	name: string
+	image: string
+	email: string
+}
 
 type User = {
 	id: string
 	role: string
 
-	data?:
-	{
-		name: string
-		image: string
-		email: string
-		
-		representadas: Array<
-		{
-			id: string
-			nome_fantasia: string
-			tabela: string
-		}>
-	}
+	data?: UserData
 }
 
 type AuthContextType = {
@@ -53,8 +48,25 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 		const {id, role} = typeof payload === 'string' ? JSON.parse(payload) : payload
 
 		if (id && role) {
-			setUser({id, role})
+			const tmpUser = {id, role}
+			setUser(tmpUser)
+			fetchUserData(tmpUser)
 		}
+	}
+
+	async function fetchUserData(user: User) {
+		await api.get(`clients/${user.id}`).then(({data: client}:{data: Client}) => {
+			const data: UserData = {
+				email: client.email,
+				image: client.imagem,
+				name: client.nome_fantasia
+			}
+
+			setUser({...user, data})
+		}).catch(error => {
+			console.log('<< error >>', error.response.data.message)
+			console.log('<< user.id >>', user.id)
+		})
 	}
 
 	async function signIn(email: string, password: string) {
@@ -79,8 +91,8 @@ export function AuthProvider({children}: AuthContextProviderProps) {
 	}
 
 	function signOut() {
-		updateUser(undefined)
 		localStorage.removeItem('token')
+		updateUser(undefined)
 	}
 
 	return (

@@ -1,6 +1,6 @@
 import {CompanyCondition} from './company';
 
-interface Client
+interface Client // show
 {
 	id: string
 	imagem: string

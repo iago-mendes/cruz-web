@@ -35,7 +35,7 @@ export default function Login()
 	{
 		e.preventDefault()
 
-		signIn(email, password)
+		await signIn(email, password)
 	}
 
 	return (

@@ -3,12 +3,21 @@ import getConfig from 'next/config'
 
 const {publicRuntimeConfig: env} = getConfig()
 
+let token: string | undefined
+
+try {
+	token = localStorage.getItem('token')
+} catch (error) {
+	token = undefined
+}
+
 const api = axios.create(
 {
 	baseURL: env.apiUrl,
 	headers:
 	{
-		key: env.apiKey
+		key: env.apiKey,
+		authorization: `Bearer ${token}`
 	}
 })
 
