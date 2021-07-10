@@ -253,7 +253,10 @@ const Pedido: React.FC = () => {
 			const st = (subtotal * listedProduct.st) / 100
 			const ipi = (subtotal * listedProduct.ipi) / 100
 
-			total += subtotal + st + ipi
+			const subtotalWithTaxes = subtotal + st + ipi
+			if (Number.isNaN(subtotalWithTaxes)) return
+
+			total += subtotalWithTaxes
 		})
 
 		if (Number.isNaN(total)) return 0
