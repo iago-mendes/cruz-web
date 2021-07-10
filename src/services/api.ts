@@ -1,21 +1,26 @@
 import axios from 'axios'
 
-let token: string | undefined
-
-try {
-	token = localStorage.getItem('token')
-} catch (error) {
-	token = undefined
-}
+export const apiUrl = String(process.env.NEXT_PUBLIC_API_URL)
 
 const api = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_URL,
+	baseURL: apiUrl,
 	headers: {
-		key: process.env.NEXT_PUBLIC_API_KEY,
-		authorization: `Bearer ${token}`
+		key: process.env.NEXT_PUBLIC_API_KEY
 	}
 })
 
-export const apiUrl = String(process.env.NEXT_PUBLIC_API_URL)
+api.interceptors.request.use(config => {
+	let token: string | undefined
+
+	try {
+		token = localStorage.getItem('token')
+	} catch (error) {
+		token = undefined
+	}
+
+	config.headers.authorization = `Bearer ${token}`
+
+	return config
+})
 
 export default api
