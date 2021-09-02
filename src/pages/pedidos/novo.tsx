@@ -313,7 +313,7 @@ const Pedido: React.FC = () => {
 			'<h2>Cruz Representações</h2>' +
 			'<h3>Excelência em Representação Comercial!</h3>'
 
-		const to = ['cruzrepresentacoes@gmail.com']
+		const to = ['pedidoscruzrepresentacoes@gmail.com']
 		if (user.data) to.push(user.data.email)
 
 		const data = {
