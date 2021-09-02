@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react'
-import {FiInfo, FiMinus, FiPlus, FiSearch, FiX} from 'react-icons/fi'
+import {useEffect, useMemo, useState} from 'react'
+import {FiPlus, FiSearch, FiX} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
@@ -8,7 +8,8 @@ import Switch from 'react-switch'
 
 import {freteOptions} from '../../assets/db/options/frete'
 
-import Container, {Card} from '../../styles/pages/pedidos/novo'
+import Container from '../../styles/pages/pedidos/novo'
+import {Card} from '../../components/_cards/styles'
 import logo from '../../assets/images/logo.svg'
 import {useAuth} from '../../hooks/useAuth'
 import api from '../../services/api'
@@ -37,8 +38,9 @@ import formatDate from '../../utils/formatDate'
 import formatPercentage from '../../utils/formatPercentage'
 import confirmAlert from '../../utils/alerts/confirm'
 import {SkeletonLoading} from '../../utils/skeletonLoading'
+import {RequestProductCard} from '../../components/_cards/RequestProductCard'
 
-const Pedido: React.FC = () => {
+export default function NewRequestPage() {
 	const {user} = useAuth()
 	const {push, back} = useRouter()
 
@@ -87,31 +89,35 @@ const Pedido: React.FC = () => {
 		value: option.telefone
 	}))
 
-	const productSearchedOptions =
-		productSearch === ''
-			? productOptions
-			: productOptions.filter(product => {
-					const index = product.nome
-						.toLowerCase()
-						.search(productSearch.toLowerCase())
-					return index >= 0
-			  })
-	productSearchedOptions.sort((a, b) => (a.nome < b.nome ? -1 : 1))
+	const productSearchedOptions = useMemo(
+		() =>
+			(productSearch === ''
+				? productOptions
+				: productOptions.filter(product => {
+						const index = product.nome
+							.toLowerCase()
+							.search(productSearch.toLowerCase())
+						return index >= 0
+				  })
+			).sort((a, b) => (a.nome < b.nome ? -1 : 1)),
+		[productSearch, productOptions]
+	)
 
-	const companySearchedOptions =
-		companySearch === ''
-			? companyOptions
-			: companyOptions.filter(company => {
-					const indexName = company.nome_fantasia
-						.toLowerCase()
-						.search(companySearch.toLowerCase())
-					const indexDescription = company.descricao_curta
-						.toLowerCase()
-						.search(companySearch.toLowerCase())
-					return indexName >= 0 || indexDescription >= 0
-			  })
-	companySearchedOptions.sort((a, b) =>
-		a.nome_fantasia < b.nome_fantasia ? -1 : 1
+	const companySearchedOptions = useMemo(
+		() =>
+			(companySearch === ''
+				? companyOptions
+				: companyOptions.filter(company => {
+						const indexName = company.nome_fantasia
+							.toLowerCase()
+							.search(companySearch.toLowerCase())
+						const indexDescription = company.descricao_curta
+							.toLowerCase()
+							.search(companySearch.toLowerCase())
+						return indexName >= 0 || indexDescription >= 0
+				  })
+			).sort((a, b) => (a.nome_fantasia < b.nome_fantasia ? -1 : 1)),
+		[companySearch, companyOptions]
 	)
 
 	const minimumPrice =
@@ -122,7 +128,7 @@ const Pedido: React.FC = () => {
 
 	useEffect(() => {
 		api.get('companies').then(({data}: {data: CompanyListed[]}) => {
-			if (user.data && user.data.representadas) {
+			if (user && user.data && user.data.representadas) {
 				const tmpCompanyOptions: CompanyListed[] = []
 
 				data.map(company => {
@@ -512,65 +518,15 @@ const Pedido: React.FC = () => {
 						</div>
 					)}
 					<div className="grid">
-						{productSearchedOptions.map(product => {
-							const selectedProduct = produtos.find(({id}) => id === product.id)
-
-							const removeQuantity = selectedProduct
-								? selectedProduct.quantidade - 1
-								: 0
-							const addQuantity = selectedProduct
-								? selectedProduct.quantidade + 1
-								: 1
-
-							return (
-								<Card
-									isSelected={selectedProduct !== undefined}
-									type="product"
-									onClick={() => {}}
-									key={product.id}
-								>
-									<button
-										className="info"
-										onClick={() => openProductModal(product)}
-									>
-										<FiInfo size={25} />
-									</button>
-									<div className="img">
-										<img src={product.imagem} alt={product.nome} />
-									</div>
-									<h3>{product.nome}</h3>
-									<span>{formatPrice(product.preco)}</span>
-									<div className="field">
-										<button
-											onClick={() =>
-												handleChangeProductQuantity(product, removeQuantity)
-											}
-										>
-											<FiMinus size={25} />
-										</button>
-										<input
-											id="quantidade"
-											name="quantidade"
-											type="number"
-											value={selectedProduct ? selectedProduct.quantidade : 0}
-											onChange={e =>
-												handleChangeProductQuantity(
-													product,
-													Number(e.target.value)
-												)
-											}
-										/>
-										<button
-											onClick={() =>
-												handleChangeProductQuantity(product, addQuantity)
-											}
-										>
-											<FiPlus size={25} />
-										</button>
-									</div>
-								</Card>
-							)
-						})}
+						{productSearchedOptions.map(product => (
+							<RequestProductCard
+								key={product.id}
+								product={product}
+								selectedProduct={produtos.find(({id}) => id === product.id)}
+								openProductModal={openProductModal}
+								handleChangeProductQuantity={handleChangeProductQuantity}
+							/>
+						))}
 					</div>
 				</main>
 			)}
@@ -760,5 +716,3 @@ const Pedido: React.FC = () => {
 		</Container>
 	)
 }
-
-export default Pedido
