@@ -61,4 +61,22 @@ function RequestProductCardComponent({
 	)
 }
 
-export const RequestProductCard = memo(RequestProductCardComponent)
+export const RequestProductCard = memo(
+	RequestProductCardComponent,
+	(prev, next) => {
+		const areSimplePropsEqual =
+			prev.product === next.product &&
+			prev.openProductModal === next.openProductModal &&
+			prev.handleChangeProductQuantity === next.handleChangeProductQuantity
+
+		if (!areSimplePropsEqual) return false
+
+		if (prev.selectedProduct && !next.selectedProduct) return false
+
+		const isProductSelected = next.selectedProduct
+			? next.selectedProduct.id === next.product.id
+			: false
+
+		return !isProductSelected
+	}
+)

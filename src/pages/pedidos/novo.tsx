@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {FiPlus, FiSearch, FiX} from 'react-icons/fi'
 import {FaAngleLeft, FaAngleRight} from 'react-icons/fa'
 import {useRouter} from 'next/router'
@@ -225,26 +225,27 @@ export default function NewRequestPage() {
 		}
 	}
 
-	function handleChangeProductQuantity(
-		product: ProductListedPriced,
-		quantity: number
-	) {
-		const tmpProducts = [...produtos]
-		const productIndex = produtos.findIndex(({id}) => id === product.id)
+	const handleChangeProductQuantity = useCallback(
+		(product: ProductListedPriced, quantity: number) => {
+			setProdutos(products => {
+				const tmpProducts = [...products]
+				const productIndex = products.findIndex(({id}) => id === product.id)
 
-		if (productIndex >= 0) {
-			if (quantity > 0) tmpProducts[productIndex].quantidade = quantity
-			else tmpProducts.splice(productIndex, 1)
-		} else if (quantity > 0) {
-			tmpProducts.push({
-				id: product.id,
-				preco: product.preco,
-				quantidade: quantity
+				if (productIndex >= 0) {
+					if (quantity > 0) tmpProducts[productIndex].quantidade = quantity
+					else tmpProducts.splice(productIndex, 1)
+				} else if (quantity > 0) {
+					tmpProducts.push({
+						id: product.id,
+						preco: product.preco,
+						quantidade: quantity
+					})
+				}
+				return tmpProducts
 			})
-		}
-
-		setProdutos(tmpProducts)
-	}
+		},
+		[]
+	)
 
 	function calcTotalPrice() {
 		let total = 0
@@ -297,10 +298,10 @@ export default function NewRequestPage() {
 		return total
 	}
 
-	function openProductModal(selected: ProductListedPriced) {
+	const openProductModal = useCallback((selected: ProductListedPriced) => {
 		setSelectedProduct(selected)
 		setIsProductModalOpen(true)
-	}
+	}, [])
 
 	function handleSelectContact(e: SelectOption) {
 		setContactName(e.label)
