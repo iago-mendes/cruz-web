@@ -50,6 +50,18 @@ export const Card = styled.div<Props>`
 		}
 	}
 
+	> figure {
+		width: 75%;
+		height: 50%;
+
+		overflow: hidden;
+		position: relative;
+
+		img {
+			object-fit: contain;
+		}
+	}
+
 	h2 {
 		font-size: 2rem;
 	}

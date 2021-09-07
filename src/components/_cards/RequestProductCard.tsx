@@ -1,5 +1,6 @@
 import {memo} from 'react'
 import {FiInfo, FiMinus, FiPlus} from 'react-icons/fi'
+import Image from 'next/image'
 
 import {Card} from './styles'
 import {ProductListedPriced} from '../../models/product'
@@ -31,9 +32,13 @@ function RequestProductCardComponent({
 			<button className="info" onClick={() => openProductModal(product)}>
 				<FiInfo size={25} />
 			</button>
-			<div className="img">
-				<img src={product.imagem} alt={product.nome} />
-			</div>
+			<figure>
+				<Image
+					src={product.imagem}
+					alt={'Image of ' + product.nome}
+					layout="fill"
+				/>
+			</figure>
 			<h3>{product.nome}</h3>
 			<span>{formatPrice(product.preco)}</span>
 			<div className="field">
