@@ -11,5 +11,12 @@ module.exports = withPWA(withImages({
 	pwa: {
 		dest: 'public',
 		disable: process.env.NODE_ENV === 'development'
-	}
+	},
+	typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
 }))
