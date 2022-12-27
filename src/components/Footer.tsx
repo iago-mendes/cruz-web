@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
 
 	return (
 		<Container>
-			<Link href="/">
+			<Link href="/" legacyBehavior>
 				<img src={logo} alt="Cruz representações" className="logo" />
 			</Link>
 
@@ -21,14 +21,14 @@ const Footer: React.FC = () => {
 				<div className="group">
 					<h3>Links úteis</h3>
 					<ul>
-						<Link href="/">
-							<a className="link">Página Principal</a>
+						<Link href="/" className="link">
+							Página Principal
 						</Link>
-						<Link href="/contato">
-							<a className="link">Contato</a>
+						<Link href="/contato" className="link">
+							Contato
 						</Link>
-						<Link href="/sobre">
-							<a className="link">Sobre</a>
+						<Link href="/sobre" className="link">
+							Sobre
 						</Link>
 						{/* <Link href='/sobre/politica-de-privacidade' >
 							<a className='link'>

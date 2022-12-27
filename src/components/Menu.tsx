@@ -63,7 +63,7 @@ const Menu: React.FC = () => {
 			)}
 
 			{inDesktop && (
-				<Link href="/">
+				<Link href="/" legacyBehavior>
 					<img src={logo} alt="Cruz Representações" className="logo" />
 				</Link>
 			)}
@@ -122,11 +122,11 @@ const RoutesOptions: React.FC<RoutesOptionsProps> = ({
 
 	return (
 		<ul>
-			<Link href="/pedidos/novo">
-				<a className="linkBlock">Fazer pedido</a>
+			<Link href="/pedidos/novo" className="linkBlock">
+				Fazer pedido
 			</Link>
-			<Link href="/empresas">
-				<a className="link">Empresas</a>
+			<Link href="/empresas" className="link">
+				Empresas
 			</Link>
 			<div
 				onMouseEnter={() => setShowDropdown(true)}
@@ -161,17 +161,21 @@ const RoutesOptions: React.FC<RoutesOptionsProps> = ({
 				>
 					{companies &&
 						companies.map((company: CompanyListed) => (
-							<Link href={`/catalogo/${company.id}`} key={company.id}>
-								<a className="link">{company.nome_fantasia}</a>
+							<Link
+								href={`/catalogo/${company.id}`}
+								key={company.id}
+								className="link"
+							>
+								{company.nome_fantasia}
 							</Link>
 						))}
 				</motion.ul>
 			</div>
-			<Link href="/contato">
-				<a className="link">Contato</a>
+			<Link href="/contato" className="link">
+				Contato
 			</Link>
-			<Link href="/sobre">
-				<a className="link">Sobre</a>
+			<Link href="/sobre" className="link">
+				Sobre
 			</Link>
 		</ul>
 	)
