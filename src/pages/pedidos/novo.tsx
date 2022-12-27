@@ -320,7 +320,7 @@ export default function NewRequestPage() {
 			'<h2>Cruz Representações</h2>' +
 			'<h3>Excelência em Representação Comercial!</h3>'
 
-		const to = ['pedidoscruzrepresentacoes@gmail.com']
+		const to = ['cruzrepresentacoes@gmail.com']
 		if (user.data) to.push(user.data.email)
 
 		const data = {
