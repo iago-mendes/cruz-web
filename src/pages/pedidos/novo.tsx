@@ -39,6 +39,7 @@ import formatPercentage from '../../utils/formatPercentage'
 import confirmAlert from '../../utils/alerts/confirm'
 import {SkeletonLoading} from '../../utils/skeletonLoading'
 import {RequestProductCard} from '../../components/_cards/RequestProductCard'
+import {setTimeout} from 'timers'
 
 export default function NewRequestPage() {
 	const {user} = useAuth()
@@ -203,7 +204,7 @@ export default function NewRequestPage() {
 				return warningAlert(' Você precisa selecionar uma opção de contato.')
 		}
 
-		if (step < 4) return setStep(step + 1)
+		if (step < 4) return setStep(step => step + 1)
 		if (step === 4) return handleSubmit()
 	}
 
@@ -222,6 +223,8 @@ export default function NewRequestPage() {
 		else {
 			setRepresentada(company.id)
 			setSelectedCompany(company)
+
+			setTimeout(() => setStep(step => step + 1), 1 * 1000) // 0.5 s
 		}
 	}
 
