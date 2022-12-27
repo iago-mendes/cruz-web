@@ -1,6 +1,6 @@
 import {memo} from 'react'
 import {FiInfo, FiMinus, FiPlus} from 'react-icons/fi'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import {Card} from './styles'
 import {ProductListedPriced} from '../../models/product'
