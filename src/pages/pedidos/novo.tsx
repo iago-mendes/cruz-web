@@ -313,8 +313,8 @@ export default function NewRequestPage() {
 
 	async function sendMails(requestId: string) {
 		const text =
-			'<h1>Pedido realizado com sucesso!</h1>' +
-			`<p>O pedido feito no dia <strong>${formatDate(
+			'<h1>Orçamento realizado com sucesso!</h1>' +
+			`<p>O orçamento feito no dia <strong>${formatDate(
 				getDate()
 			)}</strong> por <strong>${
 				user.data ? user.data.name : 'um cliente no e-commerce'
