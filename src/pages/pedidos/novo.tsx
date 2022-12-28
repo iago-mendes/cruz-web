@@ -356,7 +356,7 @@ export default function NewRequestPage() {
 		api
 			.post('requests', data)
 			.then(({data}: {data: RequestRaw}) => {
-				sucessAlert('Seu pedido foi realizado com sucesso!')
+				sucessAlert('Seu orçamento foi realizado com sucesso!')
 				push('/pedidos')
 
 				sendMails(String(data._id))
