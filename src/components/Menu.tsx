@@ -144,11 +144,13 @@ const RoutesOptions: React.FC<RoutesOptionsProps> = ({
 					variants={{
 						open: {
 							height: 'fit-content',
-							opacity: 1
+							opacity: 1,
+							padding: 10
 						},
 						closed: {
 							height: 0,
-							opacity: 0
+							opacity: 1,
+							padding: 0
 						}
 					}}
 					style={{

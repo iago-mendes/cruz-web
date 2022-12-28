@@ -105,8 +105,6 @@ const Container = styled.div<ContainerProps>`
 
 				width: 20rem;
 				height: fit-content;
-				padding: 1rem;
-				padding-top: 2rem;
 
 				display: flex;
 				flex-direction: column;
